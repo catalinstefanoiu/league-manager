@@ -65,7 +65,8 @@
               "buildTarget": "league-manager:build:production"
             },
             "development": {
-              "buildTarget": "league-manager:build:development"
+              "buildTarget": "league-manager:build:development",
+              "port": 5800
             }
           },
           "defaultConfiguration": "development"
@@ -97,5 +98,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "df1e30d6-dccc-4f90-bfc8-c512857d6474"
   }
 }
