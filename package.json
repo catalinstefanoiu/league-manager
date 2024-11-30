@@ -1,12 +1,14 @@
 {
   "name": "league-manager",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "deploy": "npx firebase deploy --only hosting",
+    "test": "ng test",
+    "vbump": "npm --no-git-tag-version version $1"
   },
   "private": true,
   "dependencies": {
@@ -15,6 +17,7 @@
     "@angular/common": "^18.2.13",
     "@angular/compiler": "^18.2.13",
     "@angular/core": "^18.2.13",
+    "@angular/fire": "^18.0.1",
     "@angular/forms": "^18.2.13",
     "@angular/material": "^18.2.14",
     "@angular/platform-browser": "^18.2.13",
