@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "sslStart": "ng serve --host 0.0.0.0 --ssl true --ssl-cert ./ssl/server.crt --ssl-key ./ssl/server.key",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "deploy": "npx firebase deploy --only hosting",

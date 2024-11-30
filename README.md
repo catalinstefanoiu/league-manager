@@ -1,27 +1,37 @@
 # LeagueManager
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.2.
+To generate SSL certificate for dev server: https://www.freecodecamp.org/news/how-to-get-https-working-on-your-local-development-environment-in-5-minutes-7af615770eec
+(for Windows https://digitaldrummerj.me/angular-local-ssl/)
 
-## Development server
+1. create folder names ssl in project root
+2. openssl genrsa -des3 -out angular-dev-rootCA.key 2048
+3. openssl req -x509 -new -nodes -key angular-dev-rootCA.key -sha256 -days 1024 -out angular-dev-rootCA.pem -sub "/C=RO/ST=PH/L=Cornu/O=Student/OU=Student/CN=Student"
+4. Import angular-dev-rootCA.pem into Keychain Access -> System -> Certificates section
+5. create server.csr.cnf with the following content
+[req]
+default_bits=2048
+prompt=no
+default_md=sha256
+distinguished_name=dn
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+[dn]
+C=RO
+ST=Prahova
+L=Cornu
+O=Student Ltd.
+OU=Student Ltd.
+emailAddress=dev.stefanoiu@gmail.com
+CN=localhost
 
-## Code scaffolding
+6. create v3.ext with the following content
+authorityKeyIdentifier=keyid,issuer
+basicConstraints=CA:FALSE
+keyUsage=digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment
+subjectAltName=@alt_names
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+[alt_names]
+DNS.1=localhost
+IP.2=192.168.xxx.xxx
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+7. openssl req -new -sha256 -nodes -out server.csr -newkey rsa:2048 -keyout server.key -config <( cat server.csr.cnf )
+8. openssl x509 -req -in server.csr -CA angular-dev-rootCA.pem -CAkey angular-dev-rootCA.key -CAcreateserial -out server.crt -days 500 -sha256 -extfile v3.ext
