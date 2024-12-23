@@ -36,11 +36,13 @@ $league-manager-theme: mat.m2-define-dark-theme((color: (primary: $league-manage
 html,
 body {
   height: 100%;
+  min-height: 100vh;
 }
 
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #e5e5e5;
 }
 
 .material-symbols-outlined {

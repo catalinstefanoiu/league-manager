@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+  .login-google {
+    .google-btn {
+      display: inline-flex;
+      align-items: center;
+      background-color: #fff;
+      color: #000;
+      border: 1px solid #dadce0;
+      border-radius: 4px;
+      padding: 8px 16px;
+      /* Adjusted padding */
+      font-family: 'Roboto', sans-serif;
+      /* Use Roboto font */
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, .12), 0 1px 2px rgba(0, 0, 0, .24);
+      /* Refined shadow */
+      transition: box-shadow 0.3s;
+
+      &:hover {
+        box-shadow: 0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23);
+      }
+
+      .google-icon {
+        width: 18px;
+        height: 18px;
+        margin-right: 8px;
+      }
+    }
+  }
+}

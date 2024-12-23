@@ -8,7 +8,12 @@
  */
 
 import { logger } from 'firebase-functions';
+import { setGlobalOptions } from 'firebase-functions/v2';
 import { onRequest } from 'firebase-functions/v2/https';
+
+setGlobalOptions({
+  region: 'europe-central2'
+});
 
 // Start writing functions
 // https://firebase.google.com/docs/functions/typescript

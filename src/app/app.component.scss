@@ -1,0 +1,9 @@
+$headerHeight: 64px;
+
+.app-header {
+  height: $headerHeight;
+}
+.app-container {
+  height: calc(100vh - $headerHeight);
+  min-height: calc(100vh - $headerHeight);
+}
