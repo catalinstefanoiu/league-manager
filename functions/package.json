@@ -2,7 +2,7 @@
   "name": "functions",
   "version": "0.1.0",
   "scripts": {
-    "lint": "npx eslint src/**/*.ts",
+    "lint": "npx eslint src/**/*.ts --fix",
     "build": "tsc",
     "build:watch": "tsc --watch",
     "serve": "npm run build && firebase emulators:start --only functions",
