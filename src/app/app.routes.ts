@@ -7,6 +7,7 @@ import {
 import { HomeComponent } from './routes/home/home.component';
 import { LoginPageComponent } from './routes/public/login-page/login-page.component';
 import { PrivacyPolicyComponent } from './routes/public/privacy-policy/privacy-policy.component';
+import { AdminUsersComponent } from './routes/admin-users/admin-users.component';
 
 const redirectLoggedInToHome = () => redirectLoggedInTo(['home']);
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
@@ -27,6 +28,12 @@ export const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
+    canActivate: [AuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedToLogin },
+  },
+  {
+    path: 'admin-users',
+    component: AdminUsersComponent,
     canActivate: [AuthGuard],
     data: { authGuardPipe: redirectUnauthorizedToLogin },
   },

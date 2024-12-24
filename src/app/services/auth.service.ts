@@ -1,10 +1,32 @@
 import { inject, Injectable } from '@angular/core';
-import { Auth, GoogleAuthProvider, signInWithPopup, signOut, User, user } from '@angular/fire/auth';
+import { Auth, GoogleAuthProvider, ParsedToken, signInWithPopup, signOut, User, user } from '@angular/fire/auth';
 import { doc, Firestore, setDoc } from '@angular/fire/firestore';
 import { getToken, Messaging, onMessage } from '@angular/fire/messaging';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { BehaviorSubject, Subscription } from 'rxjs';
 import { LoggerService } from './logger.service';
+
+export enum UserRole {
+  User = 0,
+  TeamManager,
+  TeamAdmin,
+  AppAdmin
+}
+
+// export interface IUserClaims {
+//   aud: string;
+//   auth_time?: Date;
+//   email: string;
+//   email_verified: boolean;
+//   exp?: Date;
+//   iat?: Date;
+//   iss: string;
+//   name: string;
+//   picture: string;
+//   role: UserRole;
+//   sub?: string;
+//   user_id: string;
+// }
 
 @Injectable({
   providedIn: 'root',
@@ -19,24 +41,35 @@ export class AuthService {
 
   user$ = user(this.auth);
   currentUser: User | null = this.auth.currentUser;
-  userSubscription: Subscription;
+  private userRole: BehaviorSubject<UserRole> = new BehaviorSubject<UserRole>(UserRole.User);
+  public userRole$ = this.userRole.asObservable();
 
   constructor() {
-    this.userSubscription = this.user$.subscribe((aUser: User | null) => {
+    this.user$.subscribe(async (aUser: User | null) => {
+      if (aUser) {
+        try {
+          const idTokenResult = await this.auth.currentUser?.getIdTokenResult();
+          this.logger.debug('claims:', idTokenResult);
+          this.userRole.next(idTokenResult?.claims['role'] as number ?? UserRole.User);
+        } catch (ex) {
+          this.logger.error(ex);
+        }
+      }
       this.currentUser = aUser;
     });
   }
 
-  public async getClaims() {
+  public async getClaims(): Promise<ParsedToken | undefined> {
     try {
       const idTokenResult = await this.auth.currentUser?.getIdTokenResult(true);
-      this.logger.debug('claims:', idTokenResult);
+      this.logger.debug('getClaims:', idTokenResult);
+      this.userRole.next(idTokenResult?.claims['role'] as number ?? UserRole.User);
       return idTokenResult?.claims;
     } catch (error) {
       this.logger.error(error);
     }
 
-    return null;
+    return undefined;
   }
 
   public login() {

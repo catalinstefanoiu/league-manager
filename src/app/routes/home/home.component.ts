@@ -14,6 +14,6 @@ export class HomeComponent implements OnInit {
   protected authSvc: AuthService = inject(AuthService);
   
   ngOnInit(): void {
-    this.authSvc.getClaims();
+    
   }
 }
