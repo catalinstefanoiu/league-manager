@@ -1,21 +1,6 @@
 <div class="container">
   <div class="login-google">
-    <!-- <button mat-fab extended
-      (click)="this.authSvc.login()">
-      <img src="../../../assets/images/Google.png" class="google-img" />
-      Sign in with Google
-    </button> -->
-    <!-- <button class="google-btn" id="googleSignIn">
-      <svg class="google-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
-        <path fill="#EA4335"
-          d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.29 0 24 0C10.8 0 0 10.8 0 24s10.8 24 24 24c11.26 0 21.05-7.62 23.29-18.22l-6.85-6.85C39.08 30.57 34.05 36 24 36c-6.62 0-12-5.38-12-12s5.38-12 12-12z" />
-        <path fill="#4285F4"
-          d="M24 48c-6.63 0-12-5.37-12-12l0.02-17.64h0.01C12.18 10.74 17.79 5.2 24 5.2c4.07 0 7.64 1.76 10.37 4.7l6.54-6.54C35.49 2.72 29.3 0 24 0C10.7 0 0 10.8 0 24a23.94 23.94 0 0 0 5.44 14.75l0.01 0H12zm0-29.56v11.9H36c0-6.6-5.4-12-12-12z" />
-      </svg>
-      <span>Sign in with Google</span>
-    </button> -->
-
-    <button class="google-btn" id="googleSignIn">
+    <button class="google-btn" id="googleSignIn" (click)="this.authSvc.login()">
       <img class="google-icon" src="../../../assets/images/Google.png" alt="Google">
       <span>Sign in with Google</span>
     </button>

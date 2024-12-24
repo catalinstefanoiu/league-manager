@@ -8,8 +8,8 @@ import { HomeComponent } from './routes/home/home.component';
 import { LoginPageComponent } from './routes/public/login-page/login-page.component';
 import { PrivacyPolicyComponent } from './routes/public/privacy-policy/privacy-policy.component';
 
+const redirectLoggedInToHome = () => redirectLoggedInTo(['home']);
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
-const redirectLoggedInToHome = () => redirectLoggedInTo(['chat']);
 
 export const routes: Routes = [
   {

@@ -1,5 +1,6 @@
 export const environment = {
   production: true,
+  enableLogging: 'no',
   firebase: {
     projectId: 'leaguemanager-39205',
     appId: '1:75265332276:web:cf19f01826a491d42aa661',

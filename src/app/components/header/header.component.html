@@ -1,5 +1,28 @@
-<mat-toolbar color="primary">
-  <mat-icon class="material-symbols-outlined">trophy</mat-icon>
-  <span>League Manager</span>
-  
+<mat-toolbar color="primary" class="header">
+  <a href="/" class="title">
+    <mat-icon class="material-symbols-outlined">trophy</mat-icon>
+    <span>League Manager</span>
+  </a>
+  <div class="filler"></div>
+  @if(user$ | async; as user) {
+  <div class="user-info-container">
+    <div class="user-info">
+      <img class="user-img" [src]="user?.photoURL" [alt]="user?.displayName" />
+      <span class="user-name">{{user?.displayName}}</span>
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="User menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <mat-icon>person</mat-icon>
+          <span>Profile</span>
+        </button>
+        <button mat-menu-item (click)="this.authSvc.logout()">
+          <mat-icon>logout</mat-icon>
+          <span>Sign out</span>
+        </button>
+      </mat-menu>
+    </div>
+  </div>
+  }
 </mat-toolbar>
