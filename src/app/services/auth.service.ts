@@ -27,6 +27,18 @@ export class AuthService {
     });
   }
 
+  public async getClaims() {
+    try {
+      const idTokenResult = await this.auth.currentUser?.getIdTokenResult(true);
+      this.logger.debug('claims:', idTokenResult);
+      return idTokenResult?.claims;
+    } catch (error) {
+      this.logger.error(error);
+    }
+
+    return null;
+  }
+
   public login() {
     signInWithPopup(this.auth, this.provider).then((result) => {
       const credential = GoogleAuthProvider.credentialFromResult(result);

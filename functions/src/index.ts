@@ -11,6 +11,7 @@ import { setGlobalOptions } from 'firebase-functions/v2';
 import { onRequest } from 'firebase-functions/v2/https';
 import { UserRole } from './user';
 import { getAuth } from 'firebase-admin/auth';
+import versionInfo from './version.json';
 
 setGlobalOptions({
   region: 'europe-central2'
@@ -19,29 +20,30 @@ setGlobalOptions({
 initializeApp();
 
 
-export const helloWorld = onRequest({
+export const getVersion = onRequest({
   region: 'europe-central2'
-}, (request, response) => {
-  logger.info('Hello logs!', { structuredData: true });
-  response.send('Hello from Firebase!');
+}, (_, response) => {
+  const ver = versionInfo || { version: 'v' };
+  logger.info(`getVersion: ${ver}`);
+  response.send(ver);
 });
 
 export const setInitialAdmin = functions
   .region('europe-central2')
   .auth.user().onCreate(async (user) => {
     const admins = ['dev.stefanoiu@gmail.com'];
-    if (
-      user.email &&
-      user.emailVerified &&
-      admins.includes(user.email)
-    ) {
+    if (user.email && user.emailVerified) {
       const customClaims = {
-        role: UserRole.AppAdmin
+        role: UserRole.User
       };
+
+      if (admins.includes(user.email)) {
+        customClaims.role = UserRole.AppAdmin;
+      }
 
       try {
         await getAuth().setCustomUserClaims(user.uid, customClaims);
-        logger.info(`custom claims set on ${user.email}`);
+        logger.info(`custom claims set on ${user.email} [${JSON.stringify(customClaims)}]`);
       } catch (ex) {
         logger.error(ex, { structuredData: true });
       }

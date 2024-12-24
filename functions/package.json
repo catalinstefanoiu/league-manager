@@ -1,9 +1,9 @@
 {
   "name": "functions",
-  "version": "0.1.0",
+  "version": "0.9.0",
   "scripts": {
     "lint": "npx eslint src/**/*.ts --fix",
-    "build": "tsc",
+    "build": "rm -rf lib && echo '{\"version\"': '\"'$(npm --no-git-tag-version version minor)'\"}' > src/version.json && tsc",
     "build:watch": "tsc --watch",
     "serve": "npm run build && firebase emulators:start --only functions",
     "shell": "npm run build && firebase functions:shell",

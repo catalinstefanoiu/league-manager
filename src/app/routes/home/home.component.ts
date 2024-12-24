@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
+import { LoggerService } from '../../services/logger.service';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +9,11 @@ import { Component } from '@angular/core';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
-export class HomeComponent {
-
+export class HomeComponent implements OnInit {
+  private logger = inject(LoggerService);
+  protected authSvc: AuthService = inject(AuthService);
+  
+  ngOnInit(): void {
+    this.authSvc.getClaims();
+  }
 }
