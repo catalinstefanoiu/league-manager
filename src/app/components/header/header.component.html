@@ -9,7 +9,10 @@
   @if (userRole === UserRole.AppAdmin) {
   <button mat-button [matMenuTriggerFor]="adminMenu" class="menu-admin">Admin</button>
   <mat-menu #adminMenu="matMenu">
-    <button mat-menu-item [routerLink]="['/admin-users']" routerLinkActive="router-link-active">Users</button>
+    <button mat-menu-item [routerLink]="['/', 'admin-users']">
+      <mat-icon>group</mat-icon>
+      <span>Users</span>
+    </button>
   </mat-menu>
   }
 

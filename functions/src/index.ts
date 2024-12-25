@@ -11,7 +11,8 @@ import { setGlobalOptions } from 'firebase-functions/v2';
 import { onRequest } from 'firebase-functions/v2/https';
 import { UserRole } from './user';
 import { getAuth } from 'firebase-admin/auth';
-import versionInfo from './version.json';
+import { expressApp } from './app';
+
 
 setGlobalOptions({
   region: 'europe-central2'
@@ -20,13 +21,14 @@ setGlobalOptions({
 initializeApp();
 
 
-export const getVersion = onRequest({
-  region: 'europe-central2'
-}, (_, response) => {
-  const ver = versionInfo || { version: 'v' };
-  logger.info(`getVersion: ${ver}`);
-  response.send(ver);
-});
+export const api = onRequest(
+  {
+    cors: [
+      'https://localhost:5800'
+    ]
+  },
+  expressApp
+);
 
 export const setInitialAdmin = functions
   .region('europe-central2')

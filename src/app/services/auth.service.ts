@@ -59,6 +59,19 @@ export class AuthService {
     });
   }
 
+  public async getToken(): Promise<string> {
+    let token = '';
+    try {
+      if (this.auth.currentUser) {
+        token = await this.auth.currentUser.getIdToken();
+      }
+    } catch (ex) {
+      this.logger.error(ex);
+    }
+
+    return token;
+  }
+
   public async getClaims(): Promise<ParsedToken | undefined> {
     try {
       const idTokenResult = await this.auth.currentUser?.getIdTokenResult(true);
