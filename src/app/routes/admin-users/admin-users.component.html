@@ -1,1 +1,34 @@
-<p>admin-users works!</p>
+<div class="container">
+  <mat-table [dataSource]="dataSource" matSort matSortActive="created" matSortDirection="desc"
+    class="table-users mat-elevation-z8">
+    <ng-container matColumnDef="idx">
+      <mat-header-cell *matHeaderCellDef> # </mat-header-cell>
+      <mat-cell *matCellDef="let row; let idx = index">{{getRowIndex(idx)}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="displayName">
+      <mat-header-cell *matHeaderCellDef> Display Name </mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{user.displayName}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> E-mail </mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{user.email}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="displayRole">
+      <mat-header-cell *matHeaderCellDef> Role </mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{user.displayRole}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="created">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Created on </mat-header-cell>
+      <mat-cell *matCellDef="let user">{{user.created | date}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="lastSignIn">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Last Sign In</mat-header-cell>
+      <mat-cell *matCellDef="let user">{{user.lastSignIn | date}}</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <mat-paginator [pageSizeOptions]="pageSizeOptions" (page)="tablePageChanged($event)"></mat-paginator>
+</div>

@@ -1,0 +1,8 @@
+.container {
+  display: flex;
+  flex-direction: column;
+
+  .table-users {
+    flex: 1 0 200px;
+  }
+}
