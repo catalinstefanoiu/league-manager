@@ -9,14 +9,14 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatTableModule } from '@angular/material/table';
 import { LoggerService } from '../../services/logger.service';
 import { AdminService } from '../../services/admin.service';
-import { UserRole } from '../../services/auth.service';
+import { CustomClaimField, UserRole } from '../../services/auth.service';
 import { UserRecord } from '../../services/firebase-entities';
 import { UtilsService } from '../../services/utils.service';
 import { AdminUsersEditComponent } from './admin-users-edit/admin-users-edit.component';
 import { Team } from '../../services/models';
 
 
-interface IDisplayUser {
+export interface IDisplayUser {
   idx: number;
   uid: string;
   displayName: string;
@@ -24,6 +24,7 @@ interface IDisplayUser {
   disabled: boolean;
   role: UserRole;
   displayRole: string;
+  teamId: string;
   created: Date;
   lastSignIn: Date;
 }
@@ -89,8 +90,9 @@ export class AdminUsersComponent implements OnInit, AfterViewInit {
           displayName: user.displayName ?? '',
           email: user.email ?? '',
           disabled: user.disabled,
-          role: user.customClaims?.['role'] ?? UserRole.User,
-          displayRole: this.getRoleName(user.customClaims?.['role'] ?? UserRole.User),
+          role: user.customClaims?.[CustomClaimField.role] ?? UserRole.User,
+          displayRole: this.getRoleName(user.customClaims?.[CustomClaimField.role] ?? UserRole.User),
+          teamId: user.customClaims?.[CustomClaimField.team] ?? '',
           created: new Date(user.metadata.creationTime),
           lastSignIn: new Date(user.metadata.lastSignInTime)
         } as IDisplayUser;
@@ -121,7 +123,7 @@ export class AdminUsersComponent implements OnInit, AfterViewInit {
         disableClose: true,
         hasBackdrop: true,
         data: {
-          userId: user.uid,
+          user,
           teams: this.teams
         }
       });

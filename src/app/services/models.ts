@@ -1,5 +1,8 @@
 export class Team {
-  public tid: string = '';
-  public name: string = '';
-  public coach: string = '';
+  constructor(
+    readonly tid: string,
+    readonly name: string,
+    readonly coachId: string,
+    readonly managerId: string
+  ) { }
 }

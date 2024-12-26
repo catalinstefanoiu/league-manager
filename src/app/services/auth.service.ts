@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import { LoggerService } from './logger.service';
 
+
 export enum UserRole {
   User = 0,
   TeamManager,
@@ -13,20 +14,11 @@ export enum UserRole {
   AppAdmin
 }
 
-// export interface IUserClaims {
-//   aud: string;
-//   auth_time?: Date;
-//   email: string;
-//   email_verified: boolean;
-//   exp?: Date;
-//   iat?: Date;
-//   iss: string;
-//   name: string;
-//   picture: string;
-//   role: UserRole;
-//   sub?: string;
-//   user_id: string;
-// }
+export enum CustomClaimField {
+  role = 'role',
+  team = 'team'
+}
+
 
 @Injectable({
   providedIn: 'root',
@@ -50,7 +42,7 @@ export class AuthService {
         try {
           const idTokenResult = await this.auth.currentUser?.getIdTokenResult();
           this.logger.debug('claims:', idTokenResult);
-          this.userRole.next(idTokenResult?.claims['role'] as number ?? UserRole.User);
+          this.userRole.next(idTokenResult?.claims[CustomClaimField.role] as number ?? UserRole.User);
         } catch (ex) {
           this.logger.error(ex);
         }
@@ -76,7 +68,7 @@ export class AuthService {
     try {
       const idTokenResult = await this.auth.currentUser?.getIdTokenResult(true);
       this.logger.debug('getClaims:', idTokenResult);
-      this.userRole.next(idTokenResult?.claims['role'] as number ?? UserRole.User);
+      this.userRole.next(idTokenResult?.claims[CustomClaimField.role] as number ?? UserRole.User);
       return idTokenResult?.claims;
     } catch (error) {
       this.logger.error(error);
