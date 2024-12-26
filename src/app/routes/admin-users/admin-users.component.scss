@@ -2,7 +2,60 @@
   display: flex;
   flex-direction: column;
 
+  .mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+
   .table-users {
     flex: 1 0 200px;
+  }
+
+  .mat-table {
+    overflow: auto;
+    max-height: 800px;
+  }
+
+  .mat-header-cell {
+    display: flex;
+    justify-content: center;
+    padding: 0 10px;
+  }
+
+  .mat-cell {
+    flex: 1 0 auto;
+    display: flex;
+    justify-content: center;
+    padding: 0 10px;
+  }
+  
+  .mat-column-idx {
+    flex: 0 0 60px;
+    justify-content: flex-end;
+  }
+  
+  .mat-column-displayName {
+    flex: 1 0 120px;
+  }
+  
+  .mat-column-email {
+    flex: 1 0 120px;
+  }
+  
+  .mat-column-displayRole {
+    flex: 0 0 140px;
+  }
+  
+  .mat-column-created {
+    flex: 0 0 140px;
+  }
+  
+  .mat-column-lastSignIn {
+    flex: 0 0 140px;
+  }
+  
+  a {
+    color: inherit;
+    text-decoration: none;
   }
 }

@@ -3,8 +3,9 @@ import { HttpClient, HttpContext, HttpHeaders, HttpParams } from '@angular/commo
 import { lastValueFrom } from 'rxjs';
 import { AuthService } from './auth.service';
 import { LoggerService } from './logger.service';
+import { environment } from '../../environments/environment';
 
-const API_URL = 'https://europe-central2-leaguemanager-39205.cloudfunctions.net/api';
+const API_URL = environment.api_base;
 
 export interface IHttpOptions {
   headers?: HttpHeaders | {

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { UserRecord } from './firebase-entities';
-import { ApiBaseService } from './base-api.service';
+import { ApiBaseService } from './api-base.service';
 
 
 @Injectable({

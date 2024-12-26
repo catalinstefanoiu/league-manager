@@ -1,6 +1,7 @@
 export const environment = {
   production: true,
   enableLogging: 'no',
+  api_base: 'https://europe-central2-leaguemanager-39205.cloudfunctions.net/api',
   firebase: {
     projectId: 'leaguemanager-39205',
     appId: '1:75265332276:web:cf19f01826a491d42aa661',

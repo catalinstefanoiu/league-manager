@@ -42,14 +42,14 @@ async function authenticate(req: ExpressRequest, res: ExpressResponse, next: Nex
 
 app.get('/version', async (_, res) => {
   const ver = versionInfo || { version: 'v' };
-  logger.info(`getVersion: ${ver}`);
+  // logger.info(`getVersion: ${ver}`);
   res.status(200).json(ver);
 });
 
 app.get('/admin-users', authenticate, async (_, res) => {
   try {
     const users = await getUsers();
-    logger.debug(users, { structuredData: true });
+    // logger.debug(users, { structuredData: true });
     res.status(200).json(users);
   } catch (ex) {
     logger.error(ex);

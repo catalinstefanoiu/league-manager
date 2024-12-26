@@ -24,7 +24,8 @@ initializeApp();
 export const api = onRequest(
   {
     cors: [
-      'https://localhost:5800'
+      'https://localhost:5800',
+      'https://192.168.5.27:5800'
     ]
   },
   expressApp
@@ -33,7 +34,7 @@ export const api = onRequest(
 export const setInitialAdmin = functions
   .region('europe-central2')
   .auth.user().onCreate(async (user) => {
-    const admins = ['dev.stefanoiu@gmail.com'];
+    const admins = ['dev.stefanoiu@gmail.com', 'stefanoiucatalin11@gmail.com'];
     if (user.email && user.emailVerified) {
       const customClaims = {
         role: UserRole.User

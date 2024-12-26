@@ -1,14 +1,18 @@
 import { AfterViewInit, Component, inject, OnInit, ViewChild } from '@angular/core';
 import { DatePipe } from '@angular/common';
-import { MatTableModule } from '@angular/material/table';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { MatPaginator, MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
 import { LoggerService } from '../../services/logger.service';
 import { AdminService } from '../../services/admin.service';
 import { UserRole } from '../../services/auth.service';
 import { UserRecord } from '../../services/firebase-entities';
 import { UtilsService } from '../../services/utils.service';
+import { AdminUsersEditComponent } from './admin-users-edit/admin-users-edit.component';
 
 
 interface IDisplayUser {
@@ -28,6 +32,9 @@ interface IDisplayUser {
   standalone: true,
   imports: [
     DatePipe,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
     MatPaginator,
     MatSort,
     MatPaginatorModule,
@@ -41,6 +48,7 @@ export class AdminUsersComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator?: MatPaginator;
   @ViewChild(MatSort) sort?: MatSort;
 
+  private dialog = inject(MatDialog);
   private logger = inject(LoggerService);
   private adminSvc = inject(AdminService);
   protected utilsSvc = inject(UtilsService);
@@ -54,6 +62,21 @@ export class AdminUsersComponent implements OnInit, AfterViewInit {
   protected displayedColumns = ['idx', 'displayName', 'email', 'displayRole', 'created', 'lastSignIn'];
 
   async ngOnInit(): Promise<void> {
+    await this.getUsers();
+  }
+
+  /**
+  * Set the paginator and sort after the view init since this component will
+  * be able to query its view for the initialized paginator and sort.
+  */
+  ngAfterViewInit() {
+    if (this.dataSource) {
+      this.dataSource.paginator = this.paginator!;
+      this.dataSource.sort = this.sort!;
+    }
+  }
+
+  async getUsers() {
     try {
       this.users = await this.adminSvc.getUsers();
       this.logger.debug(this.users);
@@ -83,15 +106,22 @@ export class AdminUsersComponent implements OnInit, AfterViewInit {
     }
   }
 
-  /**
-  * Set the paginator and sort after the view init since this component will
-  * be able to query its view for the initialized paginator and sort.
-  */
-  ngAfterViewInit() {
-    if (this.dataSource) {
-      this.dataSource.paginator = this.paginator!;
-      this.dataSource.sort = this.sort!;
-    }
+  editUser(user: IDisplayUser) {
+    const dialogRef = this.dialog.open(AdminUsersEditComponent, {
+      minWidth: '300px',
+      minHeight: '300px',
+      disableClose: true,
+      hasBackdrop: true,
+      data: {
+        userId: user.uid
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(async (result) => {
+      if (result) {
+        await this.getUsers();
+      }
+    });
   }
 
   tablePageChanged(event: PageEvent) {
@@ -103,7 +133,8 @@ export class AdminUsersComponent implements OnInit, AfterViewInit {
     return this.pageIndex * this.pageSize + rowIdx + 1;
   }
 
-  applyFilter(filterValue: string) {
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
