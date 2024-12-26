@@ -13,6 +13,7 @@ import { UserRole } from '../../services/auth.service';
 import { UserRecord } from '../../services/firebase-entities';
 import { UtilsService } from '../../services/utils.service';
 import { AdminUsersEditComponent } from './admin-users-edit/admin-users-edit.component';
+import { Team } from '../../services/models';
 
 
 interface IDisplayUser {
@@ -61,6 +62,8 @@ export class AdminUsersComponent implements OnInit, AfterViewInit {
   protected pageIndex = 0;
   protected displayedColumns = ['idx', 'displayName', 'email', 'displayRole', 'created', 'lastSignIn'];
 
+  private teams: Team[] | undefined;
+
   async ngOnInit(): Promise<void> {
     await this.getUsers();
   }
@@ -106,22 +109,31 @@ export class AdminUsersComponent implements OnInit, AfterViewInit {
     }
   }
 
-  editUser(user: IDisplayUser) {
-    const dialogRef = this.dialog.open(AdminUsersEditComponent, {
-      minWidth: '300px',
-      minHeight: '300px',
-      disableClose: true,
-      hasBackdrop: true,
-      data: {
-        userId: user.uid
+  async editUser(user: IDisplayUser) {
+    try {
+      if (!this.teams) {
+        this.teams = await this.adminSvc.getTeams();
+        this.logger.debug(this.teams);
       }
-    });
+      const dialogRef = this.dialog.open(AdminUsersEditComponent, {
+        minWidth: '300px',
+        minHeight: '300px',
+        disableClose: true,
+        hasBackdrop: true,
+        data: {
+          userId: user.uid,
+          teams: this.teams
+        }
+      });
 
-    dialogRef.afterClosed().subscribe(async (result) => {
-      if (result) {
-        await this.getUsers();
-      }
-    });
+      dialogRef.afterClosed().subscribe(async (result) => {
+        if (result) {
+          await this.getUsers();
+        }
+      });
+    } catch (ex) {
+      this.logger.error(ex);
+    }
   }
 
   tablePageChanged(event: PageEvent) {

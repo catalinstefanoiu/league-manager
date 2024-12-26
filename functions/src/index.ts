@@ -9,7 +9,7 @@ import { logger } from 'firebase-functions';
 import * as functions from 'firebase-functions/v1';
 import { setGlobalOptions } from 'firebase-functions/v2';
 import { onRequest } from 'firebase-functions/v2/https';
-import { UserRole } from './user';
+import { UserRole } from './models/user.model';
 import { getAuth } from 'firebase-admin/auth';
 import { expressApp } from './app';
 
