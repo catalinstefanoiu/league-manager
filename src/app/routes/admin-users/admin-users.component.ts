@@ -13,7 +13,7 @@ import { CustomClaimField, UserRole } from '../../services/auth.service';
 import { UserRecord } from '../../services/firebase-entities';
 import { UtilsService } from '../../services/utils.service';
 import { AdminUsersEditComponent } from './admin-users-edit/admin-users-edit.component';
-import { Team } from '../../services/models';
+import { Team } from '../../models/team.model';
 
 
 export interface IDisplayUser {

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { UserRecord } from './firebase-entities';
 import { ApiBaseService } from './api-base.service';
-import { Team } from './models';
+import { Team } from '../models/team.model';
 import { UserRole } from './auth.service';
 
 

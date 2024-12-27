@@ -5,7 +5,11 @@ export class Player {
     readonly pid: string,
     readonly firstName: string,
     readonly lastName: string,
-    readonly teamId: string
+    readonly age: number,
+    readonly position: string,
+    readonly teamId: string,
+    readonly isCoach: boolean,
+    readonly dateStarted: Date,
   ) { }
 
   toString(): string {
@@ -16,7 +20,11 @@ export class Player {
 export interface PlayerDbModel {
   firstName: string;
   lastName: string;
+  age: number;
+  position: string;
   teamId: string;
+  isCoach: boolean;
+  dateStarted: Date;
 }
 
 export class PlayerConverter implements FirestoreDataConverter<Player, PlayerDbModel> {
@@ -24,12 +32,25 @@ export class PlayerConverter implements FirestoreDataConverter<Player, PlayerDbM
     return {
       firstName: player.firstName,
       lastName: player.lastName,
-      teamId: player.teamId
+      age: player.age,
+      position: player.position,
+      teamId: player.teamId,
+      isCoach: player.isCoach,
+      dateStarted: player.dateStarted
     };
   }
 
   fromFirestore(snapshot: QueryDocumentSnapshot): Player {
     const data = snapshot.data() as PlayerDbModel;
-    return new Player(snapshot.id, data.firstName, data.lastName, data.teamId);
+    return new Player(
+      snapshot.id,
+      data.firstName,
+      data.lastName,
+      data.age,
+      data.position,
+      data.teamId,
+      data.isCoach,
+      data.dateStarted
+    );
   }
 }

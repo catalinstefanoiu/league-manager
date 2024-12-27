@@ -6,7 +6,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { UserRole } from '../../../services/auth.service';
-import { Team } from '../../../services/models';
+import { Team } from '../../../models/team.model';
 import { IDisplayUser } from '../admin-users.component';
 import { LoggerService } from '../../../services/logger.service';
 import { AdminService } from '../../../services/admin.service';

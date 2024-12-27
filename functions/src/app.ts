@@ -3,6 +3,7 @@ import cors from 'cors';
 import versionInfo from './version.json';
 import adminUsersRouter from './routes/admin-users.router';
 import adminTeamsRouter from './routes/admin-teams.router';
+import adminToolsRouter from './routes/admin-tools.router';
 
 
 const app = express();
@@ -22,5 +23,6 @@ app.get('/version', async (_, res) => {
 
 app.use('/admin-users', adminUsersRouter);
 app.use('/admin-teams', adminTeamsRouter);
+app.use('/admin-tools', adminToolsRouter);
 
 export const expressApp = app;
