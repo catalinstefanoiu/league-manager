@@ -19,6 +19,11 @@ export enum CustomClaimField {
   team = 'team'
 }
 
+interface ICustomClaims {
+  role: UserRole;
+  team: string;
+}
+
 
 @Injectable({
   providedIn: 'root',
@@ -33,8 +38,17 @@ export class AuthService {
 
   user$ = user(this.auth);
   currentUser: User | null = this.auth.currentUser;
+  private customeClaims: ICustomClaims = { role: UserRole.User, team: '' };
   private userRole: BehaviorSubject<UserRole> = new BehaviorSubject<UserRole>(UserRole.User);
   public userRole$ = this.userRole.asObservable();
+
+  get role(): UserRole {
+    return this.customeClaims.role;
+  }
+
+  get team(): string {
+    return this.customeClaims.team;
+  }
 
   constructor() {
     this.user$.subscribe(async (aUser: User | null) => {
@@ -42,6 +56,10 @@ export class AuthService {
         try {
           const idTokenResult = await this.auth.currentUser?.getIdTokenResult();
           this.logger.debug('claims:', idTokenResult);
+          if (idTokenResult?.claims) {
+            this.customeClaims.role = idTokenResult?.claims[CustomClaimField.role] as number ?? UserRole.User;
+            this.customeClaims.team = idTokenResult?.claims[CustomClaimField.team] as string ?? '';
+          }
           this.userRole.next(idTokenResult?.claims[CustomClaimField.role] as number ?? UserRole.User);
         } catch (ex) {
           this.logger.error(ex);
@@ -62,19 +80,6 @@ export class AuthService {
     }
 
     return token;
-  }
-
-  public async getClaims(): Promise<ParsedToken | undefined> {
-    try {
-      const idTokenResult = await this.auth.currentUser?.getIdTokenResult(true);
-      this.logger.debug('getClaims:', idTokenResult);
-      this.userRole.next(idTokenResult?.claims[CustomClaimField.role] as number ?? UserRole.User);
-      return idTokenResult?.claims;
-    } catch (error) {
-      this.logger.error(error);
-    }
-
-    return undefined;
   }
 
   public login() {

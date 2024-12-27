@@ -13,6 +13,7 @@ import { UtilsService } from '../../services/utils.service';
 import { Team } from '../../models/team.model';
 import { PlayerService } from './player.service';
 import { Player } from '../../models/player.model';
+import { AuthService } from '../../services/auth.service';
 
 interface IDisplayPlayer {
   displayName: string;
@@ -46,6 +47,7 @@ export class PlayersComponent implements OnInit, AfterViewInit {
 
   private dialog = inject(MatDialog);
   private logger = inject(LoggerService);
+  private authSvc = inject(AuthService);
   private adminSvc = inject(AdminService);
   private playerSvc = inject(PlayerService);
   protected utilsSvc = inject(UtilsService);
@@ -75,7 +77,7 @@ export class PlayersComponent implements OnInit, AfterViewInit {
   }
 
   private async getPlayers() {
-    this.players = await this.playerSvc.getPlayers();
+    this.players = await this.playerSvc.getPlayers(this.authSvc.team);
     this.logger.debug(this.players);
   }
 

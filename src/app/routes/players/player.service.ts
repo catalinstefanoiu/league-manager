@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { collection, Firestore, FirestoreDataConverter, getDocs, QueryDocumentSnapshot, WithFieldValue } from '@angular/fire/firestore';
+import { collection, Firestore, FirestoreDataConverter, getDocs, query, QueryDocumentSnapshot, where, WithFieldValue } from '@angular/fire/firestore';
 import { Player } from '../../models/player.model';
 
 
@@ -21,9 +21,16 @@ export interface IPlayerDbModel {
 export class PlayerService {
   private firestore = inject(Firestore);
 
-  public async getPlayers(): Promise<Player[]> {
+  public async getPlayers(teamId: string): Promise<Player[]> {
     const players: Player[] = [];
-    const querySnapshot = await getDocs(collection(this.firestore, 'players').withConverter(new PlayerConverter()));
+    const col = collection(this.firestore, 'players');
+    let querySnapshot;
+    if (!teamId) {
+      querySnapshot = await getDocs(col.withConverter(new PlayerConverter()));
+    } else {
+      const q = query(col, where('teamId', '==', teamId));
+      querySnapshot = await getDocs(q.withConverter(new PlayerConverter()));
+    }
     querySnapshot.forEach((doc) => {
       const data = doc.data();
       players.push(data);
