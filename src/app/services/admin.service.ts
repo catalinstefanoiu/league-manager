@@ -22,6 +22,6 @@ export class AdminService extends ApiBaseService {
   }
 
   public async getTeams(): Promise<Team[]> {
-    return this.getRequest<Team[]>('/admin-teams');
+    return this.getRequest<Team[]>('/admin-teams/slim');
   }
 }

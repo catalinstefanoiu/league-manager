@@ -1,21 +1,7 @@
-import { FirestoreDataConverter, QueryDocumentSnapshot, WithFieldValue } from 'firebase-admin/firestore';
+import { inject, Injectable } from '@angular/core';
+import { collection, Firestore, FirestoreDataConverter, getDocs, QueryDocumentSnapshot, WithFieldValue } from '@angular/fire/firestore';
+import { Player } from '../../models/player.model';
 
-export class Player {
-  constructor(
-    readonly pid: string,
-    readonly firstName: string,
-    readonly lastName: string,
-    readonly age: number,
-    readonly position: string,
-    readonly teamId: string,
-    readonly isCoach: boolean,
-    readonly dateStarted: Date,
-  ) { }
-
-  toString(): string {
-    return `${this.firstName} ${this.lastName}`;
-  }
-}
 
 export interface IPlayerDbModel {
   firstName: string;
@@ -25,6 +11,25 @@ export interface IPlayerDbModel {
   teamId: string;
   isCoach: boolean;
   dateStarted: Date;
+}
+
+
+
+@Injectable({
+  providedIn: 'root',
+})
+export class PlayerService {
+  private firestore = inject(Firestore);
+
+  public async getPlayers(): Promise<Player[]> {
+    const players: Player[] = [];
+    const querySnapshot = await getDocs(collection(this.firestore, 'players').withConverter(new PlayerConverter()));
+    querySnapshot.forEach((doc) => {
+      const data = doc.data();
+      players.push(data);
+    });
+    return players;
+  }
 }
 
 export class PlayerConverter implements FirestoreDataConverter<Player, IPlayerDbModel> {
@@ -46,6 +51,7 @@ export class PlayerConverter implements FirestoreDataConverter<Player, IPlayerDb
       snapshot.id,
       data.firstName,
       data.lastName,
+      `${data.firstName} ${data.lastName}`,
       data.age,
       data.position,
       data.teamId,
@@ -54,3 +60,4 @@ export class PlayerConverter implements FirestoreDataConverter<Player, IPlayerDb
     );
   }
 }
+

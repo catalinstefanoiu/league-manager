@@ -16,7 +16,7 @@
       </mat-form-field>
       <mat-form-field>
         <mat-label>Team</mat-label>
-        <mat-select formControlName="team" required>
+        <mat-select formControlName="team">
           @for (team of teams; track team) {
             <mat-option [value]="team.tid">{{team.name}}</mat-option>
           }

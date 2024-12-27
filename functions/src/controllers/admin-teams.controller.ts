@@ -26,4 +26,27 @@ export class AdminTeamsController {
       res.status(500).send('Unknown server error');
     }
   }
+
+  public async getTeamsSlim(_: Request, res: Response): Promise<void> {
+    try {
+      const firestore = getFirestore();
+      const teamsCol = firestore.collection('teams').withConverter(new TeamConverter());
+      const snapshot = await teamsCol
+        .orderBy('name')
+        .get();
+      const teams: Partial<Team>[] = [];
+      snapshot.forEach((doc) => {
+        const data = doc.data();
+        teams.push({
+          tid: data.tid,
+          name: data.name
+        });
+      });
+
+      res.status(200).json(teams);
+    } catch (ex) {
+      logger.error(ex);
+      res.status(500).send('Unknown server error');
+    }
+  }
 }

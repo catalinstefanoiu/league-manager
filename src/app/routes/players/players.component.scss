@@ -7,11 +7,11 @@
     width: 100%;
   }
 
-  .table-users {
+  .table-players {
     flex: 1 0 200px;
   }
 
-  .mat-table {
+  .mat-mdc-table {
     overflow: auto;
     max-height: 800px;
   }
@@ -38,23 +38,19 @@
     flex: 1 0 120px;
   }
   
-  .mat-column-email {
-    flex: 1 0 120px;
+  .mat-column-age {
+    flex: 0 0 40px;
   }
 
   .mat-column-team {
     flex: 1 0 60px;
   }
   
-  .mat-column-displayRole {
-    flex: 0 0 140px;
+  .mat-column-position {
+    flex: 1 0 80px;
   }
   
-  .mat-column-created {
-    flex: 0 0 140px;
-  }
-  
-  .mat-column-lastSignIn {
+  .mat-column-dateStarted {
     flex: 0 0 140px;
   }
   

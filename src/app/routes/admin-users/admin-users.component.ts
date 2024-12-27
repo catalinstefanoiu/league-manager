@@ -25,6 +25,7 @@ export interface IDisplayUser {
   role: UserRole;
   displayRole: string;
   teamId: string;
+  team: string;
   created: Date;
   lastSignIn: Date;
 }
@@ -56,12 +57,11 @@ export class AdminUsersComponent implements OnInit, AfterViewInit {
   protected utilsSvc = inject(UtilsService);
 
   private users: UserRecord[] = [];
-  protected displayUsers: IDisplayUser[] = [];
   protected dataSource: MatTableDataSource<IDisplayUser> = new MatTableDataSource<IDisplayUser>([]);
   protected pageSizeOptions = [50, 100];
   protected pageSize = this.pageSizeOptions[0];
   protected pageIndex = 0;
-  protected displayedColumns = ['idx', 'displayName', 'email', 'displayRole', 'created', 'lastSignIn'];
+  protected displayedColumns = ['idx', 'displayName', 'email', 'displayRole', 'team', 'created', 'lastSignIn'];
 
   private teams: Team[] | undefined;
 
@@ -83,8 +83,16 @@ export class AdminUsersComponent implements OnInit, AfterViewInit {
   async getUsers() {
     try {
       this.users = await this.adminSvc.getUsers();
-      this.logger.debug(this.users);
-      this.displayUsers = this.users.map((user) => {
+      this.teams = await this.adminSvc.getTeams();
+      this.teams.unshift({
+        tid: '',
+        name: '<no team>',
+        coachId: '',
+        managerId: ''
+      });
+
+      this.logger.debug(this.users, this.teams);
+      const displayUsers = this.users.map((user) => {
         return {
           uid: user.uid,
           displayName: user.displayName ?? '',
@@ -93,12 +101,13 @@ export class AdminUsersComponent implements OnInit, AfterViewInit {
           role: user.customClaims?.[CustomClaimField.role] ?? UserRole.User,
           displayRole: this.getRoleName(user.customClaims?.[CustomClaimField.role] ?? UserRole.User),
           teamId: user.customClaims?.[CustomClaimField.team] ?? '',
+          team: this.getTeam(user.customClaims?.[CustomClaimField.team] ?? ''),
           created: new Date(user.metadata.creationTime),
           lastSignIn: new Date(user.metadata.lastSignInTime)
         } as IDisplayUser;
       });
 
-      this.dataSource = new MatTableDataSource(this.displayUsers);
+      this.dataSource = new MatTableDataSource(displayUsers);
       this.dataSource.filterPredicate = this.filterPredicate;
       if (this.paginator) {
         this.dataSource.paginator = this.paginator;
@@ -115,7 +124,6 @@ export class AdminUsersComponent implements OnInit, AfterViewInit {
     try {
       if (!this.teams) {
         this.teams = await this.adminSvc.getTeams();
-        this.logger.debug(this.teams);
       }
       const dialogRef = this.dialog.open(AdminUsersEditComponent, {
         minWidth: '300px',
@@ -163,6 +171,11 @@ export class AdminUsersComponent implements OnInit, AfterViewInit {
     const dataValue = data.displayName + data.email + data.displayRole
       + created + updated;
     return dataValue.toLowerCase().includes(filterValue);
+  }
+
+  private getTeam(teamId: string): string {
+    const team = this.teams?.find((t) => t.tid === teamId);
+    return team?.name ?? '';
   }
 
   private getRoleName(role: UserRole): string {

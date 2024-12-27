@@ -29,7 +29,7 @@ export class AdminUsersEditComponent implements OnInit {
   protected formUser = new FormGroup({
     displayName: new FormControl(''),
     userRole: new FormControl<UserRole | null>(UserRole.User, Validators.required),
-    team: new FormControl<string | null>('', Validators.required)
+    team: new FormControl<string | null>('')
   });
 
   protected userRoles = [{
@@ -68,10 +68,10 @@ export class AdminUsersEditComponent implements OnInit {
   }
 
   async onOkClick() {
-    if (!this.formUser.invalid && this.formUser.value.team) {
+    if (!this.formUser.invalid) {
       try {
         const userRole = this.formUser.value.userRole ?? UserRole.User;
-        const teamId = this.formUser.value.team;
+        const teamId = this.formUser.value.team ?? '';
         await this.adminSvc.updateUser(this.user.uid, userRole, teamId);
         this.dialogRef.close(true);
       } catch (ex) {
