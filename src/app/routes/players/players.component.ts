@@ -26,7 +26,6 @@ interface IDisplayPlayer {
 
 @Component({
   selector: 'app-players',
-  standalone: true,
   imports: [
     DatePipe,
     MatDialogModule,

@@ -4,7 +4,6 @@ import { LoggerService } from '../../services/logger.service';
 
 @Component({
   selector: 'app-home',
-  standalone: true,
   imports: [],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
@@ -12,8 +11,8 @@ import { LoggerService } from '../../services/logger.service';
 export class HomeComponent implements OnInit {
   private logger = inject(LoggerService);
   protected authSvc: AuthService = inject(AuthService);
-  
+
   ngOnInit(): void {
-    
+
   }
 }

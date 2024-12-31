@@ -32,7 +32,6 @@ export interface IDisplayUser {
 
 @Component({
   selector: 'app-admin-users',
-  standalone: true,
   imports: [
     DatePipe,
     MatDialogModule,

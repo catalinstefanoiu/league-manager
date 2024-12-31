@@ -9,7 +9,6 @@ import { AuthService, UserRole } from '../../services/auth.service';
 
 @Component({
   selector: 'app-header',
-  standalone: true,
   imports: [
     AsyncPipe,
     RouterLink,

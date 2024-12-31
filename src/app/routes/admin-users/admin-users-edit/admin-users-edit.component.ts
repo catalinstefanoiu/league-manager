@@ -13,7 +13,6 @@ import { AdminService } from '../../../services/admin.service';
 
 @Component({
   selector: 'app-admin-users-edit',
-  standalone: true,
   imports: [
     ReactiveFormsModule,
     MatButtonModule,
