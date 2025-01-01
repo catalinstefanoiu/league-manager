@@ -1,0 +1,43 @@
+<div class="container">
+  <h2 mat-dialog-title>Update player info</h2>
+  <mat-dialog-content>
+    <form [formGroup]="formPlayer" class="player-form">
+      <mat-form-field>
+        <mat-label>Firstname</mat-label>
+        <input matInput formControlName="firstName">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Lastname</mat-label>
+        <input matInput formControlName="lastName">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Age</mat-label>
+        <input matInput formControlName="age">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Position</mat-label>
+        <mat-select formControlName="position" required>
+          @for (position of positions; track position) {
+          <mat-option [value]="position">{{position}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      @if(user(); as user) {
+      @if (user.userRole === UserRole.AppAdmin) {
+      <mat-form-field>
+        <mat-label>Team</mat-label>
+        <mat-select formControlName="team">
+          @for (team of teams; track team) {
+          <mat-option [value]="team.tid">{{team.name}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      }
+      }
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions style="justify-content: center">
+    <button mat-button tabindex="1" (click)="onOkClick()">Ok</button>
+    <button mat-button tabindex="0" [mat-dialog-close]="false">Cancel</button>
+  </mat-dialog-actions>
+</div>

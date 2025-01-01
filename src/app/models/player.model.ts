@@ -15,3 +15,18 @@ export class Player {
     return `${this.firstName} ${this.lastName}`;
   }
 }
+
+export function getPlayerPositions(): string[] {
+  return [
+    'Portar',
+    'Fundas stanga',
+    'Fundas dreapta',
+    'Fundas central',
+    'Mijlocas stanga',
+    'Mijlocas dreapta',
+    'Mijlocas central',
+    'Extrema stanga',
+    'Extrema dreapta',
+    'Atacant',
+  ];
+}

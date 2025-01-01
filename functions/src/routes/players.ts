@@ -1,1752 +1,1752 @@
 export const players = [
   {
-    'firstName': 'Viorel',
-    'lastName': 'Albu',
-    'age': 33,
-    'position': 'Fundas stanga',
-    'dateStarted': '2022-05-10'
+    "firstName": "Aurelian",
+    "lastName": "Dinu",
+    "age": 19,
+    "position": "Fundas stanga",
+    "dateStarted": 1635204942279
   },
   {
-    'firstName': 'Ciprian',
-    'lastName': 'Popa',
-    'age': 32,
-    'position': 'Fundas central',
-    'dateStarted': '2017-06-13'
+    "firstName": "Pamfil",
+    "lastName": "Ni\u021b\u0103",
+    "age": 18,
+    "position": "Mijlocas dreapta",
+    "dateStarted": 1549890677738
   },
   {
-    'firstName': 'Amza',
-    'lastName': 'Diaconu',
-    'age': 20,
-    'position': 'Fundas dreapta',
-    'dateStarted': '2020-07-23'
+    "firstName": "Sabin",
+    "lastName": "Dumitrescu",
+    "age": 18,
+    "position": "Mijlocas central",
+    "dateStarted": 1568696460186
   },
   {
-    'firstName': 'Stan',
-    'lastName': 'Dumitrescu',
-    'age': 35,
-    'position': 'Atacant',
-    'dateStarted': '2019-01-20'
+    "firstName": "Bebe",
+    "lastName": "Barbu",
+    "age": 29,
+    "position": "Portar",
+    "dateStarted": 1584537369669
   },
   {
-    'firstName': 'Victor',
-    'lastName': 'Tomescu',
-    'age': 19,
-    'position': 'Portar',
-    'dateStarted': '2017-03-08'
+    "firstName": "Doru",
+    "lastName": "Nistor",
+    "age": 26,
+    "position": "Extrema stanga",
+    "dateStarted": 1605366459119
   },
   {
-    'firstName': 'Emanuil',
-    'lastName': 'Stoica',
-    'age': 33,
-    'position': 'Fundas dreapta',
-    'dateStarted': '2021-11-16'
+    "firstName": "Dumitru",
+    "lastName": "Stan",
+    "age": 19,
+    "position": "Extrema dreapta",
+    "dateStarted": 1582416148715
   },
   {
-    'firstName': 'Cosmin',
-    'lastName': 'Ni\u021b\u0103',
-    'age': 24,
-    'position': 'Atacant',
-    'dateStarted': '2016-06-17'
+    "firstName": "Florea",
+    "lastName": "Stoica",
+    "age": 30,
+    "position": "Fundas central",
+    "dateStarted": 1642138012198
   },
   {
-    'firstName': 'Lic\u0103',
-    'lastName': 'Popa',
-    'age': 27,
-    'position': 'Extrema dreapta',
-    'dateStarted': '2023-09-22'
+    "firstName": "Iulian",
+    "lastName": "Florea",
+    "age": 27,
+    "position": "Extrema stanga",
+    "dateStarted": 1570567618447
   },
   {
-    'firstName': 'Dorian',
-    'lastName': 'St\u0103nescu',
-    'age': 22,
-    'position': 'Mijlocas stanga',
-    'dateStarted': '2019-08-23'
+    "firstName": "Sinic\u0103",
+    "lastName": "St\u0103nescu",
+    "age": 34,
+    "position": "Extrema stanga",
+    "dateStarted": 1605016506528
   },
   {
-    'firstName': 'Iacob',
-    'lastName': 'Pu\u0219ca\u0219u',
-    'age': 26,
-    'position': 'Atacant',
-    'dateStarted': '2019-10-15'
+    "firstName": "Paul",
+    "lastName": "Diaconescu",
+    "age": 28,
+    "position": "Fundas stanga",
+    "dateStarted": 1638887500542
   },
   {
-    'firstName': 'Ianis',
-    'lastName': 'Stan',
-    'age': 20,
-    'position': 'Fundas central',
-    'dateStarted': '2018-12-23'
+    "firstName": "Nicu\u0219or",
+    "lastName": "Florea",
+    "age": 30,
+    "position": "Extrema stanga",
+    "dateStarted": 1529965347648
   },
   {
-    'firstName': 'Emilian',
-    'lastName': 'Mazilescu',
-    'age': 24,
-    'position': 'Atacant',
-    'dateStarted': '2024-04-07'
+    "firstName": "Costel",
+    "lastName": "Pu\u0219ca\u0219u",
+    "age": 23,
+    "position": "Extrema stanga",
+    "dateStarted": 1553183334618
   },
   {
-    'firstName': 'Eric',
-    'lastName': 'Stan',
-    'age': 31,
-    'position': 'Mijlocas dreapta',
-    'dateStarted': '2016-11-22'
+    "firstName": "Dumitru",
+    "lastName": "Ardelean",
+    "age": 26,
+    "position": "Fundas central",
+    "dateStarted": 1582852187332
   },
   {
-    'firstName': 'Dorel',
-    'lastName': 'Eftimie',
-    'age': 19,
-    'position': 'Extrema stanga',
-    'dateStarted': '2015-01-01'
+    "firstName": "Dorinel",
+    "lastName": "Eftimie",
+    "age": 26,
+    "position": "Mijlocas stanga",
+    "dateStarted": 1604526600108
   },
   {
-    'firstName': 'Oliviu',
-    'lastName': 'Tomescu',
-    'age': 30,
-    'position': 'Extrema dreapta',
-    'dateStarted': '2018-10-25'
+    "firstName": "Alexandru",
+    "lastName": "Voinea",
+    "age": 31,
+    "position": "Mijlocas dreapta",
+    "dateStarted": 1657862858430
   },
   {
-    'firstName': 'Antim',
-    'lastName': 'Preda',
-    'age': 29,
-    'position': 'Mijlocas stanga',
-    'dateStarted': '2021-03-01'
+    "firstName": "Sandu",
+    "lastName": "Toma",
+    "age": 32,
+    "position": "Fundas stanga",
+    "dateStarted": 1690964860431
   },
   {
-    'firstName': 'Octaviu',
-    'lastName': 'Pu\u0219ca\u0219u',
-    'age': 29,
-    'position': 'Fundas central',
-    'dateStarted': '2019-09-10'
+    "firstName": "Stancu",
+    "lastName": "Florea",
+    "age": 24,
+    "position": "Extrema dreapta",
+    "dateStarted": 1500664272055
   },
   {
-    'firstName': 'Sever',
-    'lastName': 'Ene',
-    'age': 34,
-    'position': 'Fundas dreapta',
-    'dateStarted': '2017-01-23'
+    "firstName": "Gelu",
+    "lastName": "Tudor",
+    "age": 20,
+    "position": "Portar",
+    "dateStarted": 1649359507689
   },
   {
-    'firstName': 'Valter',
-    'lastName': 'Marin',
-    'age': 18,
-    'position': 'Mijlocas dreapta',
-    'dateStarted': '2020-08-31'
+    "firstName": "Lucian",
+    "lastName": "Cristea",
+    "age": 27,
+    "position": "Fundas central",
+    "dateStarted": 1461897565073
   },
   {
-    'firstName': 'Basarab',
-    'lastName': 'Eftimie',
-    'age': 28,
-    'position': 'Portar',
-    'dateStarted': '2020-06-16'
+    "firstName": "Marius",
+    "lastName": "Dochioiu",
+    "age": 31,
+    "position": "Extrema stanga",
+    "dateStarted": 1669458387872
   },
   {
-    'firstName': 'Norman',
-    'lastName': 'Toma',
-    'age': 27,
-    'position': 'Fundas dreapta',
-    'dateStarted': '2020-01-19'
+    "firstName": "Albert",
+    "lastName": "Dima",
+    "age": 26,
+    "position": "Fundas stanga",
+    "dateStarted": 1566456328093
   },
   {
-    'firstName': 'Ple\u0219u',
-    'lastName': 'Stoica',
-    'age': 20,
-    'position': 'Mijlocas stanga',
-    'dateStarted': '2023-12-10'
+    "firstName": "Octaviu",
+    "lastName": "Dobre",
+    "age": 17,
+    "position": "Mijlocas central",
+    "dateStarted": 1591855835534
   },
   {
-    'firstName': 'Adrian',
-    'lastName': 'Dumitrescu',
-    'age': 30,
-    'position': 'Fundas dreapta',
-    'dateStarted': '2018-12-27'
+    "firstName": "Ionic\u0103",
+    "lastName": "Ionescu",
+    "age": 29,
+    "position": "Extrema stanga",
+    "dateStarted": 1576170965853
   },
   {
-    'firstName': 'Doru',
-    'lastName': 'Stan',
-    'age': 27,
-    'position': 'Portar',
-    'dateStarted': '2015-01-24'
+    "firstName": "Cosmin",
+    "lastName": "Oprea",
+    "age": 24,
+    "position": "Fundas central",
+    "dateStarted": 1543873227188
   },
   {
-    'firstName': 'Cedrin',
-    'lastName': 'Gheorghiu',
-    'age': 28,
-    'position': 'Extrema dreapta',
-    'dateStarted': '2023-11-13'
+    "firstName": "Cedrin",
+    "lastName": "Dobre",
+    "age": 31,
+    "position": "Fundas central",
+    "dateStarted": 1582002271339
   },
   {
-    'firstName': 'Nicolaie',
-    'lastName': 'Pop',
-    'age': 24,
-    'position': 'Fundas stanga',
-    'dateStarted': '2015-05-24'
+    "firstName": "Cosmin",
+    "lastName": "Diaconu",
+    "age": 19,
+    "position": "Extrema dreapta",
+    "dateStarted": 1503899485298
   },
   {
-    'firstName': 'Ilarion',
-    'lastName': 'Georgescu',
-    'age': 26,
-    'position': 'Extrema dreapta',
-    'dateStarted': '2021-11-30'
+    "firstName": "Corneliu",
+    "lastName": "Mocanu",
+    "age": 28,
+    "position": "Portar",
+    "dateStarted": 1655524390007
   },
   {
-    'firstName': 'Mihail',
-    'lastName': 'Dumitrescu',
-    'age': 19,
-    'position': 'Fundas dreapta',
-    'dateStarted': '2022-10-07'
+    "firstName": "Petric\u0103",
+    "lastName": "Ene",
+    "age": 30,
+    "position": "Fundas dreapta",
+    "dateStarted": 1620755307119
   },
   {
-    'firstName': 'Eugen',
-    'lastName': 'Neme\u0219',
-    'age': 34,
-    'position': 'Fundas dreapta',
-    'dateStarted': '2022-10-21'
+    "firstName": "Hora\u021biu",
+    "lastName": "Gheorghiu",
+    "age": 21,
+    "position": "Mijlocas central",
+    "dateStarted": 1637926979902
   },
   {
-    'firstName': 'Silvian',
-    'lastName': 'Popescu',
-    'age': 31,
-    'position': 'Fundas dreapta',
-    'dateStarted': '2017-11-26'
+    "firstName": "Mitic\u0103",
+    "lastName": "Florea",
+    "age": 35,
+    "position": "Atacant",
+    "dateStarted": 1679739093823
   },
   {
-    'firstName': 'Iustin',
-    'lastName': 'Neme\u0219',
-    'age': 20,
-    'position': 'Fundas central',
-    'dateStarted': '2019-05-16'
+    "firstName": "Simion",
+    "lastName": "Dima",
+    "age": 33,
+    "position": "Mijlocas dreapta",
+    "dateStarted": 1572854905669
   },
   {
-    'firstName': 'Norbert',
-    'lastName': 'Dima',
-    'age': 25,
-    'position': 'Fundas stanga',
-    'dateStarted': '2015-05-27'
+    "firstName": "Nicolaie",
+    "lastName": "Ni\u021b\u0103",
+    "age": 30,
+    "position": "Mijlocas dreapta",
+    "dateStarted": 1545306654224
   },
   {
-    'firstName': 'Alin',
-    'lastName': 'Nistor',
-    'age': 28,
-    'position': 'Extrema stanga',
-    'dateStarted': '2020-11-29'
+    "firstName": "Edgar",
+    "lastName": "Nistor",
+    "age": 25,
+    "position": "Portar",
+    "dateStarted": 1452509206189
   },
   {
-    'firstName': 'Eftimie',
-    'lastName': 'Dochioiu',
-    'age': 25,
-    'position': 'Mijlocas dreapta',
-    'dateStarted': '2016-05-22'
+    "firstName": "Jean",
+    "lastName": "Ionescu",
+    "age": 32,
+    "position": "Atacant",
+    "dateStarted": 1485266885345
   },
   {
-    'firstName': 'Traian',
-    'lastName': 'St\u0103nescu',
-    'age': 30,
-    'position': 'Extrema dreapta',
-    'dateStarted': '2018-01-23'
+    "firstName": "Eftimie",
+    "lastName": "Stancu",
+    "age": 31,
+    "position": "Mijlocas central",
+    "dateStarted": 1465857016671
   },
   {
-    'firstName': 'Vasilic\u0103',
-    'lastName': 'Albu',
-    'age': 26,
-    'position': 'Fundas central',
-    'dateStarted': '2015-10-22'
+    "firstName": "Nicoar\u0103",
+    "lastName": "Stancu",
+    "age": 27,
+    "position": "Extrema stanga",
+    "dateStarted": 1471104791764
   },
   {
-    'firstName': 'Antim',
-    'lastName': 'Ababei',
-    'age': 31,
-    'position': 'Portar',
-    'dateStarted': '2018-02-17'
+    "firstName": "Alexe",
+    "lastName": "St\u0103nescu",
+    "age": 17,
+    "position": "Fundas dreapta",
+    "dateStarted": 1655670373810
   },
   {
-    'firstName': 'Nicu\u0219or',
-    'lastName': 'Tomescu',
-    'age': 33,
-    'position': 'Portar',
-    'dateStarted': '2022-09-08'
+    "firstName": "Lasc\u0103r",
+    "lastName": "Ni\u021b\u0103",
+    "age": 31,
+    "position": "Mijlocas dreapta",
+    "dateStarted": 1599443302818
   },
   {
-    'firstName': 'Mihail',
-    'lastName': 'Ene',
-    'age': 17,
-    'position': 'Mijlocas central',
-    'dateStarted': '2024-11-08'
+    "firstName": "Gheorghi\u021b\u0103",
+    "lastName": "Gheorghiu",
+    "age": 25,
+    "position": "Fundas central",
+    "dateStarted": 1484735600798
   },
   {
-    'firstName': 'Sava',
-    'lastName': 'Diaconu',
-    'age': 27,
-    'position': 'Fundas stanga',
-    'dateStarted': '2020-07-16'
+    "firstName": "Petric\u0103",
+    "lastName": "Georgescu",
+    "age": 21,
+    "position": "Extrema stanga",
+    "dateStarted": 1429684368247
   },
   {
-    'firstName': 'Ieremia',
-    'lastName': 'Ene',
-    'age': 17,
-    'position': 'Mijlocas central',
-    'dateStarted': '2021-06-18'
+    "firstName": "Visarion",
+    "lastName": "Pu\u0219ca\u0219u",
+    "age": 23,
+    "position": "Portar",
+    "dateStarted": 1583511809310
   },
   {
-    'firstName': 'Alin',
-    'lastName': 'Ni\u021b\u0103',
-    'age': 23,
-    'position': 'Portar',
-    'dateStarted': '2017-12-10'
+    "firstName": "Zamfir",
+    "lastName": "Ni\u021b\u0103",
+    "age": 31,
+    "position": "Atacant",
+    "dateStarted": 1452993353652
   },
   {
-    'firstName': 'Lauren\u021biu',
-    'lastName': 'Ioni\u021b\u0103',
-    'age': 30,
-    'position': 'Fundas stanga',
-    'dateStarted': '2017-01-16'
+    "firstName": "Bogdan",
+    "lastName": "Dinu",
+    "age": 28,
+    "position": "Fundas stanga",
+    "dateStarted": 1514160357184
   },
   {
-    'firstName': 'Marcu',
-    'lastName': 'Neme\u0219',
-    'age': 31,
-    'position': 'Fundas stanga',
-    'dateStarted': '2023-09-15'
+    "firstName": "Stancu",
+    "lastName": "Diaconescu",
+    "age": 33,
+    "position": "Mijlocas central",
+    "dateStarted": 1473234424742
   },
   {
-    'firstName': 'Veniamin',
-    'lastName': 'Suciu',
-    'age': 19,
-    'position': 'Fundas dreapta',
-    'dateStarted': '2017-10-12'
+    "firstName": "Ion",
+    "lastName": "Diaconu",
+    "age": 33,
+    "position": "Mijlocas central",
+    "dateStarted": 1600279286624
   },
   {
-    'firstName': 'Costin',
-    'lastName': 'Tabacu',
-    'age': 26,
-    'position': 'Mijlocas dreapta',
-    'dateStarted': '2018-12-18'
+    "firstName": "Cazimir",
+    "lastName": "Marin",
+    "age": 20,
+    "position": "Mijlocas dreapta",
+    "dateStarted": 1423572546628
   },
   {
-    'firstName': 'Maximilian',
-    'lastName': 'Dobre',
-    'age': 28,
-    'position': 'Extrema stanga',
-    'dateStarted': '2024-12-17'
+    "firstName": "Simi",
+    "lastName": "Ni\u021b\u0103",
+    "age": 18,
+    "position": "Fundas central",
+    "dateStarted": 1529521104226
   },
   {
-    'firstName': 'Costin',
-    'lastName': 'Albu',
-    'age': 24,
-    'position': 'Portar',
-    'dateStarted': '2018-07-27'
+    "firstName": "Iuliu",
+    "lastName": "Ardelean",
+    "age": 29,
+    "position": "Extrema stanga",
+    "dateStarted": 1455066117656
   },
   {
-    'firstName': 'Irinel',
-    'lastName': 'Tudor',
-    'age': 20,
-    'position': 'Mijlocas dreapta',
-    'dateStarted': '2016-01-27'
+    "firstName": "Eduard",
+    "lastName": "Popa",
+    "age": 34,
+    "position": "Portar",
+    "dateStarted": 1449265578877
   },
   {
-    'firstName': 'Emanoil',
-    'lastName': 'Tomescu',
-    'age': 17,
-    'position': 'Fundas stanga',
-    'dateStarted': '2015-05-06'
+    "firstName": "Ovidiu",
+    "lastName": "Ioni\u021b\u0103",
+    "age": 19,
+    "position": "Fundas stanga",
+    "dateStarted": 1631995639117
   },
   {
-    'firstName': 'Teofil',
-    'lastName': 'Mocanu',
-    'age': 17,
-    'position': 'Portar',
-    'dateStarted': '2017-08-31'
+    "firstName": "Carol",
+    "lastName": "Oprea",
+    "age": 21,
+    "position": "Portar",
+    "dateStarted": 1698598205065
   },
   {
-    'firstName': 'Sava',
-    'lastName': 'Popescu',
-    'age': 24,
-    'position': 'Fundas stanga',
-    'dateStarted': '2019-12-26'
+    "firstName": "Cedrin",
+    "lastName": "Diaconu",
+    "age": 26,
+    "position": "Extrema stanga",
+    "dateStarted": 1606601700583
   },
   {
-    'firstName': 'Ciprian',
-    'lastName': 'Georgescu',
-    'age': 20,
-    'position': 'Mijlocas central',
-    'dateStarted': '2015-08-21'
+    "firstName": "Barbu",
+    "lastName": "Oprea",
+    "age": 25,
+    "position": "Mijlocas dreapta",
+    "dateStarted": 1553913053795
   },
   {
-    'firstName': 'Norman',
-    'lastName': 'Manole',
-    'age': 24,
-    'position': 'Fundas central',
-    'dateStarted': '2024-11-06'
+    "firstName": "Cristian",
+    "lastName": "Ardelean",
+    "age": 21,
+    "position": "Fundas central",
+    "dateStarted": 1475391790913
   },
   {
-    'firstName': 'Benone',
-    'lastName': 'Diaconescu',
-    'age': 20,
-    'position': 'Fundas central',
-    'dateStarted': '2017-07-07'
+    "firstName": "Filip",
+    "lastName": "Voinea",
+    "age": 27,
+    "position": "Fundas dreapta",
+    "dateStarted": 1684434767391
   },
   {
-    'firstName': 'Dacian',
-    'lastName': 'Dobre',
-    'age': 23,
-    'position': 'Extrema dreapta',
-    'dateStarted': '2019-08-07'
+    "firstName": "Marian",
+    "lastName": "Mocanu",
+    "age": 20,
+    "position": "Atacant",
+    "dateStarted": 1620206704814
   },
   {
-    'firstName': 'Mugur',
-    'lastName': 'Ardelean',
-    'age': 17,
-    'position': 'Fundas dreapta',
-    'dateStarted': '2023-02-27'
+    "firstName": "Eusta\u021biu",
+    "lastName": "Dima",
+    "age": 21,
+    "position": "Extrema dreapta",
+    "dateStarted": 1464588480836
   },
   {
-    'firstName': 'Sever',
-    'lastName': 'Stancu',
-    'age': 31,
-    'position': 'Extrema stanga',
-    'dateStarted': '2017-10-11'
+    "firstName": "Nicoar\u0103",
+    "lastName": "Tudor",
+    "age": 29,
+    "position": "Atacant",
+    "dateStarted": 1562280280073
   },
   {
-    'firstName': 'Nicolae',
-    'lastName': 'Barbu',
-    'age': 33,
-    'position': 'Atacant',
-    'dateStarted': '2017-03-27'
+    "firstName": "M\u0103d\u0103lin",
+    "lastName": "Georgescu",
+    "age": 25,
+    "position": "Mijlocas dreapta",
+    "dateStarted": 1624175987924
   },
   {
-    'firstName': 'Oliviu',
-    'lastName': 'Barbu',
-    'age': 21,
-    'position': 'Portar',
-    'dateStarted': '2024-06-13'
+    "firstName": "Iurie",
+    "lastName": "Pu\u0219ca\u0219u",
+    "age": 35,
+    "position": "Portar",
+    "dateStarted": 1509640943352
   },
   {
-    'firstName': 'Fabian',
-    'lastName': 'Marin',
-    'age': 29,
-    'position': 'Mijlocas stanga',
-    'dateStarted': '2017-12-23'
+    "firstName": "Tudor",
+    "lastName": "Toma",
+    "age": 21,
+    "position": "Fundas central",
+    "dateStarted": 1545529904599
   },
   {
-    'firstName': 'Crin',
-    'lastName': 'Nistor',
-    'age': 19,
-    'position': 'Fundas stanga',
-    'dateStarted': '2015-12-27'
+    "firstName": "Gic\u0103",
+    "lastName": "Mazilescu",
+    "age": 19,
+    "position": "Fundas dreapta",
+    "dateStarted": 1552598059140
   },
   {
-    'firstName': 'Eduard',
-    'lastName': 'Dochioiu',
-    'age': 21,
-    'position': 'Atacant',
-    'dateStarted': '2024-12-26'
+    "firstName": "Eftimie",
+    "lastName": "Dinu",
+    "age": 18,
+    "position": "Fundas dreapta",
+    "dateStarted": 1636642992856
   },
   {
-    'firstName': 'Marcu',
-    'lastName': 'Manole',
-    'age': 20,
-    'position': 'Fundas dreapta',
-    'dateStarted': '2023-03-09'
+    "firstName": "Barbu",
+    "lastName": "Georgescu",
+    "age": 17,
+    "position": "Fundas dreapta",
+    "dateStarted": 1451734347961
   },
   {
-    'firstName': 'Iacob',
-    'lastName': 'Pu\u0219ca\u0219u',
-    'age': 34,
-    'position': 'Fundas central',
-    'dateStarted': '2018-06-08'
+    "firstName": "Aurel",
+    "lastName": "Mazilescu",
+    "age": 34,
+    "position": "Atacant",
+    "dateStarted": 1670086114420
   },
   {
-    'firstName': 'Toma',
-    'lastName': 'Barbu',
-    'age': 17,
-    'position': 'Extrema stanga',
-    'dateStarted': '2018-06-14'
+    "firstName": "Eremia",
+    "lastName": "Manole",
+    "age": 21,
+    "position": "Extrema dreapta",
+    "dateStarted": 1467887958501
   },
   {
-    'firstName': 'Antoniu',
-    'lastName': 'Ioni\u021b\u0103',
-    'age': 28,
-    'position': 'Atacant',
-    'dateStarted': '2020-03-26'
+    "firstName": "Gheorghe",
+    "lastName": "Neme\u0219",
+    "age": 20,
+    "position": "Mijlocas stanga",
+    "dateStarted": 1446774136993
   },
   {
-    'firstName': 'Adrian',
-    'lastName': 'Suciu',
-    'age': 33,
-    'position': 'Portar',
-    'dateStarted': '2018-09-25'
+    "firstName": "Luca",
+    "lastName": "Ardelean",
+    "age": 34,
+    "position": "Fundas central",
+    "dateStarted": 1541523896026
   },
   {
-    'firstName': 'Laz\u0103r',
-    'lastName': 'Popa',
-    'age': 28,
-    'position': 'Extrema stanga',
-    'dateStarted': '2023-01-28'
+    "firstName": "Nelu",
+    "lastName": "Marin",
+    "age": 29,
+    "position": "Fundas dreapta",
+    "dateStarted": 1548342650711
   },
   {
-    'firstName': 'Maximilian',
-    'lastName': 'Dima',
-    'age': 35,
-    'position': 'Mijlocas stanga',
-    'dateStarted': '2017-01-23'
+    "firstName": "C\u0103lin",
+    "lastName": "Cristea",
+    "age": 29,
+    "position": "Portar",
+    "dateStarted": 1692319473086
   },
   {
-    'firstName': 'Ianis',
-    'lastName': 'Nistor',
-    'age': 23,
-    'position': 'Extrema stanga',
-    'dateStarted': '2022-08-23'
+    "firstName": "Tudor",
+    "lastName": "Tudor",
+    "age": 23,
+    "position": "Mijlocas central",
+    "dateStarted": 1590573402611
   },
   {
-    'firstName': 'Cezar',
-    'lastName': 'Ene',
-    'age': 19,
-    'position': 'Extrema dreapta',
-    'dateStarted': '2019-03-30'
+    "firstName": "Ernest",
+    "lastName": "Dochioiu",
+    "age": 21,
+    "position": "Mijlocas central",
+    "dateStarted": 1528967866753
   },
   {
-    'firstName': 'Cezar',
-    'lastName': 'Pop',
-    'age': 32,
-    'position': 'Mijlocas stanga',
-    'dateStarted': '2017-12-16'
+    "firstName": "Giorgian",
+    "lastName": "Diaconescu",
+    "age": 20,
+    "position": "Atacant",
+    "dateStarted": 1668784915239
   },
   {
-    'firstName': 'Giorgian',
-    'lastName': 'Dima',
-    'age': 20,
-    'position': 'Extrema stanga',
-    'dateStarted': '2021-03-06'
+    "firstName": "Ludovic",
+    "lastName": "Diaconescu",
+    "age": 24,
+    "position": "Fundas central",
+    "dateStarted": 1690379074796
   },
   {
-    'firstName': 'Octav',
-    'lastName': 'Georgescu',
-    'age': 27,
-    'position': 'Extrema dreapta',
-    'dateStarted': '2024-01-15'
+    "firstName": "Denis",
+    "lastName": "Tudor",
+    "age": 25,
+    "position": "Portar",
+    "dateStarted": 1435823319469
   },
   {
-    'firstName': 'Horea',
-    'lastName': 'Barbu',
-    'age': 29,
-    'position': 'Extrema stanga',
-    'dateStarted': '2024-09-11'
+    "firstName": "Ilarie",
+    "lastName": "Tabacu",
+    "age": 33,
+    "position": "Extrema stanga",
+    "dateStarted": 1699844689987
   },
   {
-    'firstName': 'Silviu',
-    'lastName': 'Marin',
-    'age': 27,
-    'position': 'Extrema dreapta',
-    'dateStarted': '2016-11-30'
+    "firstName": "Lucen\u021biu",
+    "lastName": "Pop",
+    "age": 22,
+    "position": "Extrema dreapta",
+    "dateStarted": 1693868205940
   },
   {
-    'firstName': 'Leonard',
-    'lastName': 'Pu\u0219ca\u0219u',
-    'age': 26,
-    'position': 'Mijlocas dreapta',
-    'dateStarted': '2023-10-13'
+    "firstName": "C\u0103lin",
+    "lastName": "St\u0103nescu",
+    "age": 20,
+    "position": "Extrema dreapta",
+    "dateStarted": 1581164325864
   },
   {
-    'firstName': 'Titus',
-    'lastName': 'Nistor',
-    'age': 24,
-    'position': 'Atacant',
-    'dateStarted': '2018-09-07'
+    "firstName": "Nicu",
+    "lastName": "Dochioiu",
+    "age": 28,
+    "position": "Extrema dreapta",
+    "dateStarted": 1604459580567
   },
   {
-    'firstName': 'Eric',
-    'lastName': 'Manole',
-    'age': 17,
-    'position': 'Mijlocas dreapta',
-    'dateStarted': '2022-12-08'
+    "firstName": "Alex",
+    "lastName": "Oprea",
+    "age": 23,
+    "position": "Fundas central",
+    "dateStarted": 1469059117077
   },
   {
-    'firstName': 'Daniel',
-    'lastName': 'Pop',
-    'age': 35,
-    'position': 'Fundas stanga',
-    'dateStarted': '2023-09-30'
+    "firstName": "Edmond",
+    "lastName": "Suciu",
+    "age": 23,
+    "position": "Extrema stanga",
+    "dateStarted": 1663631063687
   },
   {
-    'firstName': 'Octavian',
-    'lastName': 'Ionescu',
-    'age': 32,
-    'position': 'Mijlocas dreapta',
-    'dateStarted': '2015-10-28'
+    "firstName": "Niculi\u021b\u0103",
+    "lastName": "Stan",
+    "age": 33,
+    "position": "Fundas dreapta",
+    "dateStarted": 1525085046193
   },
   {
-    'firstName': 'Aurelian',
-    'lastName': 'Gheorghiu',
-    'age': 18,
-    'position': 'Mijlocas stanga',
-    'dateStarted': '2020-11-25'
+    "firstName": "Iurie",
+    "lastName": "Ababei",
+    "age": 29,
+    "position": "Extrema stanga",
+    "dateStarted": 1548278446188
   },
   {
-    'firstName': 'David',
-    'lastName': 'Gheorghiu',
-    'age': 28,
-    'position': 'Mijlocas dreapta',
-    'dateStarted': '2024-08-25'
+    "firstName": "Nicolaie",
+    "lastName": "Nistor",
+    "age": 29,
+    "position": "Mijlocas stanga",
+    "dateStarted": 1591308130763
   },
   {
-    'firstName': 'Arian',
-    'lastName': 'Dumitrescu',
-    'age': 35,
-    'position': 'Mijlocas stanga',
-    'dateStarted': '2016-05-07'
+    "firstName": "Silvian",
+    "lastName": "Tomescu",
+    "age": 17,
+    "position": "Fundas dreapta",
+    "dateStarted": 1534602153697
   },
   {
-    'firstName': 'Remus',
-    'lastName': 'Tudor',
-    'age': 22,
-    'position': 'Extrema dreapta',
-    'dateStarted': '2017-07-03'
+    "firstName": "Aristide",
+    "lastName": "Tabacu",
+    "age": 19,
+    "position": "Extrema stanga",
+    "dateStarted": 1564957135208
   },
   {
-    'firstName': 'Cristea',
-    'lastName': 'Ionescu',
-    'age': 34,
-    'position': 'Extrema stanga',
-    'dateStarted': '2023-04-05'
+    "firstName": "M\u0103d\u0103lin",
+    "lastName": "Mazilescu",
+    "age": 26,
+    "position": "Atacant",
+    "dateStarted": 1580250121080
   },
   {
-    'firstName': 'Alin',
-    'lastName': 'Nistor',
-    'age': 27,
-    'position': 'Mijlocas stanga',
-    'dateStarted': '2020-03-31'
+    "firstName": "Nicu\u0219or",
+    "lastName": "Ene",
+    "age": 27,
+    "position": "Extrema stanga",
+    "dateStarted": 1539890360583
   },
   {
-    'firstName': 'Sergiu',
-    'lastName': 'Ene',
-    'age': 31,
-    'position': 'Fundas stanga',
-    'dateStarted': '2017-06-08'
+    "firstName": "Francisc",
+    "lastName": "Mazilescu",
+    "age": 29,
+    "position": "Fundas dreapta",
+    "dateStarted": 1475645432575
   },
   {
-    'firstName': 'Eugen',
-    'lastName': 'Ardelean',
-    'age': 35,
-    'position': 'Mijlocas stanga',
-    'dateStarted': '2024-01-15'
+    "firstName": "R\u0103zvan",
+    "lastName": "Dinu",
+    "age": 22,
+    "position": "Extrema dreapta",
+    "dateStarted": 1546874754279
   },
   {
-    'firstName': 'Titus',
-    'lastName': 'Gheorghiu',
-    'age': 20,
-    'position': 'Fundas dreapta',
-    'dateStarted': '2021-01-01'
+    "firstName": "Iuliu",
+    "lastName": "Dobre",
+    "age": 18,
+    "position": "Mijlocas stanga",
+    "dateStarted": 1640434321501
   },
   {
-    'firstName': 'Teofil',
-    'lastName': 'Manole',
-    'age': 23,
-    'position': 'Atacant',
-    'dateStarted': '2016-02-05'
+    "firstName": "Silvian",
+    "lastName": "Tabacu",
+    "age": 33,
+    "position": "Extrema dreapta",
+    "dateStarted": 1483930867105
   },
   {
-    'firstName': 'Manole',
-    'lastName': 'Stoica',
-    'age': 24,
-    'position': 'Extrema stanga',
-    'dateStarted': '2021-01-31'
+    "firstName": "Pavel",
+    "lastName": "Diaconu",
+    "age": 31,
+    "position": "Extrema stanga",
+    "dateStarted": 1481936639167
   },
   {
-    'firstName': 'Nae',
-    'lastName': 'Stan',
-    'age': 18,
-    'position': 'Atacant',
-    'dateStarted': '2024-04-25'
+    "firstName": "Florian",
+    "lastName": "Ioni\u021b\u0103",
+    "age": 21,
+    "position": "Fundas central",
+    "dateStarted": 1573059768145
   },
   {
-    'firstName': 'P\u0103tru',
-    'lastName': 'Ababei',
-    'age': 27,
-    'position': 'Mijlocas central',
-    'dateStarted': '2016-04-01'
+    "firstName": "Sabin",
+    "lastName": "Barbu",
+    "age": 34,
+    "position": "Portar",
+    "dateStarted": 1538668795509
   },
   {
-    'firstName': 'Ciprian',
-    'lastName': 'Eftimie',
-    'age': 19,
-    'position': 'Extrema stanga',
-    'dateStarted': '2018-12-18'
+    "firstName": "Ernest",
+    "lastName": "Albu",
+    "age": 33,
+    "position": "Fundas central",
+    "dateStarted": 1693337432305
   },
   {
-    'firstName': 'Vlad',
-    'lastName': 'Barbu',
-    'age': 23,
-    'position': 'Fundas dreapta',
-    'dateStarted': '2024-02-04'
+    "firstName": "Cosmin",
+    "lastName": "Popescu",
+    "age": 17,
+    "position": "Mijlocas stanga",
+    "dateStarted": 1524526227650
   },
   {
-    'firstName': 'Vladimir',
-    'lastName': 'Popa',
-    'age': 17,
-    'position': 'Fundas central',
-    'dateStarted': '2019-01-02'
+    "firstName": "Cristea",
+    "lastName": "Dumitrescu",
+    "age": 22,
+    "position": "Extrema dreapta",
+    "dateStarted": 1658629494005
   },
   {
-    'firstName': 'Raul',
-    'lastName': 'Tudor',
-    'age': 18,
-    'position': 'Mijlocas stanga',
-    'dateStarted': '2020-06-14'
+    "firstName": "Niculi\u021b\u0103",
+    "lastName": "Ardelean",
+    "age": 31,
+    "position": "Extrema stanga",
+    "dateStarted": 1654333017530
   },
   {
-    'firstName': 'Ioan',
-    'lastName': 'Preda',
-    'age': 30,
-    'position': 'Mijlocas stanga',
-    'dateStarted': '2023-12-01'
+    "firstName": "Romulus",
+    "lastName": "Mocanu",
+    "age": 25,
+    "position": "Atacant",
+    "dateStarted": 1493754890893
   },
   {
-    'firstName': 'Agnos',
-    'lastName': 'Mazilescu',
-    'age': 21,
-    'position': 'Fundas stanga',
-    'dateStarted': '2020-02-24'
+    "firstName": "Ianis",
+    "lastName": "Aanei",
+    "age": 30,
+    "position": "Extrema dreapta",
+    "dateStarted": 1611789432746
   },
   {
-    'firstName': 'Petru',
-    'lastName': 'Ababei',
-    'age': 30,
-    'position': 'Atacant',
-    'dateStarted': '2016-01-25'
+    "firstName": "Giorgian",
+    "lastName": "Aanei",
+    "age": 32,
+    "position": "Extrema dreapta",
+    "dateStarted": 1483410078458
   },
   {
-    'firstName': 'C\u0103lin',
-    'lastName': 'St\u0103nescu',
-    'age': 35,
-    'position': 'Mijlocas dreapta',
-    'dateStarted': '2023-05-01'
+    "firstName": "Lucen\u021biu",
+    "lastName": "Dima",
+    "age": 35,
+    "position": "Mijlocas dreapta",
+    "dateStarted": 1677398951290
   },
   {
-    'firstName': 'Rare\u0219',
-    'lastName': 'Eftimie',
-    'age': 28,
-    'position': 'Mijlocas stanga',
-    'dateStarted': '2015-01-03'
+    "firstName": "Raul",
+    "lastName": "Neme\u0219",
+    "age": 34,
+    "position": "Mijlocas dreapta",
+    "dateStarted": 1518607329766
   },
   {
-    'firstName': 'Stan',
-    'lastName': 'Georgescu',
-    'age': 33,
-    'position': 'Fundas dreapta',
-    'dateStarted': '2022-07-15'
+    "firstName": "Matei",
+    "lastName": "Stoica",
+    "age": 33,
+    "position": "Mijlocas dreapta",
+    "dateStarted": 1568075210509
   },
   {
-    'firstName': 'Ioan',
-    'lastName': 'Stancu',
-    'age': 21,
-    'position': 'Mijlocas stanga',
-    'dateStarted': '2018-12-15'
+    "firstName": "Nicu\u0219or",
+    "lastName": "Nistor",
+    "age": 19,
+    "position": "Fundas central",
+    "dateStarted": 1548876942921
   },
   {
-    'firstName': 'Eusebiu',
-    'lastName': 'Gheorghiu',
-    'age': 28,
-    'position': 'Extrema dreapta',
-    'dateStarted': '2020-02-26'
+    "firstName": "Arsenie",
+    "lastName": "Ardelean",
+    "age": 35,
+    "position": "Extrema dreapta",
+    "dateStarted": 1646848005221
   },
   {
-    'firstName': 'Andrian',
-    'lastName': 'Voinea',
-    'age': 17,
-    'position': 'Extrema dreapta',
-    'dateStarted': '2021-11-10'
+    "firstName": "Bernard",
+    "lastName": "Neme\u0219",
+    "age": 32,
+    "position": "Portar",
+    "dateStarted": 1531408811318
   },
   {
-    'firstName': 'Lauren\u021biu',
-    'lastName': 'Dumitrescu',
-    'age': 19,
-    'position': 'Fundas stanga',
-    'dateStarted': '2024-10-21'
+    "firstName": "Sandu",
+    "lastName": "Gheorghiu",
+    "age": 27,
+    "position": "Fundas stanga",
+    "dateStarted": 1628113143548
   },
   {
-    'firstName': 'Denis',
-    'lastName': 'Dochioiu',
-    'age': 18,
-    'position': 'Mijlocas dreapta',
-    'dateStarted': '2015-11-25'
+    "firstName": "Iulian",
+    "lastName": "Stoica",
+    "age": 19,
+    "position": "Fundas dreapta",
+    "dateStarted": 1580839960762
   },
   {
-    'firstName': 'Ple\u0219u',
-    'lastName': 'Ni\u021b\u0103',
-    'age': 27,
-    'position': 'Fundas dreapta',
-    'dateStarted': '2021-12-31'
+    "firstName": "Vlad",
+    "lastName": "Tabacu",
+    "age": 17,
+    "position": "Fundas dreapta",
+    "dateStarted": 1477444975211
   },
   {
-    'firstName': 'Iustin',
-    'lastName': 'Diaconescu',
-    'age': 32,
-    'position': 'Extrema dreapta',
-    'dateStarted': '2022-11-21'
+    "firstName": "Visarion",
+    "lastName": "Gheorghiu",
+    "age": 20,
+    "position": "Fundas dreapta",
+    "dateStarted": 1525926075183
   },
   {
-    'firstName': 'Ionel',
-    'lastName': 'Stan',
-    'age': 28,
-    'position': 'Mijlocas stanga',
-    'dateStarted': '2015-11-25'
+    "firstName": "Lic\u0103",
+    "lastName": "Mocanu",
+    "age": 25,
+    "position": "Fundas dreapta",
+    "dateStarted": 1469324816052
   },
   {
-    'firstName': 'Haralamb',
-    'lastName': 'Oprea',
-    'age': 24,
-    'position': 'Mijlocas central',
-    'dateStarted': '2020-08-14'
+    "firstName": "Marian",
+    "lastName": "Suciu",
+    "age": 24,
+    "position": "Atacant",
+    "dateStarted": 1586824724648
   },
   {
-    'firstName': 'Ilie',
-    'lastName': 'Ababei',
-    'age': 21,
-    'position': 'Extrema dreapta',
-    'dateStarted': '2021-12-02'
+    "firstName": "Matei",
+    "lastName": "Aanei",
+    "age": 31,
+    "position": "Portar",
+    "dateStarted": 1579689561511
   },
   {
-    'firstName': 'Lucen\u021biu',
-    'lastName': 'Aanei',
-    'age': 34,
-    'position': 'Extrema stanga',
-    'dateStarted': '2016-02-18'
+    "firstName": "Relu",
+    "lastName": "Eftimie",
+    "age": 25,
+    "position": "Fundas dreapta",
+    "dateStarted": 1543000821083
   },
   {
-    'firstName': 'Edgar',
-    'lastName': 'Tomescu',
-    'age': 25,
-    'position': 'Portar',
-    'dateStarted': '2021-11-16'
+    "firstName": "Horea",
+    "lastName": "Neme\u0219",
+    "age": 33,
+    "position": "Fundas stanga",
+    "dateStarted": 1444146569999
   },
   {
-    'firstName': 'Aurel',
-    'lastName': 'Popa',
-    'age': 35,
-    'position': 'Fundas central',
-    'dateStarted': '2017-05-01'
+    "firstName": "Filip",
+    "lastName": "Mocanu",
+    "age": 34,
+    "position": "Mijlocas stanga",
+    "dateStarted": 1558474746689
   },
   {
-    'firstName': 'Gelu',
-    'lastName': 'Oprea',
-    'age': 29,
-    'position': 'Mijlocas dreapta',
-    'dateStarted': '2022-08-29'
+    "firstName": "Eftimie",
+    "lastName": "Neme\u0219",
+    "age": 26,
+    "position": "Fundas central",
+    "dateStarted": 1585162340121
   },
   {
-    'firstName': 'Aurelian',
-    'lastName': 'Tudor',
-    'age': 34,
-    'position': 'Fundas dreapta',
-    'dateStarted': '2020-01-28'
+    "firstName": "Luca",
+    "lastName": "Stancu",
+    "age": 24,
+    "position": "Atacant",
+    "dateStarted": 1489938641775
   },
   {
-    'firstName': 'Gabriel',
-    'lastName': 'Tabacu',
-    'age': 32,
-    'position': 'Mijlocas dreapta',
-    'dateStarted': '2016-11-10'
+    "firstName": "David",
+    "lastName": "Oprea",
+    "age": 32,
+    "position": "Fundas stanga",
+    "dateStarted": 1702377358185
   },
   {
-    'firstName': 'Leontin',
-    'lastName': 'Manole',
-    'age': 20,
-    'position': 'Atacant',
-    'dateStarted': '2017-10-04'
+    "firstName": "Nicu\u0219or",
+    "lastName": "Oprea",
+    "age": 24,
+    "position": "Portar",
+    "dateStarted": 1598810483937
   },
   {
-    'firstName': 'M\u0103d\u0103lin',
-    'lastName': 'Aanei',
-    'age': 31,
-    'position': 'Fundas central',
-    'dateStarted': '2023-05-18'
+    "firstName": "Oliviu",
+    "lastName": "Tabacu",
+    "age": 31,
+    "position": "Fundas central",
+    "dateStarted": 1554511431916
   },
   {
-    'firstName': 'Panait',
-    'lastName': 'Nistor',
-    'age': 33,
-    'position': 'Fundas dreapta',
-    'dateStarted': '2024-05-20'
+    "firstName": "Damian",
+    "lastName": "Dochioiu",
+    "age": 23,
+    "position": "Fundas central",
+    "dateStarted": 1639713804686
   },
   {
-    'firstName': 'Jenel',
-    'lastName': 'Albu',
-    'age': 18,
-    'position': 'Extrema stanga',
-    'dateStarted': '2024-09-17'
+    "firstName": "Nicu",
+    "lastName": "Ene",
+    "age": 31,
+    "position": "Fundas central",
+    "dateStarted": 1494184448771
   },
   {
-    'firstName': 'Petric\u0103',
-    'lastName': 'Manole',
-    'age': 35,
-    'position': 'Extrema stanga',
-    'dateStarted': '2017-07-25'
+    "firstName": "Leonard",
+    "lastName": "Stoica",
+    "age": 22,
+    "position": "Mijlocas stanga",
+    "dateStarted": 1687719531631
   },
   {
-    'firstName': 'Petre',
-    'lastName': 'Marin',
-    'age': 29,
-    'position': 'Fundas central',
-    'dateStarted': '2017-01-13'
+    "firstName": "Flaviu",
+    "lastName": "Neme\u0219",
+    "age": 21,
+    "position": "Mijlocas stanga",
+    "dateStarted": 1620820561329
   },
   {
-    'firstName': 'David',
-    'lastName': 'Marin',
-    'age': 31,
-    'position': 'Fundas stanga',
-    'dateStarted': '2020-08-08'
+    "firstName": "Ionel",
+    "lastName": "St\u0103nescu",
+    "age": 18,
+    "position": "Mijlocas dreapta",
+    "dateStarted": 1609883454909
   },
   {
-    'firstName': 'Albert',
-    'lastName': 'Pop',
-    'age': 26,
-    'position': 'Fundas central',
-    'dateStarted': '2018-05-29'
+    "firstName": "Nichifor",
+    "lastName": "Ababei",
+    "age": 26,
+    "position": "Mijlocas central",
+    "dateStarted": 1642991287113
   },
   {
-    'firstName': 'Panagachie',
-    'lastName': 'Manole',
-    'age': 20,
-    'position': 'Fundas stanga',
-    'dateStarted': '2016-05-08'
+    "firstName": "Teohari",
+    "lastName": "Voinea",
+    "age": 18,
+    "position": "Fundas dreapta",
+    "dateStarted": 1572198983627
   },
   {
-    'firstName': 'Edgar',
-    'lastName': 'Ardelean',
-    'age': 23,
-    'position': 'Mijlocas central',
-    'dateStarted': '2024-02-05'
+    "firstName": "Octav",
+    "lastName": "Nistor",
+    "age": 19,
+    "position": "Mijlocas central",
+    "dateStarted": 1682856721472
   },
   {
-    'firstName': 'Amza',
-    'lastName': 'Pop',
-    'age': 35,
-    'position': 'Fundas stanga',
-    'dateStarted': '2020-03-30'
+    "firstName": "Luca",
+    "lastName": "St\u0103nescu",
+    "age": 35,
+    "position": "Mijlocas central",
+    "dateStarted": 1699180910440
   },
   {
-    'firstName': 'Pavel',
-    'lastName': 'Popa',
-    'age': 19,
-    'position': 'Fundas central',
-    'dateStarted': '2023-10-31'
+    "firstName": "Doru",
+    "lastName": "Dinu",
+    "age": 26,
+    "position": "Atacant",
+    "dateStarted": 1440348895501
   },
   {
-    'firstName': 'Gheorghe',
-    'lastName': 'Tudor',
-    'age': 24,
-    'position': 'Mijlocas dreapta',
-    'dateStarted': '2017-06-13'
+    "firstName": "Marin",
+    "lastName": "Barbu",
+    "age": 25,
+    "position": "Mijlocas dreapta",
+    "dateStarted": 1433022768364
   },
   {
-    'firstName': 'Adelin',
-    'lastName': 'Pu\u0219ca\u0219u',
-    'age': 18,
-    'position': 'Atacant',
-    'dateStarted': '2017-08-10'
+    "firstName": "Liviu",
+    "lastName": "Tomescu",
+    "age": 35,
+    "position": "Fundas central",
+    "dateStarted": 1666669355715
   },
   {
-    'firstName': 'Ghenadie',
-    'lastName': 'Ionescu',
-    'age': 30,
-    'position': 'Fundas dreapta',
-    'dateStarted': '2017-02-27'
+    "firstName": "Cedrin",
+    "lastName": "Ene",
+    "age": 29,
+    "position": "Fundas central",
+    "dateStarted": 1562880500087
   },
   {
-    'firstName': 'Martin',
-    'lastName': 'Popescu',
-    'age': 17,
-    'position': 'Extrema dreapta',
-    'dateStarted': '2023-07-20'
+    "firstName": "Toma",
+    "lastName": "Manole",
+    "age": 22,
+    "position": "Mijlocas dreapta",
+    "dateStarted": 1572619245319
   },
   {
-    'firstName': 'Dan',
-    'lastName': 'Ababei',
-    'age': 30,
-    'position': 'Fundas dreapta',
-    'dateStarted': '2019-06-17'
+    "firstName": "Nichifor",
+    "lastName": "Toma",
+    "age": 33,
+    "position": "Fundas stanga",
+    "dateStarted": 1496832057886
   },
   {
-    'firstName': 'Darius',
-    'lastName': 'Diaconu',
-    'age': 21,
-    'position': 'Mijlocas dreapta',
-    'dateStarted': '2021-03-15'
+    "firstName": "Jenel",
+    "lastName": "Dima",
+    "age": 20,
+    "position": "Extrema dreapta",
+    "dateStarted": 1515972295771
   },
   {
-    'firstName': 'Edmond',
-    'lastName': 'Ionescu',
-    'age': 18,
-    'position': 'Extrema dreapta',
-    'dateStarted': '2024-09-18'
+    "firstName": "Amza",
+    "lastName": "Diaconescu",
+    "age": 29,
+    "position": "Fundas dreapta",
+    "dateStarted": 1650159563641
   },
   {
-    'firstName': 'Miron',
-    'lastName': 'Dima',
-    'age': 35,
-    'position': 'Extrema stanga',
-    'dateStarted': '2019-06-13'
+    "firstName": "Dorin",
+    "lastName": "Dobre",
+    "age": 20,
+    "position": "Extrema stanga",
+    "dateStarted": 1510108388248
   },
   {
-    'firstName': 'Arian',
-    'lastName': 'Ardelean',
-    'age': 22,
-    'position': 'Fundas central',
-    'dateStarted': '2024-09-02'
+    "firstName": "Petru\u021b",
+    "lastName": "Nistor",
+    "age": 31,
+    "position": "Atacant",
+    "dateStarted": 1504276228746
   },
   {
-    'firstName': 'Benone',
-    'lastName': 'St\u0103nescu',
-    'age': 21,
-    'position': 'Extrema stanga',
-    'dateStarted': '2022-06-02'
+    "firstName": "Fabian",
+    "lastName": "Diaconu",
+    "age": 20,
+    "position": "Portar",
+    "dateStarted": 1616889625594
   },
   {
-    'firstName': 'Sorin',
-    'lastName': 'Ababei',
-    'age': 35,
-    'position': 'Fundas dreapta',
-    'dateStarted': '2016-01-05'
+    "firstName": "Ovidiu",
+    "lastName": "Pop",
+    "age": 25,
+    "position": "Mijlocas central",
+    "dateStarted": 1589495877304
   },
   {
-    'firstName': 'C\u0103t\u0103lin',
-    'lastName': 'Popescu',
-    'age': 25,
-    'position': 'Extrema stanga',
-    'dateStarted': '2019-07-18'
+    "firstName": "Vicen\u021biu",
+    "lastName": "Tudor",
+    "age": 32,
+    "position": "Atacant",
+    "dateStarted": 1606411457551
   },
   {
-    'firstName': 'Alexe',
-    'lastName': 'Preda',
-    'age': 26,
-    'position': 'Mijlocas dreapta',
-    'dateStarted': '2015-05-02'
+    "firstName": "Zamfir",
+    "lastName": "Neme\u0219",
+    "age": 30,
+    "position": "Extrema stanga",
+    "dateStarted": 1424818709038
   },
   {
-    'firstName': 'Antim',
-    'lastName': 'Ardelean',
-    'age': 26,
-    'position': 'Fundas stanga',
-    'dateStarted': '2023-07-22'
+    "firstName": "Rafael",
+    "lastName": "Dumitrescu",
+    "age": 24,
+    "position": "Extrema stanga",
+    "dateStarted": 1494220192527
   },
   {
-    'firstName': 'Benone',
-    'lastName': 'Oprea',
-    'age': 33,
-    'position': 'Mijlocas stanga',
-    'dateStarted': '2019-12-28'
+    "firstName": "Carol",
+    "lastName": "Albu",
+    "age": 21,
+    "position": "Fundas central",
+    "dateStarted": 1511642464901
   },
   {
-    'firstName': 'Eric',
-    'lastName': 'Ene',
-    'age': 33,
-    'position': 'Fundas dreapta',
-    'dateStarted': '2019-07-17'
+    "firstName": "Dinu",
+    "lastName": "Manole",
+    "age": 22,
+    "position": "Fundas central",
+    "dateStarted": 1668083536643
   },
   {
-    'firstName': 'Aurel',
-    'lastName': 'Dochioiu',
-    'age': 34,
-    'position': 'Mijlocas central',
-    'dateStarted': '2016-09-30'
+    "firstName": "Toma",
+    "lastName": "Popescu",
+    "age": 30,
+    "position": "Extrema stanga",
+    "dateStarted": 1448252560100
   },
   {
-    'firstName': 'Nae',
-    'lastName': 'Pu\u0219ca\u0219u',
-    'age': 21,
-    'position': 'Fundas stanga',
-    'dateStarted': '2016-10-28'
+    "firstName": "Oliviu",
+    "lastName": "Albu",
+    "age": 21,
+    "position": "Extrema dreapta",
+    "dateStarted": 1700931988809
   },
   {
-    'firstName': 'Antim',
-    'lastName': 'Aanei',
-    'age': 19,
-    'position': 'Atacant',
-    'dateStarted': '2023-01-26'
+    "firstName": "Radu",
+    "lastName": "Oprea",
+    "age": 34,
+    "position": "Extrema stanga",
+    "dateStarted": 1579631935846
   },
   {
-    'firstName': 'Camil',
-    'lastName': 'Nistor',
-    'age': 19,
-    'position': 'Mijlocas central',
-    'dateStarted': '2020-01-31'
+    "firstName": "Antoniu",
+    "lastName": "Barbu",
+    "age": 35,
+    "position": "Extrema stanga",
+    "dateStarted": 1652013961869
   },
   {
-    'firstName': 'Mihnea',
-    'lastName': 'Ionescu',
-    'age': 24,
-    'position': 'Mijlocas stanga',
-    'dateStarted': '2022-08-30'
+    "firstName": "Liviu",
+    "lastName": "Neme\u0219",
+    "age": 27,
+    "position": "Mijlocas central",
+    "dateStarted": 1642691326670
   },
   {
-    'firstName': '\u0218erban',
-    'lastName': 'Ene',
-    'age': 24,
-    'position': 'Mijlocas dreapta',
-    'dateStarted': '2015-04-09'
+    "firstName": "\u0218tefan",
+    "lastName": "Ene",
+    "age": 30,
+    "position": "Fundas dreapta",
+    "dateStarted": 1591214742931
   },
   {
-    'firstName': 'Florin',
-    'lastName': 'Stancu',
-    'age': 29,
-    'position': 'Atacant',
-    'dateStarted': '2017-04-16'
+    "firstName": "Mihai",
+    "lastName": "Stoica",
+    "age": 31,
+    "position": "Fundas stanga",
+    "dateStarted": 1637013324103
   },
   {
-    'firstName': 'Achim',
-    'lastName': 'Ababei',
-    'age': 24,
-    'position': 'Atacant',
-    'dateStarted': '2024-04-14'
+    "firstName": "Eusta\u021biu",
+    "lastName": "Popa",
+    "age": 32,
+    "position": "Fundas dreapta",
+    "dateStarted": 1540377751702
   },
   {
-    'firstName': 'Cantemir',
-    'lastName': 'Manole',
-    'age': 20,
-    'position': 'Extrema stanga',
-    'dateStarted': '2017-11-18'
+    "firstName": "Lucre\u021biu",
+    "lastName": "Tabacu",
+    "age": 19,
+    "position": "Atacant",
+    "dateStarted": 1630257955921
   },
   {
-    'firstName': 'Lucen\u021biu',
-    'lastName': 'Diaconu',
-    'age': 35,
-    'position': 'Extrema dreapta',
-    'dateStarted': '2023-05-16'
+    "firstName": "Gheorghe",
+    "lastName": "Ionescu",
+    "age": 35,
+    "position": "Extrema dreapta",
+    "dateStarted": 1635444729660
   },
   {
-    'firstName': 'Toma',
-    'lastName': 'Dumitrescu',
-    'age': 22,
-    'position': 'Extrema dreapta',
-    'dateStarted': '2020-01-04'
+    "firstName": "Anatolie",
+    "lastName": "Georgescu",
+    "age": 23,
+    "position": "Mijlocas stanga",
+    "dateStarted": 1620426175692
   },
   {
-    'firstName': 'Tudor',
-    'lastName': 'Georgescu',
-    'age': 35,
-    'position': 'Fundas dreapta',
-    'dateStarted': '2016-11-28'
+    "firstName": "Eric",
+    "lastName": "Mazilescu",
+    "age": 30,
+    "position": "Mijlocas stanga",
+    "dateStarted": 1568117678715
   },
   {
-    'firstName': 'Petre',
-    'lastName': 'Georgescu',
-    'age': 35,
-    'position': 'Fundas stanga',
-    'dateStarted': '2019-01-11'
+    "firstName": "Oliviu",
+    "lastName": "Dumitrescu",
+    "age": 23,
+    "position": "Extrema dreapta",
+    "dateStarted": 1587502544865
   },
   {
-    'firstName': 'Carol',
-    'lastName': 'Dobre',
-    'age': 31,
-    'position': 'Portar',
-    'dateStarted': '2015-03-18'
+    "firstName": "Alistar",
+    "lastName": "Toma",
+    "age": 28,
+    "position": "Mijlocas dreapta",
+    "dateStarted": 1545639959974
   },
   {
-    'firstName': 'Dan',
-    'lastName': 'Marin',
-    'age': 33,
-    'position': 'Extrema dreapta',
-    'dateStarted': '2024-12-09'
+    "firstName": "Eugen",
+    "lastName": "Dinu",
+    "age": 33,
+    "position": "Mijlocas dreapta",
+    "dateStarted": 1625563071947
   },
   {
-    'firstName': 'Jean',
-    'lastName': 'Dinu',
-    'age': 27,
-    'position': 'Fundas central',
-    'dateStarted': '2018-11-22'
+    "firstName": "Romulus",
+    "lastName": "Neme\u0219",
+    "age": 31,
+    "position": "Mijlocas dreapta",
+    "dateStarted": 1656093660865
   },
   {
-    'firstName': 'Ionel',
-    'lastName': 'Eftimie',
-    'age': 27,
-    'position': 'Mijlocas stanga',
-    'dateStarted': '2019-03-27'
+    "firstName": "Vasile",
+    "lastName": "Oprea",
+    "age": 29,
+    "position": "Fundas stanga",
+    "dateStarted": 1618071738123
   },
   {
-    'firstName': 'Cristofor',
-    'lastName': 'Mocanu',
-    'age': 20,
-    'position': 'Portar',
-    'dateStarted': '2022-05-12'
+    "firstName": "Viorel",
+    "lastName": "Diaconescu",
+    "age": 18,
+    "position": "Fundas stanga",
+    "dateStarted": 1423177911446
   },
   {
-    'firstName': 'Nelu',
-    'lastName': 'Dochioiu',
-    'age': 20,
-    'position': 'Mijlocas stanga',
-    'dateStarted': '2015-03-25'
+    "firstName": "Emanuel",
+    "lastName": "Nistor",
+    "age": 27,
+    "position": "Atacant",
+    "dateStarted": 1612289994815
   },
   {
-    'firstName': 'Viorel',
-    'lastName': 'Stancu',
-    'age': 25,
-    'position': 'Extrema dreapta',
-    'dateStarted': '2019-12-18'
+    "firstName": "Stan",
+    "lastName": "Ionescu",
+    "age": 31,
+    "position": "Mijlocas central",
+    "dateStarted": 1597244391064
   },
   {
-    'firstName': 'Cazimir',
-    'lastName': 'Tudor',
-    'age': 32,
-    'position': 'Fundas dreapta',
-    'dateStarted': '2023-02-12'
+    "firstName": "Laurian",
+    "lastName": "Suciu",
+    "age": 34,
+    "position": "Portar",
+    "dateStarted": 1483726196534
   },
   {
-    'firstName': 'Jean',
-    'lastName': 'Toma',
-    'age': 24,
-    'position': 'Atacant',
-    'dateStarted': '2019-04-27'
+    "firstName": "Antoniu",
+    "lastName": "Tabacu",
+    "age": 27,
+    "position": "Atacant",
+    "dateStarted": 1425230053235
   },
   {
-    'firstName': 'Augustin',
-    'lastName': 'Aanei',
-    'age': 22,
-    'position': 'Mijlocas central',
-    'dateStarted': '2022-01-12'
+    "firstName": "Miron",
+    "lastName": "Ene",
+    "age": 21,
+    "position": "Fundas stanga",
+    "dateStarted": 1595999021052
   },
   {
-    'firstName': 'Toma',
-    'lastName': 'Popescu',
-    'age': 24,
-    'position': 'Fundas dreapta',
-    'dateStarted': '2016-04-22'
+    "firstName": "Manole",
+    "lastName": "Ioni\u021b\u0103",
+    "age": 23,
+    "position": "Mijlocas stanga",
+    "dateStarted": 1634738075693
   },
   {
-    'firstName': 'Bebe',
-    'lastName': 'Albu',
-    'age': 27,
-    'position': 'Fundas dreapta',
-    'dateStarted': '2015-10-20'
+    "firstName": "Liviu",
+    "lastName": "Popa",
+    "age": 19,
+    "position": "Extrema stanga",
+    "dateStarted": 1448328807201
   },
   {
-    'firstName': 'Victor',
-    'lastName': 'Preda',
-    'age': 26,
-    'position': 'Mijlocas stanga',
-    'dateStarted': '2017-05-08'
+    "firstName": "Albert",
+    "lastName": "Nistor",
+    "age": 25,
+    "position": "Mijlocas dreapta",
+    "dateStarted": 1518270709441
   },
   {
-    'firstName': 'Ducu',
-    'lastName': 'Ionescu',
-    'age': 24,
-    'position': 'Mijlocas stanga',
-    'dateStarted': '2020-08-26'
+    "firstName": "Ionic\u0103",
+    "lastName": "Albu",
+    "age": 22,
+    "position": "Mijlocas stanga",
+    "dateStarted": 1429180948213
   },
   {
-    'firstName': 'Gra\u021bian',
-    'lastName': 'Suciu',
-    'age': 17,
-    'position': 'Mijlocas dreapta',
-    'dateStarted': '2016-01-06'
+    "firstName": "Amza",
+    "lastName": "Dobre",
+    "age": 34,
+    "position": "Portar",
+    "dateStarted": 1453096722018
   },
   {
-    'firstName': 'Bucur',
-    'lastName': 'Dobre',
-    'age': 23,
-    'position': 'Extrema dreapta',
-    'dateStarted': '2023-02-18'
+    "firstName": "Zeno",
+    "lastName": "Cristea",
+    "age": 35,
+    "position": "Mijlocas stanga",
+    "dateStarted": 1664965281285
   },
   {
-    'firstName': 'Lasc\u0103r',
-    'lastName': 'Ene',
-    'age': 33,
-    'position': 'Fundas dreapta',
-    'dateStarted': '2017-12-25'
+    "firstName": "Alistar",
+    "lastName": "Dinu",
+    "age": 20,
+    "position": "Extrema dreapta",
+    "dateStarted": 1547986209028
   },
   {
-    'firstName': 'Nicolae',
-    'lastName': 'Tabacu',
-    'age': 21,
-    'position': 'Atacant',
-    'dateStarted': '2016-02-09'
+    "firstName": "Dan",
+    "lastName": "Tabacu",
+    "age": 31,
+    "position": "Portar",
+    "dateStarted": 1570558179491
   },
   {
-    'firstName': 'Bebe',
-    'lastName': 'Tudor',
-    'age': 18,
-    'position': 'Fundas central',
-    'dateStarted': '2017-03-03'
+    "firstName": "Vicen\u021biu",
+    "lastName": "Stan",
+    "age": 25,
+    "position": "Mijlocas stanga",
+    "dateStarted": 1697100486470
   },
   {
-    'firstName': 'Nicu',
-    'lastName': 'Popescu',
-    'age': 20,
-    'position': 'Extrema dreapta',
-    'dateStarted': '2017-08-01'
+    "firstName": "Visarion",
+    "lastName": "Mocanu",
+    "age": 30,
+    "position": "Mijlocas stanga",
+    "dateStarted": 1603894530107
   },
   {
-    'firstName': 'Vincen\u021biu',
-    'lastName': 'Albu',
-    'age': 23,
-    'position': 'Fundas central',
-    'dateStarted': '2020-01-15'
+    "firstName": "Bernard",
+    "lastName": "Pop",
+    "age": 20,
+    "position": "Portar",
+    "dateStarted": 1543072084064
   },
   {
-    'firstName': 'Giorgian',
-    'lastName': 'Dochioiu',
-    'age': 27,
-    'position': 'Mijlocas central',
-    'dateStarted': '2016-12-29'
+    "firstName": "Ladislau",
+    "lastName": "St\u0103nescu",
+    "age": 24,
+    "position": "Fundas central",
+    "dateStarted": 1602617951643
   },
   {
-    'firstName': 'Albert',
-    'lastName': 'Ababei',
-    'age': 19,
-    'position': 'Portar',
-    'dateStarted': '2022-02-25'
+    "firstName": "Silviu",
+    "lastName": "Stoica",
+    "age": 20,
+    "position": "Extrema stanga",
+    "dateStarted": 1490870760429
   },
   {
-    'firstName': 'Antoniu',
-    'lastName': 'Aanei',
-    'age': 34,
-    'position': 'Extrema stanga',
-    'dateStarted': '2018-03-21'
+    "firstName": "Olimpian",
+    "lastName": "Gheorghiu",
+    "age": 26,
+    "position": "Fundas central",
+    "dateStarted": 1635709714363
   },
   {
-    'firstName': 'Nicoar\u0103',
-    'lastName': 'Pop',
-    'age': 27,
-    'position': 'Fundas central',
-    'dateStarted': '2024-12-12'
+    "firstName": "Anton",
+    "lastName": "Ioni\u021b\u0103",
+    "age": 35,
+    "position": "Mijlocas stanga",
+    "dateStarted": 1505741638064
   },
   {
-    'firstName': 'Darius',
-    'lastName': 'Preda',
-    'age': 32,
-    'position': 'Mijlocas dreapta',
-    'dateStarted': '2015-10-28'
+    "firstName": "R\u0103zvan",
+    "lastName": "Barbu",
+    "age": 30,
+    "position": "Mijlocas central",
+    "dateStarted": 1675188428504
   },
   {
-    'firstName': 'Miron',
-    'lastName': 'Oprea',
-    'age': 24,
-    'position': 'Fundas central',
-    'dateStarted': '2019-06-23'
+    "firstName": "Ivan",
+    "lastName": "Pop",
+    "age": 35,
+    "position": "Mijlocas stanga",
+    "dateStarted": 1480909158805
   },
   {
-    'firstName': 'Bebe',
-    'lastName': 'Ene',
-    'age': 34,
-    'position': 'Extrema stanga',
-    'dateStarted': '2017-11-24'
+    "firstName": "Ciprian",
+    "lastName": "Barbu",
+    "age": 35,
+    "position": "Portar",
+    "dateStarted": 1550686189561
   },
   {
-    'firstName': 'Codru\u021b',
-    'lastName': 'Stan',
-    'age': 19,
-    'position': 'Atacant',
-    'dateStarted': '2020-04-15'
+    "firstName": "Teodor",
+    "lastName": "Albu",
+    "age": 26,
+    "position": "Mijlocas central",
+    "dateStarted": 1467460969972
   },
   {
-    'firstName': 'Mircea',
-    'lastName': 'Eftimie',
-    'age': 28,
-    'position': 'Mijlocas stanga',
-    'dateStarted': '2022-07-23'
+    "firstName": "Dominic",
+    "lastName": "Dinu",
+    "age": 31,
+    "position": "Mijlocas stanga",
+    "dateStarted": 1570964829214
   },
   {
-    'firstName': 'Petru',
-    'lastName': 'Voinea',
-    'age': 21,
-    'position': 'Atacant',
-    'dateStarted': '2024-09-04'
+    "firstName": "Gic\u0103",
+    "lastName": "Nistor",
+    "age": 26,
+    "position": "Extrema dreapta",
+    "dateStarted": 1549994942868
   },
   {
-    'firstName': 'B\u0103nel',
-    'lastName': 'Stan',
-    'age': 34,
-    'position': 'Fundas stanga',
-    'dateStarted': '2015-08-12'
+    "firstName": "Dacian",
+    "lastName": "Popa",
+    "age": 20,
+    "position": "Fundas stanga",
+    "dateStarted": 1568819047926
   },
   {
-    'firstName': 'Petru\u021b',
-    'lastName': 'Georgescu',
-    'age': 20,
-    'position': 'Fundas central',
-    'dateStarted': '2020-06-19'
+    "firstName": "Constantin",
+    "lastName": "Dinu",
+    "age": 25,
+    "position": "Mijlocas stanga",
+    "dateStarted": 1582120573323
   },
   {
-    'firstName': 'Jan',
-    'lastName': 'Tudor',
-    'age': 19,
-    'position': 'Extrema dreapta',
-    'dateStarted': '2017-08-16'
+    "firstName": "Darius",
+    "lastName": "Pu\u0219ca\u0219u",
+    "age": 22,
+    "position": "Mijlocas stanga",
+    "dateStarted": 1498209745033
   },
   {
-    'firstName': 'Voicu',
-    'lastName': 'Pu\u0219ca\u0219u',
-    'age': 17,
-    'position': 'Extrema dreapta',
-    'dateStarted': '2022-06-11'
+    "firstName": "Edgar",
+    "lastName": "Popa",
+    "age": 22,
+    "position": "Mijlocas dreapta",
+    "dateStarted": 1595828196454
   },
   {
-    'firstName': 'Agnos',
-    'lastName': 'Dinu',
-    'age': 34,
-    'position': 'Extrema dreapta',
-    'dateStarted': '2024-10-23'
+    "firstName": "Stelian",
+    "lastName": "Ababei",
+    "age": 23,
+    "position": "Fundas central",
+    "dateStarted": 1492416152247
   },
   {
-    'firstName': 'Sebastian',
-    'lastName': 'Toma',
-    'age': 24,
-    'position': 'Portar',
-    'dateStarted': '2020-02-23'
+    "firstName": "Ilie",
+    "lastName": "Florea",
+    "age": 32,
+    "position": "Mijlocas central",
+    "dateStarted": 1451677052715
   },
   {
-    'firstName': 'Timotei',
-    'lastName': 'Nistor',
-    'age': 31,
-    'position': 'Extrema dreapta',
-    'dateStarted': '2016-01-10'
+    "firstName": "Petric\u0103",
+    "lastName": "Preda",
+    "age": 32,
+    "position": "Mijlocas central",
+    "dateStarted": 1552218939314
   },
   {
-    'firstName': 'Dorin',
-    'lastName': 'Pop',
-    'age': 17,
-    'position': 'Atacant',
-    'dateStarted': '2018-03-07'
+    "firstName": "Emanuil",
+    "lastName": "Manole",
+    "age": 31,
+    "position": "Mijlocas central",
+    "dateStarted": 1537038410586
   },
   {
-    'firstName': 'Marcu',
-    'lastName': 'Pu\u0219ca\u0219u',
-    'age': 27,
-    'position': 'Fundas central',
-    'dateStarted': '2018-06-11'
+    "firstName": "R\u0103zvan",
+    "lastName": "Dochioiu",
+    "age": 18,
+    "position": "Fundas stanga",
+    "dateStarted": 1669393849829
   },
   {
-    'firstName': 'Aristide',
-    'lastName': 'Ardelean',
-    'age': 19,
-    'position': 'Extrema stanga',
-    'dateStarted': '2018-08-21'
+    "firstName": "Horea",
+    "lastName": "Albu",
+    "age": 23,
+    "position": "Mijlocas stanga",
+    "dateStarted": 1470955382444
   },
   {
-    'firstName': 'Simi',
-    'lastName': 'Ardelean',
-    'age': 25,
-    'position': 'Fundas dreapta',
-    'dateStarted': '2022-12-17'
+    "firstName": "Denis",
+    "lastName": "Stancu",
+    "age": 25,
+    "position": "Fundas dreapta",
+    "dateStarted": 1519810599345
   },
   {
-    'firstName': 'Aurelian',
-    'lastName': 'Tomescu',
-    'age': 28,
-    'position': 'Mijlocas stanga',
-    'dateStarted': '2024-03-06'
+    "firstName": "Anghel",
+    "lastName": "Neme\u0219",
+    "age": 19,
+    "position": "Fundas stanga",
+    "dateStarted": 1520487825358
   },
   {
-    'firstName': 'Nelu',
-    'lastName': 'Ionescu',
-    'age': 23,
-    'position': 'Mijlocas dreapta',
-    'dateStarted': '2021-12-18'
+    "firstName": "Tudor",
+    "lastName": "Oprea",
+    "age": 30,
+    "position": "Extrema dreapta",
+    "dateStarted": 1421650047834
   },
   {
-    'firstName': 'Cristobal',
-    'lastName': 'Barbu',
-    'age': 27,
-    'position': 'Mijlocas stanga',
-    'dateStarted': '2016-02-26'
+    "firstName": "Simi",
+    "lastName": "Diaconescu",
+    "age": 17,
+    "position": "Mijlocas dreapta",
+    "dateStarted": 1581913352357
   },
   {
-    'firstName': 'Dinu',
-    'lastName': 'Nistor',
-    'age': 20,
-    'position': 'Extrema dreapta',
-    'dateStarted': '2021-06-29'
+    "firstName": "Sorin",
+    "lastName": "Neme\u0219",
+    "age": 31,
+    "position": "Portar",
+    "dateStarted": 1636512197618
   },
   {
-    'firstName': 'Ghi\u021b\u0103',
-    'lastName': 'Aanei',
-    'age': 20,
-    'position': 'Fundas dreapta',
-    'dateStarted': '2021-05-07'
+    "firstName": "Vlad",
+    "lastName": "Voinea",
+    "age": 20,
+    "position": "Fundas stanga",
+    "dateStarted": 1585404250915
   },
   {
-    'firstName': 'Narcis',
-    'lastName': 'Tomescu',
-    'age': 27,
-    'position': 'Extrema stanga',
-    'dateStarted': '2015-09-28'
+    "firstName": "Edmond",
+    "lastName": "Pop",
+    "age": 30,
+    "position": "Extrema stanga",
+    "dateStarted": 1477794581514
   },
   {
-    'firstName': 'Stelian',
-    'lastName': 'Diaconu',
-    'age': 20,
-    'position': 'Mijlocas central',
-    'dateStarted': '2024-05-25'
+    "firstName": "Remus",
+    "lastName": "Cristea",
+    "age": 25,
+    "position": "Extrema stanga",
+    "dateStarted": 1611440573682
   },
   {
-    'firstName': 'Dan',
-    'lastName': 'Pop',
-    'age': 26,
-    'position': 'Mijlocas stanga',
-    'dateStarted': '2015-07-07'
+    "firstName": "Georgian",
+    "lastName": "Nistor",
+    "age": 34,
+    "position": "Atacant",
+    "dateStarted": 1625683630175
   },
   {
-    'firstName': 'Eftimie',
-    'lastName': 'Nistor',
-    'age': 26,
-    'position': 'Mijlocas dreapta',
-    'dateStarted': '2018-09-06'
+    "firstName": "Ple\u0219u",
+    "lastName": "Ioni\u021b\u0103",
+    "age": 20,
+    "position": "Portar",
+    "dateStarted": 1691629272163
   },
   {
-    'firstName': 'Felix',
-    'lastName': 'Eftimie',
-    'age': 27,
-    'position': 'Mijlocas dreapta',
-    'dateStarted': '2018-06-29'
+    "firstName": "Alex",
+    "lastName": "Dima",
+    "age": 18,
+    "position": "Mijlocas dreapta",
+    "dateStarted": 1531266089078
   },
   {
-    'firstName': 'Lasc\u0103r',
-    'lastName': 'Preda',
-    'age': 25,
-    'position': 'Fundas central',
-    'dateStarted': '2016-06-22'
+    "firstName": "Lorin",
+    "lastName": "Popescu",
+    "age": 24,
+    "position": "Mijlocas dreapta",
+    "dateStarted": 1652699240327
   },
   {
-    'firstName': 'Martin',
-    'lastName': 'Dinu',
-    'age': 22,
-    'position': 'Mijlocas stanga',
-    'dateStarted': '2016-01-26'
+    "firstName": "Lucian",
+    "lastName": "Dima",
+    "age": 17,
+    "position": "Fundas dreapta",
+    "dateStarted": 1563059797204
   },
   {
-    'firstName': 'Beniamin',
-    'lastName': 'Mocanu',
-    'age': 32,
-    'position': 'Mijlocas stanga',
-    'dateStarted': '2019-07-09'
+    "firstName": "Petru",
+    "lastName": "Suciu",
+    "age": 32,
+    "position": "Extrema dreapta",
+    "dateStarted": 1689897636375
   },
   {
-    'firstName': 'Avram',
-    'lastName': 'Tudor',
-    'age': 21,
-    'position': 'Mijlocas dreapta',
-    'dateStarted': '2016-09-15'
+    "firstName": "Edmond",
+    "lastName": "Aanei",
+    "age": 23,
+    "position": "Fundas dreapta",
+    "dateStarted": 1505678768563
   },
   {
-    'firstName': 'Teohari',
-    'lastName': 'Stan',
-    'age': 28,
-    'position': 'Extrema stanga',
-    'dateStarted': '2019-03-28'
+    "firstName": "Nicu\u0219or",
+    "lastName": "Diaconu",
+    "age": 22,
+    "position": "Mijlocas dreapta",
+    "dateStarted": 1498824592351
   },
   {
-    'firstName': 'Maxim',
-    'lastName': 'Ni\u021b\u0103',
-    'age': 35,
-    'position': 'Portar',
-    'dateStarted': '2022-05-01'
+    "firstName": "Andrei",
+    "lastName": "Stoica",
+    "age": 28,
+    "position": "Extrema stanga",
+    "dateStarted": 1701156545287
   },
   {
-    'firstName': 'Leontin',
-    'lastName': 'Mazilescu',
-    'age': 30,
-    'position': 'Fundas dreapta',
-    'dateStarted': '2017-04-25'
+    "firstName": "Sever",
+    "lastName": "Neme\u0219",
+    "age": 35,
+    "position": "Extrema dreapta",
+    "dateStarted": 1529210653954
   },
   {
-    'firstName': 'Daniel',
-    'lastName': 'Dinu',
-    'age': 21,
-    'position': 'Mijlocas stanga',
-    'dateStarted': '2021-08-23'
+    "firstName": "Leontin",
+    "lastName": "Tabacu",
+    "age": 18,
+    "position": "Fundas dreapta",
+    "dateStarted": 1666695771817
   },
   {
-    'firstName': 'Stan',
-    'lastName': 'Nistor',
-    'age': 33,
-    'position': 'Fundas stanga',
-    'dateStarted': '2015-12-12'
+    "firstName": "Norman",
+    "lastName": "Manole",
+    "age": 31,
+    "position": "Fundas stanga",
+    "dateStarted": 1484892263661
   },
   {
-    'firstName': 'B\u0103nel',
-    'lastName': 'Cristea',
-    'age': 22,
-    'position': 'Fundas dreapta',
-    'dateStarted': '2023-01-29'
+    "firstName": "Augustin",
+    "lastName": "Dumitrescu",
+    "age": 19,
+    "position": "Mijlocas central",
+    "dateStarted": 1589388076357
   },
   {
-    'firstName': 'Horia',
-    'lastName': 'Nistor',
-    'age': 35,
-    'position': 'Mijlocas stanga',
-    'dateStarted': '2021-10-03'
+    "firstName": "Albert",
+    "lastName": "Nistor",
+    "age": 25,
+    "position": "Mijlocas dreapta",
+    "dateStarted": 1532236395535
   },
   {
-    'firstName': 'Eremia',
-    'lastName': 'Oprea',
-    'age': 35,
-    'position': 'Mijlocas central',
-    'dateStarted': '2016-07-02'
+    "firstName": "Iulian",
+    "lastName": "Aanei",
+    "age": 19,
+    "position": "Mijlocas dreapta",
+    "dateStarted": 1522905279299
   },
   {
-    'firstName': 'Mihai',
-    'lastName': 'Voinea',
-    'age': 21,
-    'position': 'Portar',
-    'dateStarted': '2015-01-18'
+    "firstName": "Martin",
+    "lastName": "Dochioiu",
+    "age": 32,
+    "position": "Mijlocas dreapta",
+    "dateStarted": 1426839939703
   },
   {
-    'firstName': 'Bogdan',
-    'lastName': 'Barbu',
-    'age': 18,
-    'position': 'Mijlocas central',
-    'dateStarted': '2015-01-29'
+    "firstName": "Felix",
+    "lastName": "Tudor",
+    "age": 30,
+    "position": "Extrema dreapta",
+    "dateStarted": 1455232803801
   },
   {
-    'firstName': 'Jan',
-    'lastName': 'Nistor',
-    'age': 21,
-    'position': 'Extrema dreapta',
-    'dateStarted': '2015-03-31'
+    "firstName": "Auric\u0103",
+    "lastName": "Ababei",
+    "age": 34,
+    "position": "Portar",
+    "dateStarted": 1456848937463
   },
   {
-    'firstName': 'Valeriu',
-    'lastName': 'Popa',
-    'age': 32,
-    'position': 'Mijlocas central',
-    'dateStarted': '2024-07-13'
+    "firstName": "Eusebiu",
+    "lastName": "Stoica",
+    "age": 18,
+    "position": "Mijlocas central",
+    "dateStarted": 1425659362389
   },
   {
-    'firstName': 'Florea',
-    'lastName': 'Stoica',
-    'age': 21,
-    'position': 'Fundas stanga',
-    'dateStarted': '2023-01-11'
+    "firstName": "Adi",
+    "lastName": "Stan",
+    "age": 26,
+    "position": "Mijlocas stanga",
+    "dateStarted": 1520431589725
   },
   {
-    'firstName': 'Teohari',
-    'lastName': 'Ardelean',
-    'age': 31,
-    'position': 'Fundas dreapta',
-    'dateStarted': '2021-11-16'
+    "firstName": "Eusebiu",
+    "lastName": "Mocanu",
+    "age": 29,
+    "position": "Mijlocas dreapta",
+    "dateStarted": 1480110833579
   },
   {
-    'firstName': 'Tiberiu',
-    'lastName': 'Pop',
-    'age': 28,
-    'position': 'Fundas dreapta',
-    'dateStarted': '2022-04-23'
+    "firstName": "B\u0103nel",
+    "lastName": "Stoica",
+    "age": 23,
+    "position": "Extrema dreapta",
+    "dateStarted": 1478247969710
   },
   {
-    'firstName': 'Ioan',
-    'lastName': 'Ni\u021b\u0103',
-    'age': 27,
-    'position': 'Extrema dreapta',
-    'dateStarted': '2020-09-25'
+    "firstName": "Fiodor",
+    "lastName": "Tabacu",
+    "age": 22,
+    "position": "Mijlocas stanga",
+    "dateStarted": 1464631716660
   },
   {
-    'firstName': 'M\u0103d\u0103lin',
-    'lastName': 'Georgescu',
-    'age': 17,
-    'position': 'Fundas dreapta',
-    'dateStarted': '2017-02-26'
+    "firstName": "Bucur",
+    "lastName": "Popa",
+    "age": 35,
+    "position": "Fundas stanga",
+    "dateStarted": 1621969671085
   },
   {
-    'firstName': 'Edgar',
-    'lastName': 'Popescu',
-    'age': 25,
-    'position': 'Mijlocas stanga',
-    'dateStarted': '2019-03-14'
+    "firstName": "Augustin",
+    "lastName": "Neme\u0219",
+    "age": 34,
+    "position": "Fundas central",
+    "dateStarted": 1572423664660
   },
   {
-    'firstName': 'Manole',
-    'lastName': 'Gheorghiu',
-    'age': 20,
-    'position': 'Extrema stanga',
-    'dateStarted': '2024-01-20'
+    "firstName": "Dumitru",
+    "lastName": "Dumitrescu",
+    "age": 26,
+    "position": "Extrema dreapta",
+    "dateStarted": 1432757989222
   },
   {
-    'firstName': 'Fabian',
-    'lastName': 'Stan',
-    'age': 19,
-    'position': 'Fundas stanga',
-    'dateStarted': '2019-05-31'
+    "firstName": "Octaviu",
+    "lastName": "Dobre",
+    "age": 28,
+    "position": "Portar",
+    "dateStarted": 1522567995099
   },
   {
-    'firstName': 'Jenel',
-    'lastName': 'Barbu',
-    'age': 22,
-    'position': 'Mijlocas dreapta',
-    'dateStarted': '2020-07-01'
+    "firstName": "Angel",
+    "lastName": "Albu",
+    "age": 17,
+    "position": "Fundas central",
+    "dateStarted": 1686881788275
   },
   {
-    'firstName': 'Tudor',
-    'lastName': 'Albu',
-    'age': 22,
-    'position': 'Extrema dreapta',
-    'dateStarted': '2015-04-09'
+    "firstName": "Silvian",
+    "lastName": "Cristea",
+    "age": 18,
+    "position": "Fundas central",
+    "dateStarted": 1525998655420
   },
   {
-    'firstName': 'Dorin',
-    'lastName': 'Barbu',
-    'age': 31,
-    'position': 'Atacant',
-    'dateStarted': '2020-04-17'
+    "firstName": "Auric\u0103",
+    "lastName": "Dochioiu",
+    "age": 31,
+    "position": "Fundas stanga",
+    "dateStarted": 1566729624391
   },
   {
-    'firstName': 'Jean',
-    'lastName': 'Pu\u0219ca\u0219u',
-    'age': 27,
-    'position': 'Fundas stanga',
-    'dateStarted': '2023-10-14'
+    "firstName": "Pavel",
+    "lastName": "Ene",
+    "age": 29,
+    "position": "Fundas central",
+    "dateStarted": 1689979461580
   },
   {
-    'firstName': 'Cezar',
-    'lastName': 'Ioni\u021b\u0103',
-    'age': 28,
-    'position': 'Mijlocas central',
-    'dateStarted': '2019-10-23'
+    "firstName": "Ciprian",
+    "lastName": "Toma",
+    "age": 21,
+    "position": "Extrema stanga",
+    "dateStarted": 1554735694206
   },
   {
-    'firstName': 'Norman',
-    'lastName': 'St\u0103nescu',
-    'age': 30,
-    'position': 'Mijlocas central',
-    'dateStarted': '2022-12-07'
+    "firstName": "Panait",
+    "lastName": "Pop",
+    "age": 29,
+    "position": "Extrema stanga",
+    "dateStarted": 1586586711449
   },
   {
-    'firstName': 'Jan',
-    'lastName': 'Neme\u0219',
-    'age': 23,
-    'position': 'Fundas central',
-    'dateStarted': '2015-11-24'
+    "firstName": "Valter",
+    "lastName": "Dumitrescu",
+    "age": 27,
+    "position": "Atacant",
+    "dateStarted": 1687664345564
   },
   {
-    'firstName': 'Augustin',
-    'lastName': 'Cristea',
-    'age': 31,
-    'position': 'Extrema stanga',
-    'dateStarted': '2016-10-12'
+    "firstName": "Manole",
+    "lastName": "Mazilescu",
+    "age": 23,
+    "position": "Extrema dreapta",
+    "dateStarted": 1637950374753
   },
   {
-    'firstName': 'Ciprian',
-    'lastName': 'Pop',
-    'age': 18,
-    'position': 'Atacant',
-    'dateStarted': '2015-08-25'
+    "firstName": "Florea",
+    "lastName": "Stancu",
+    "age": 33,
+    "position": "Mijlocas central",
+    "dateStarted": 1551753163415
   },
   {
-    'firstName': 'Lucen\u021biu',
-    'lastName': 'Tabacu',
-    'age': 27,
-    'position': 'Portar',
-    'dateStarted': '2020-09-03'
+    "firstName": "Ladislau",
+    "lastName": "Pop",
+    "age": 23,
+    "position": "Extrema stanga",
+    "dateStarted": 1459892379162
   },
   {
-    'firstName': 'Claudiu',
-    'lastName': 'Popa',
-    'age': 24,
-    'position': 'Fundas central',
-    'dateStarted': '2016-04-14'
+    "firstName": "Iuliu",
+    "lastName": "Dima",
+    "age": 30,
+    "position": "Extrema dreapta",
+    "dateStarted": 1620297286741
   },
   {
-    'firstName': 'Pavel',
-    'lastName': 'Dochioiu',
-    'age': 20,
-    'position': 'Fundas dreapta',
-    'dateStarted': '2016-01-25'
+    "firstName": "Olimpiu",
+    "lastName": "Gheorghiu",
+    "age": 29,
+    "position": "Fundas stanga",
+    "dateStarted": 1430769354295
   }
 ];

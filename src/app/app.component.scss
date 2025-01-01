@@ -4,6 +4,8 @@ $headerHeight: 64px;
   height: $headerHeight;
 }
 .app-container {
+  display: flex;
+  flex-direction: column;
   height: calc(100% - $headerHeight);
-  margin: 2px 4px;
+  padding: 2px 2px;
 }

@@ -1,10 +1,8 @@
-import { computed, inject, Injectable, signal } from '@angular/core';
-import { toSignal } from '@angular/core/rxjs-interop';
-import { Auth, GoogleAuthProvider, ParsedToken, signInWithPopup, signOut, User, user } from '@angular/fire/auth';
+import { inject, Injectable, signal } from '@angular/core';
+import { Auth, GoogleAuthProvider, signInWithPopup, signOut, User, user } from '@angular/fire/auth';
 import { doc, Firestore, setDoc } from '@angular/fire/firestore';
 import { getToken, Messaging, onMessage } from '@angular/fire/messaging';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Subscription } from 'rxjs';
 import { LoggerService } from './logger.service';
 
 
@@ -101,7 +99,7 @@ export class AuthService {
     });
   }
 
-  logout() {
+  public logout() {
     signOut(this.auth).then(() => {
       this.router.navigate(['/', 'login'])
       this.logger.debug('signed out');

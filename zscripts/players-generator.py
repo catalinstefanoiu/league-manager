@@ -1,6 +1,7 @@
 import json
 from faker import Faker
 import random
+from datetime import datetime
 
 fake = Faker("ro_RO")  # Use Romanian locale
 
@@ -24,9 +25,10 @@ for _ in range(250):
                 "Atacant",
             ]
         ),
-        "dateStarted": fake.date_between(start_date="-10y", end_date="today").strftime(
-            "%Y-%m-%d"
-        ),
+        "dateStarted": int(datetime.timestamp(fake.date_time_between(start_date="-10y", end_date="-1y")) * 1000)
+        # .strftime(
+        #     "%Y-%m-%d"
+        # ),
     }
     players.append(player)
 

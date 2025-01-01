@@ -14,8 +14,12 @@ import { Team } from '../../models/team.model';
 import { PlayerService } from './player.service';
 import { Player } from '../../models/player.model';
 import { AuthService } from '../../services/auth.service';
+import { PlayersEditComponent } from './players-edit/players-edit.component';
 
 interface IDisplayPlayer {
+  pid: string;
+  firstName: string;
+  lastName: string;
   displayName: string;
   age: number;
   position: string;
@@ -76,12 +80,69 @@ export class PlayersComponent implements OnInit, AfterViewInit {
   }
 
   private async getPlayers() {
-    this.players = await this.playerSvc.getPlayers(this.authSvc.userTeam);
-    this.logger.debug(this.players);
+    try {
+      this.teams = await this.adminSvc.getTeams();
+      this.teams.unshift({
+        tid: '',
+        name: '<no team>',
+        coachId: '',
+        managerId: ''
+      });
+
+      this.players = await this.playerSvc.getPlayers(this.authSvc.userTeam);
+      this.logger.debug(this.players);
+      const displayPlayers = this.players
+        // .filter((p) => p.age === 19)
+        .map((player) => {
+          return {
+            pid: player.pid,
+            firstName: player.firstName,
+            lastName: player.lastName,
+            displayName: player.displayName ?? '',
+            age: player.age,
+            position: player.position,
+            teamId: player.teamId ?? '',
+            team: this.getTeam(player.teamId ?? ''),
+            dateStarted: new Date(player.dateStarted)
+          } as IDisplayPlayer;
+        });
+      this.dataSource = new MatTableDataSource(displayPlayers);
+      this.dataSource.filterPredicate = this.filterPredicate;
+      if (this.paginator) {
+        this.dataSource.paginator = this.paginator;
+      }
+      if (this.sort) {
+        this.dataSource.sort = this.sort;
+      }
+    } catch (ex) {
+      this.logger.error(ex);
+    }
   }
 
   protected async editPlayer(player: IDisplayPlayer) {
+    try {
+      if (!this.teams) {
+        this.teams = await this.adminSvc.getTeams();
+      }
+      const dialogRef = this.dialog.open(PlayersEditComponent, {
+        minWidth: '300px',
+        minHeight: '300px',
+        disableClose: true,
+        hasBackdrop: true,
+        data: {
+          player,
+          teams: this.teams
+        }
+      });
 
+      dialogRef.afterClosed().subscribe(async (result) => {
+        if (result) {
+          await this.getPlayers();
+        }
+      });
+    } catch (ex) {
+      this.logger.error(ex);
+    }
   }
 
   tablePageChanged(event: PageEvent) {

@@ -4,7 +4,7 @@
     <input matInput (keyup)="applyFilter($event)" placeholder="Search by any column" #input>
   </mat-form-field>
 
-  <div class="mat-elevation-z8">
+  <div class="table-container mat-elevation-z8">
     <mat-table [dataSource]="dataSource" matSort matSortActive="created" matSortDirection="desc" class="table-players">
       <ng-container matColumnDef="idx">
         <mat-header-cell *matHeaderCellDef> # </mat-header-cell>
@@ -19,11 +19,11 @@
         <mat-cell *matCellDef="let row"> {{row.age}} </mat-cell>
       </ng-container>
       <ng-container matColumnDef="position">
-        <mat-header-cell *matHeaderCellDef> Position </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Position </mat-header-cell>
         <mat-cell *matCellDef="let row"> {{row.position}} </mat-cell>
       </ng-container>
       <ng-container matColumnDef="team">
-        <mat-header-cell *matHeaderCellDef> Team </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Team </mat-header-cell>
         <mat-cell *matCellDef="let row"> {{row.team}} </mat-cell>
       </ng-container>
       <ng-container matColumnDef="dateStarted">

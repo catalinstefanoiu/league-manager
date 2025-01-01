@@ -1,5 +1,5 @@
 import { RouterLink } from '@angular/router';
-import { Component, computed, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
@@ -19,11 +19,7 @@ import { AuthService, UserRole } from '../../services/auth.service';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
+  protected UserRole = UserRole;
   protected authSvc = inject(AuthService);
   protected user = this.authSvc.currentUser;
-  protected UserRole = UserRole;
-
-  async ngOnInit(): Promise<void> {
-
-  }
 }

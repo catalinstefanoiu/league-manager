@@ -1,4 +1,4 @@
-import { FirestoreDataConverter, QueryDocumentSnapshot, WithFieldValue } from 'firebase-admin/firestore';
+import { FieldValue, FirestoreDataConverter, QueryDocumentSnapshot, WithFieldValue } from 'firebase-admin/firestore';
 
 export class Player {
   constructor(
@@ -24,7 +24,7 @@ export interface IPlayerDbModel {
   position: string;
   teamId: string;
   isCoach: boolean;
-  dateStarted: Date;
+  dateStarted: number;
 }
 
 export class PlayerConverter implements FirestoreDataConverter<Player, IPlayerDbModel> {
@@ -36,7 +36,7 @@ export class PlayerConverter implements FirestoreDataConverter<Player, IPlayerDb
       position: player.position,
       teamId: player.teamId,
       isCoach: player.isCoach,
-      dateStarted: player.dateStarted
+      dateStarted: this._dateStartedToNumber(player.dateStarted)
     };
   }
 
@@ -50,7 +50,14 @@ export class PlayerConverter implements FirestoreDataConverter<Player, IPlayerDb
       data.position,
       data.teamId,
       data.isCoach,
-      data.dateStarted
+      new Date(data.dateStarted)
     );
+  }
+
+  _dateStartedToNumber(dateStarted: FieldValue | WithFieldValue<Date>): number | FieldValue {
+    if (typeof (dateStarted as Date).getTime === 'function') {
+      return (dateStarted as Date).getTime();
+    }
+    return dateStarted as FieldValue;
   }
 }

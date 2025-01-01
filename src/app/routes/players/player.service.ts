@@ -1,5 +1,9 @@
 import { inject, Injectable } from '@angular/core';
-import { collection, Firestore, FirestoreDataConverter, getDocs, query, QueryDocumentSnapshot, where, WithFieldValue } from '@angular/fire/firestore';
+import {
+  collection, doc, FieldValue, Firestore, FirestoreDataConverter,
+  getDocs, query, QueryDocumentSnapshot, setDoc, Timestamp,
+  updateDoc, where, WithFieldValue
+} from '@angular/fire/firestore';
 import { Player } from '../../models/player.model';
 
 
@@ -10,9 +14,10 @@ export interface IPlayerDbModel {
   position: string;
   teamId: string;
   isCoach: boolean;
-  dateStarted: Date;
+  dateStarted: number;
 }
 
+const COL_NAME = 'players';
 
 
 @Injectable({
@@ -23,7 +28,7 @@ export class PlayerService {
 
   public async getPlayers(teamId: string): Promise<Player[]> {
     const players: Player[] = [];
-    const col = collection(this.firestore, 'players');
+    const col = collection(this.firestore, COL_NAME);
     let querySnapshot;
     if (!teamId) {
       querySnapshot = await getDocs(col.withConverter(new PlayerConverter()));
@@ -33,9 +38,14 @@ export class PlayerService {
     }
     querySnapshot.forEach((doc) => {
       const data = doc.data();
-      players.push(data);
+      players.push(data as Player);
     });
     return players;
+  }
+
+  public async updatePlayer(player: Player): Promise<void> {
+    const playerRef = doc(this.firestore, COL_NAME, player.pid).withConverter(new PlayerConverter());
+    await setDoc(playerRef, player);
   }
 }
 
@@ -48,7 +58,7 @@ export class PlayerConverter implements FirestoreDataConverter<Player, IPlayerDb
       position: player.position,
       teamId: player.teamId,
       isCoach: player.isCoach,
-      dateStarted: player.dateStarted
+      dateStarted: this._dateStartedToNumber(player.dateStarted)
     };
   }
 
@@ -63,8 +73,15 @@ export class PlayerConverter implements FirestoreDataConverter<Player, IPlayerDb
       data.position,
       data.teamId,
       data.isCoach,
-      data.dateStarted
+      new Date(data.dateStarted)
     );
+  }
+
+  _dateStartedToNumber(dateStarted: FieldValue | WithFieldValue<Date>): number | FieldValue {
+    if (typeof (dateStarted as Date).getTime === 'function') {
+      return (dateStarted as Date).getTime();
+    }
+    return dateStarted as FieldValue;
   }
 }
 
