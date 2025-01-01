@@ -21,7 +21,6 @@ import { AuthService, UserRole } from '../../services/auth.service';
 export class HeaderComponent {
   protected authSvc = inject(AuthService);
   protected user = this.authSvc.currentUser;
-  protected userRole = this.authSvc.role;
   protected UserRole = UserRole;
 
   async ngOnInit(): Promise<void> {

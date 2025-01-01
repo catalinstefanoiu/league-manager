@@ -6,7 +6,7 @@
   <div class="filler"></div>
   @if(user(); as user) {
 
-  @if (userRole() === UserRole.AppAdmin) {
+  @if (user.userRole === UserRole.AppAdmin) {
   <button mat-button [matMenuTriggerFor]="adminMenu" class="menu-admin">Admin</button>
   <mat-menu #adminMenu="matMenu">
     <button mat-menu-item [routerLink]="['/', 'admin-users']">

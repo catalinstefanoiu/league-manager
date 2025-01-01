@@ -25,6 +25,11 @@ interface ICustomClaims {
   team: string;
 }
 
+export interface IAppUser extends User {
+  readonly userRole: UserRole;
+  readonly userTeam: string;
+}
+
 
 @Injectable({
   providedIn: 'root',
@@ -37,30 +42,39 @@ export class AuthService {
   private router: Router = inject(Router);
   private provider = new GoogleAuthProvider();
 
-  private user$ = user(this.auth);
-  #currentUserSignal = signal<User | null>(null);
+  #user$ = user(this.auth);
+  #currentUserSignal = signal<IAppUser | null>(null);
   public currentUser = this.#currentUserSignal.asReadonly();
-  #customClaims = signal<ICustomClaims>({ role: UserRole.User, team: '' });
-  public customClaims = this.#customClaims.asReadonly();
-  public role = computed(() => this.customClaims().role);
-  public team = computed(() => this.customClaims().team);
 
+  get userTeam(): string {
+    return this.currentUser()?.userTeam ?? '';
+  }
+  
   constructor() {
-    this.user$.subscribe(async (aUser: User | null) => {
+    this.#user$.subscribe(async (aUser: User | null) => {
+      let appUser: IAppUser | null = null;
+
       if (aUser) {
         try {
           const idTokenResult = await this.auth.currentUser?.getIdTokenResult();
           this.logger.debug('claims:', idTokenResult);
+          let role = UserRole.User;
+          let team = '';
           if (idTokenResult?.claims) {
-            const role = idTokenResult?.claims[CustomClaimField.role] as number ?? UserRole.User;
-            const team = idTokenResult?.claims[CustomClaimField.team] as string ?? '';
-            this.#customClaims.set({ role, team });
+            role = idTokenResult?.claims[CustomClaimField.role] as number ?? UserRole.User;
+            team = idTokenResult?.claims[CustomClaimField.team] as string ?? '';
+          }
+
+          appUser = {
+            ...aUser,
+            userRole: role,
+            userTeam: team
           }
         } catch (ex) {
           this.logger.error(ex);
         }
       }
-      this.#currentUserSignal.set(aUser);
+      this.#currentUserSignal.set(appUser);
     });
   }
 
@@ -90,9 +104,9 @@ export class AuthService {
   logout() {
     signOut(this.auth).then(() => {
       this.router.navigate(['/', 'login'])
-      console.log('signed out');
+      this.logger.debug('signed out');
     }).catch((error) => {
-      console.log('sign out error: ' + error);
+      this.logger.error('sign out error: ' + error);
     });
   }
 
