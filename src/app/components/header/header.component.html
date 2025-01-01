@@ -4,9 +4,9 @@
     <span>League Manager</span>
   </a>
   <div class="filler"></div>
-  @if(user$ | async; as user) {
+  @if(user(); as user) {
 
-  @if (userRole === UserRole.AppAdmin) {
+  @if (userRole() === UserRole.AppAdmin) {
   <button mat-button [matMenuTriggerFor]="adminMenu" class="menu-admin">Admin</button>
   <mat-menu #adminMenu="matMenu">
     <button mat-menu-item [routerLink]="['/', 'admin-users']">

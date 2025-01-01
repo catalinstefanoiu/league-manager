@@ -76,7 +76,7 @@ export class PlayersComponent implements OnInit, AfterViewInit {
   }
 
   private async getPlayers() {
-    this.players = await this.playerSvc.getPlayers(this.authSvc.team);
+    this.players = await this.playerSvc.getPlayers(this.authSvc.team());
     this.logger.debug(this.players);
   }
 

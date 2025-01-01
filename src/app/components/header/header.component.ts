@@ -1,6 +1,5 @@
-import { AsyncPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
@@ -10,7 +9,6 @@ import { AuthService, UserRole } from '../../services/auth.service';
 @Component({
   selector: 'app-header',
   imports: [
-    AsyncPipe,
     RouterLink,
     MatButtonModule,
     MatIconModule,
@@ -22,12 +20,11 @@ import { AuthService, UserRole } from '../../services/auth.service';
 })
 export class HeaderComponent {
   protected authSvc = inject(AuthService);
-  protected user$ = this.authSvc.user$;
-  protected userRole$ = this.authSvc.userRole$;
+  protected user = this.authSvc.currentUser;
+  protected userRole = this.authSvc.role;
   protected UserRole = UserRole;
-  protected userRole: UserRole = UserRole.User;
 
   async ngOnInit(): Promise<void> {
-    this.userRole$.subscribe((userRole) => this.userRole = userRole);
+
   }
 }

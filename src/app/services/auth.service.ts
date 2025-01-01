@@ -1,4 +1,5 @@
-import { inject, Injectable } from '@angular/core';
+import { computed, inject, Injectable, signal } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { Auth, GoogleAuthProvider, ParsedToken, signInWithPopup, signOut, User, user } from '@angular/fire/auth';
 import { doc, Firestore, setDoc } from '@angular/fire/firestore';
 import { getToken, Messaging, onMessage } from '@angular/fire/messaging';
@@ -36,19 +37,13 @@ export class AuthService {
   private router: Router = inject(Router);
   private provider = new GoogleAuthProvider();
 
-  user$ = user(this.auth);
-  currentUser: User | null = this.auth.currentUser;
-  private customeClaims: ICustomClaims = { role: UserRole.User, team: '' };
-  private userRole: BehaviorSubject<UserRole> = new BehaviorSubject<UserRole>(UserRole.User);
-  public userRole$ = this.userRole.asObservable();
-
-  get role(): UserRole {
-    return this.customeClaims.role;
-  }
-
-  get team(): string {
-    return this.customeClaims.team;
-  }
+  private user$ = user(this.auth);
+  #currentUserSignal = signal<User | null>(null);
+  public currentUser = this.#currentUserSignal.asReadonly();
+  #customClaims = signal<ICustomClaims>({ role: UserRole.User, team: '' });
+  public customClaims = this.#customClaims.asReadonly();
+  public role = computed(() => this.customClaims().role);
+  public team = computed(() => this.customClaims().team);
 
   constructor() {
     this.user$.subscribe(async (aUser: User | null) => {
@@ -57,15 +52,15 @@ export class AuthService {
           const idTokenResult = await this.auth.currentUser?.getIdTokenResult();
           this.logger.debug('claims:', idTokenResult);
           if (idTokenResult?.claims) {
-            this.customeClaims.role = idTokenResult?.claims[CustomClaimField.role] as number ?? UserRole.User;
-            this.customeClaims.team = idTokenResult?.claims[CustomClaimField.team] as string ?? '';
+            const role = idTokenResult?.claims[CustomClaimField.role] as number ?? UserRole.User;
+            const team = idTokenResult?.claims[CustomClaimField.team] as string ?? '';
+            this.#customClaims.set({ role, team });
           }
-          this.userRole.next(idTokenResult?.claims[CustomClaimField.role] as number ?? UserRole.User);
         } catch (ex) {
           this.logger.error(ex);
         }
       }
-      this.currentUser = aUser;
+      this.#currentUserSignal.set(aUser);
     });
   }
 
