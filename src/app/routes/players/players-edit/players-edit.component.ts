@@ -5,6 +5,7 @@ import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/materia
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { Team } from '../../../models/team.model';
 import { getPlayerPositions, Player } from '../../../models/player.model';
 import { AuthService, UserRole } from '../../../services/auth.service';
@@ -19,7 +20,8 @@ import { LoggerService } from '../../../services/logger.service';
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSlideToggleModule
   ],
   templateUrl: './players-edit.component.html',
   styleUrl: './players-edit.component.scss'
@@ -36,7 +38,8 @@ export class PlayersEditComponent {
     lastName: new FormControl('', Validators.required),
     age: new FormControl(0, Validators.required),
     position: new FormControl('', Validators.required),
-    team: new FormControl<string | null>('')
+    team: new FormControl<string | null>(''),
+    isCoach: new FormControl<boolean>(false)
   });
 
   protected positions = getPlayerPositions();
@@ -58,6 +61,7 @@ export class PlayersEditComponent {
       age: this.player.age,
       position: this.player.position,
       team: this.player.teamId,
+      isCoach: this.player.isCoach ?? false
       // dateStarted: this.player.dateStarted
     });
   }
@@ -76,7 +80,7 @@ export class PlayersEditComponent {
         position: this.formPlayer.value.position!,
         teamId: this.formPlayer.value.team!,
         dateStarted: this.player.dateStarted,
-        isCoach: false,
+        isCoach: this.formPlayer.value.isCoach!,
         pid: this.player.pid
       };
       

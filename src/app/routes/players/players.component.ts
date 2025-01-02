@@ -98,12 +98,13 @@ export class PlayersComponent implements OnInit, AfterViewInit {
             pid: player.pid,
             firstName: player.firstName,
             lastName: player.lastName,
-            displayName: player.displayName ?? '',
+            displayName: `${player.displayName ?? ''}${player.isCoach ? ' (*)' : ''}`,
             age: player.age,
             position: player.position,
+            isCoach: player.isCoach,
             teamId: player.teamId ?? '',
             team: this.getTeam(player.teamId ?? ''),
-            dateStarted: new Date(player.dateStarted)
+            dateStarted: player.dateStarted
           } as IDisplayPlayer;
         })
         .sort((a, b) =>
