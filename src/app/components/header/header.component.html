@@ -6,9 +6,15 @@
   <div class="filler"></div>
   @if(user(); as user) {
 
-  @if (user.userRole === UserRole.AppAdmin) {
+  @if (
+  user.userRole === UserRole.AppAdmin ||
+  user.userRole === UserRole.TeamAdmin ||
+  user.userRole === UserRole.TeamManager
+  ) {
   <button mat-button [matMenuTriggerFor]="adminMenu" class="menu-admin">Admin</button>
   <mat-menu #adminMenu="matMenu">
+  
+    @if (user.userRole === UserRole.AppAdmin) {
     <button mat-menu-item [routerLink]="['/', 'admin-users']">
       <mat-icon>group</mat-icon>
       <span>Users</span>
@@ -17,6 +23,8 @@
       <mat-icon>diversity_3</mat-icon>
       <span>Teams</span>
     </button>
+    }
+  
     <button mat-menu-item [routerLink]="['/', 'players']">
       <mat-icon>groups</mat-icon>
       <span>Players</span>
