@@ -13,16 +13,16 @@ for _ in range(250):
         "age": random.randint(17, 35),
         "position": random.choice(
             [
-                "Portar",
-                "Fundas stanga",
-                "Fundas dreapta",
-                "Fundas central",
-                "Mijlocas stanga",
-                "Mijlocas dreapta",
-                "Mijlocas central",
-                "Extrema stanga",
-                "Extrema dreapta",
-                "Atacant",
+                'Portar',
+                'Fundaș stânga',
+                'Fundaș dreapta',
+                'Fundaș central',
+                'Mijlocaș stânga',
+                'Mijlocaș dreapta',
+                'Mijlocaș central',
+                'Extremă stânga',
+                'Extremă dreapta',
+                'Atacant',
             ]
         ),
         "dateStarted": int(datetime.timestamp(fake.date_time_between(start_date="-10y", end_date="-1y")) * 1000)

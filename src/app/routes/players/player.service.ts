@@ -1,8 +1,8 @@
 import { inject, Injectable } from '@angular/core';
 import {
   collection, doc, FieldValue, Firestore, FirestoreDataConverter,
-  getDocs, query, QueryDocumentSnapshot, setDoc, Timestamp,
-  updateDoc, where, WithFieldValue
+  getDocs, query, QueryDocumentSnapshot, setDoc, where, WithFieldValue,
+  writeBatch
 } from '@angular/fire/firestore';
 import { Player } from '../../models/player.model';
 
@@ -47,6 +47,23 @@ export class PlayerService {
     const playerRef = doc(this.firestore, COL_NAME, player.pid).withConverter(new PlayerConverter());
     await setDoc(playerRef, player);
   }
+
+  public async allocatePlayers(players: Player[]): Promise<void> {
+    const batch = writeBatch(this.firestore);
+    players.forEach((player) => {
+      const playerRef = doc(this.firestore, COL_NAME, player.pid);
+      batch.set(playerRef, {
+        firstName: player.firstName,
+        lastName: player.lastName,
+        age: player.age,
+        position: player.position,
+        teamId: player.teamId,
+        isCoach: player.isCoach ?? false,
+        dateStarted: player.dateStarted.getTime()
+      });
+    })
+    await batch.commit();
+  }
 }
 
 export class PlayerConverter implements FirestoreDataConverter<Player, IPlayerDbModel> {
@@ -57,7 +74,7 @@ export class PlayerConverter implements FirestoreDataConverter<Player, IPlayerDb
       age: player.age,
       position: player.position,
       teamId: player.teamId,
-      isCoach: player.isCoach,
+      isCoach: player.isCoach ?? false,
       dateStarted: this._dateStartedToNumber(player.dateStarted)
     };
   }

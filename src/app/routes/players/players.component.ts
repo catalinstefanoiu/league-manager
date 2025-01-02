@@ -57,8 +57,8 @@ export class PlayersComponent implements OnInit, AfterViewInit {
 
   private players: Player[] = [];
   protected dataSource: MatTableDataSource<IDisplayPlayer> = new MatTableDataSource<IDisplayPlayer>([]);
-  protected pageSizeOptions = [50, 100];
-  protected pageSize = this.pageSizeOptions[0];
+  protected pageSizeOptions = [50, 100, 250];
+  protected pageSize = this.pageSizeOptions[2];
   protected pageIndex = 0;
   protected displayedColumns = ['idx', 'displayName', 'age', 'position', 'team', 'dateStarted'];
 
@@ -105,7 +105,12 @@ export class PlayersComponent implements OnInit, AfterViewInit {
             team: this.getTeam(player.teamId ?? ''),
             dateStarted: new Date(player.dateStarted)
           } as IDisplayPlayer;
-        });
+        })
+        .sort((a, b) =>
+          a.team.localeCompare(b.team) ||
+          a.position.localeCompare(b.position) ||
+          a.lastName.localeCompare(b.lastName) ||
+          a.lastName.localeCompare(b.firstName));
       this.dataSource = new MatTableDataSource(displayPlayers);
       this.dataSource.filterPredicate = this.filterPredicate;
       if (this.paginator) {
@@ -116,6 +121,77 @@ export class PlayersComponent implements OnInit, AfterViewInit {
       }
     } catch (ex) {
       this.logger.error(ex);
+    }
+  }
+
+  private async allocatePlayers() {
+    if (!this.players || !this.teams) {
+      return;
+    }
+
+    const teams = this.teams
+      .filter((team) => team.tid)
+      .map((team) => {
+        return {
+          teamId: team.tid,
+          positionMap: new Map<string, number>()
+        }
+      });
+
+    const allocateTeam = (position: string): string => {
+      for (let i = 0; i < teams.length; i++) {
+        const count = teams[i].positionMap.get(position) ?? 0;
+        if (count < 2) {
+          teams[i].positionMap.set(position, count + 1);
+          return teams[i].teamId;
+        }
+      }
+
+      const random = Math.floor(Math.random() * teams.length);
+      const count = teams[random].positionMap.get(position) ?? 0;
+      teams[random].positionMap.set(position, count + 1);
+      return teams[random].teamId;
+    };
+
+    for (let i = 0; i < this.players.length; i++) {
+      if (this.players[i].teamId) {
+        continue;
+      }
+      const teamId = allocateTeam(this.players[i].position);
+      this.logger.debug(teamId);
+      this.players[i].teamId = teamId;
+    }
+    this.logger.debug(teams);
+
+    // try {
+    //   this.playerSvc.allocatePlayers(this.players);
+    // } catch (ex) {
+    //   this.logger.error(ex);
+    // }
+
+    const displayPlayers = this.players
+      // .filter((p) => p.age === 19)
+      .map((player) => {
+        return {
+          pid: player.pid,
+          firstName: player.firstName,
+          lastName: player.lastName,
+          displayName: player.displayName ?? '',
+          age: player.age,
+          position: player.position,
+          teamId: player.teamId ?? '',
+          team: this.getTeam(player.teamId ?? ''),
+          dateStarted: new Date(player.dateStarted)
+        } as IDisplayPlayer;
+      })
+      .sort((a, b) => a.position.localeCompare(b.position));
+    this.dataSource = new MatTableDataSource(displayPlayers);
+    this.dataSource.filterPredicate = this.filterPredicate;
+    if (this.paginator) {
+      this.dataSource.paginator = this.paginator;
+    }
+    if (this.sort) {
+      this.dataSource.sort = this.sort;
     }
   }
 

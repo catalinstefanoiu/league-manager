@@ -1,14 +1,14 @@
 export class Player {
   constructor(
     readonly pid: string,
-    readonly firstName: string,
-    readonly lastName: string,
-    readonly displayName: string,
-    readonly age: number,
-    readonly position: string,
-    readonly teamId: string,
-    readonly isCoach: boolean,
-    readonly dateStarted: Date,
+    public firstName: string,
+    public lastName: string,
+    public displayName: string,
+    public age: number,
+    public position: string,
+    public teamId: string,
+    public isCoach: boolean,
+    public dateStarted: Date,
   ) { }
 
   toString(): string {
@@ -19,14 +19,14 @@ export class Player {
 export function getPlayerPositions(): string[] {
   return [
     'Portar',
-    'Fundas stanga',
-    'Fundas dreapta',
-    'Fundas central',
-    'Mijlocas stanga',
-    'Mijlocas dreapta',
-    'Mijlocas central',
-    'Extrema stanga',
-    'Extrema dreapta',
+    'Fundaș stânga',
+    'Fundaș dreapta',
+    'Fundaș central',
+    'Mijlocaș stânga',
+    'Mijlocaș dreapta',
+    'Mijlocaș central',
+    'Extremă stânga',
+    'Extremă dreapta',
     'Atacant',
   ];
 }
