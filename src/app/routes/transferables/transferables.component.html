@@ -1,0 +1,40 @@
+<div class="container">
+  <mat-form-field class="search-input">
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Search by any column" #input>
+  </mat-form-field>
+
+  <div class="table-container mat-elevation-z8">
+    <mat-table [dataSource]="dataSource" matSort matSortActive="created" matSortDirection="desc" class="table-players">
+      <ng-container matColumnDef="idx">
+        <mat-header-cell *matHeaderCellDef> # </mat-header-cell>
+        <mat-cell *matCellDef="let row; let idx = index">{{getRowIndex(idx)}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="displayName">
+        <mat-header-cell *matHeaderCellDef> Display Name </mat-header-cell>
+        <mat-cell *matCellDef="let row"><a href (click)="editPlayer(row)">{{row.displayName}}</a></mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="age">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Age </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.age}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="position">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Position </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.position}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="team">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Team </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.team}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="dateStarted">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Started on </mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.dateStarted | date}}</mat-cell>
+      </ng-container>
+      
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+    <mat-paginator [pageSizeOptions]="pageSizeOptions" (page)="tablePageChanged($event)"></mat-paginator>
+  </div>
+</div>

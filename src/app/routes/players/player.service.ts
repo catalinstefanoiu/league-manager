@@ -44,6 +44,19 @@ export class PlayerService {
     return players;
   }
 
+  public async getTransferables(): Promise<Player[]> {
+    const players: Player[] = [];
+    const col = collection(this.firestore, COL_NAME);
+    let querySnapshot;
+    const q = query(col, where('transferable', '==', true));
+    querySnapshot = await getDocs(q.withConverter(new PlayerConverter()));
+    querySnapshot.forEach((doc) => {
+      const data = doc.data();
+      players.push(data as Player);
+    });
+    return players;
+  }
+
   public async updatePlayer(player: Player): Promise<void> {
     const playerRef = doc(this.firestore, COL_NAME, player.pid).withConverter(new PlayerConverter());
     await setDoc(playerRef, player);
