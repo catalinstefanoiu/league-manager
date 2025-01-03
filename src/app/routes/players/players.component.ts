@@ -98,10 +98,11 @@ export class PlayersComponent implements OnInit, AfterViewInit {
             pid: player.pid,
             firstName: player.firstName,
             lastName: player.lastName,
-            displayName: `${player.displayName ?? ''}${player.isCoach ? ' (C)' : ''}`,
+            displayName: `${player.displayName ?? ''}${player.isCoach ? ' (C)' : ''}${player.transferable ? ' (T)' : ''}`,
             age: player.age,
             position: player.position,
             isCoach: player.isCoach,
+            transferable: player.transferable,
             teamId: player.teamId ?? '',
             team: this.getTeam(player.teamId ?? ''),
             dateStarted: player.dateStarted

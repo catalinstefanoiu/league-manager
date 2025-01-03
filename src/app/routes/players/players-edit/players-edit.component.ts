@@ -62,7 +62,8 @@ export class PlayersEditComponent {
       age: this.player.age,
       position: this.player.position,
       team: this.player.teamId,
-      isCoach: this.player.isCoach ?? false
+      isCoach: this.player.isCoach ?? false,
+      transferable: this.player.transferable ?? false
       // dateStarted: this.player.dateStarted
     });
   }

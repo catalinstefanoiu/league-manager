@@ -22,8 +22,7 @@
           }
         </mat-select>
       </mat-form-field>
-      <mat-slide-toggle labelPosition="before" formControlName="isCoach">Is Coach</mat-slide-toggle>
-      <mat-slide-toggle labelPosition="before" formControlName="transferable">Transferable</mat-slide-toggle>
+      
       @if(user(); as user) {
       @if (user.userRole === UserRole.AppAdmin) {
       <mat-form-field>
@@ -36,6 +35,9 @@
       </mat-form-field>
       }
       }
+
+      <mat-slide-toggle labelPosition="before" formControlName="isCoach">Is Coach</mat-slide-toggle>
+      <mat-slide-toggle labelPosition="before" formControlName="transferable">Transferable</mat-slide-toggle>
     </form>
   </mat-dialog-content>
   <mat-dialog-actions style="justify-content: center">
