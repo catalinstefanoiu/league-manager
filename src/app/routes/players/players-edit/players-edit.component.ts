@@ -39,7 +39,8 @@ export class PlayersEditComponent {
     age: new FormControl(0, Validators.required),
     position: new FormControl('', Validators.required),
     team: new FormControl<string | null>(''),
-    isCoach: new FormControl<boolean>(false)
+    isCoach: new FormControl<boolean>(false),
+    transferable: new FormControl<boolean>(false)
   });
 
   protected positions = getPlayerPositions();
@@ -81,6 +82,7 @@ export class PlayersEditComponent {
         teamId: this.formPlayer.value.team!,
         dateStarted: this.player.dateStarted,
         isCoach: this.formPlayer.value.isCoach!,
+        transferable: this.formPlayer.value.transferable!,
         pid: this.player.pid
       };
       

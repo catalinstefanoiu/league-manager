@@ -98,7 +98,7 @@ export class PlayersComponent implements OnInit, AfterViewInit {
             pid: player.pid,
             firstName: player.firstName,
             lastName: player.lastName,
-            displayName: `${player.displayName ?? ''}${player.isCoach ? ' (*)' : ''}`,
+            displayName: `${player.displayName ?? ''}${player.isCoach ? ' (C)' : ''}`,
             age: player.age,
             position: player.position,
             isCoach: player.isCoach,

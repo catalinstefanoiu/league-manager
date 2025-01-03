@@ -15,6 +15,7 @@ export interface IPlayerDbModel {
   teamId: string;
   isCoach: boolean;
   dateStarted: number;
+  transferable: boolean;
 }
 
 const COL_NAME = 'players';
@@ -75,7 +76,8 @@ export class PlayerConverter implements FirestoreDataConverter<Player, IPlayerDb
       position: player.position,
       teamId: player.teamId,
       isCoach: player.isCoach ?? false,
-      dateStarted: this._dateStartedToNumber(player.dateStarted)
+      dateStarted: this._dateStartedToNumber(player.dateStarted),
+      transferable: player.transferable ?? false
     };
   }
 
@@ -90,7 +92,8 @@ export class PlayerConverter implements FirestoreDataConverter<Player, IPlayerDb
       data.position,
       data.teamId,
       data.isCoach,
-      new Date(data.dateStarted)
+      new Date(data.dateStarted),
+      data.transferable
     );
   }
 

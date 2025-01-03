@@ -9,6 +9,7 @@ export class Player {
     public teamId: string,
     public isCoach: boolean,
     public dateStarted: Date,
+    public transferable: boolean
   ) { }
 
   toString(): string {
