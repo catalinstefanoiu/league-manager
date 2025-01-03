@@ -67,7 +67,7 @@ export class AuthService {
             role = idTokenResult?.claims[CustomClaimField.role] as number ?? UserRole.User;
             team = idTokenResult?.claims[CustomClaimField.team] as string ?? '';
 
-            if (hasClaims && !this.checkNotificationFlag()) {
+            if (hasClaims && !this.checkNotificationFlag(this.auth.currentUser?.uid ?? '<unknown>')) {
               if (await this.saveMessagingDeviceToken()) {
                 this.logger.debug('notification has been set up');
               }
@@ -77,8 +77,8 @@ export class AuthService {
             // On first login custom claims are not sent so we force a token refresh
             setTimeout(() => {
               this.logger.debug('force token refresh');
-              this.auth.currentUser?.getIdTokenResult(true)
-            }, 100);
+              this.auth.currentUser?.getIdTokenResult(true);
+            }, 300);
             return;
           }
 
@@ -148,6 +148,7 @@ export class AuthService {
         const tokenRef = doc(this.firestore, 'fcmTokens', currentToken);
         await setDoc(tokenRef, { uid: this.auth.currentUser?.uid });
         this.logger.log('FCM device token saved');
+        this.setNotificationFlag(this.auth.currentUser?.uid ?? '<unknown>');
 
         // This will fire when a message is received while the app is in the foreground.
         // When the app is in the background, firebase-messaging-sw.js will receive the message instead.
@@ -161,7 +162,7 @@ export class AuthService {
         // Need to request permissions to show notifications.
         this.requestNotificationsPermissions();
       }
-      this.setNotificationFlag();
+
       return true;
     } catch (error) {
       this.logger.error('Unable to get messaging token.', error);
@@ -170,11 +171,11 @@ export class AuthService {
     return false;
   }
 
-  private checkNotificationFlag(): boolean {
-    return !!localStorage.getItem('LS_AUTH_NOTIFICATION');
+  private checkNotificationFlag(userId: string): boolean {
+    return !!localStorage.getItem(`LS_AUTH_NOTIFICATION_${userId}`);
   }
 
-  private setNotificationFlag(): void {
-    localStorage.setItem('LS_AUTH_NOTIFICATION', Date.now().toFixed());
+  private setNotificationFlag(userId: string): void {
+    localStorage.setItem(`LS_AUTH_NOTIFICATION_${userId}`, Date.now().toFixed());
   }
 }
