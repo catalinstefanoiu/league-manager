@@ -25,7 +25,8 @@ export const api = onRequest(
   {
     cors: [
       'https://localhost:5800',
-      'https://192.168.5.27:5800'
+      'https://192.168.5.27:5800',
+      'https://leaguemanager-39205.web.app'
     ]
   },
   expressApp
