@@ -8,6 +8,7 @@ import { HomeComponent } from './routes/home/home.component';
 import { LoginPageComponent } from './routes/public/login-page/login-page.component';
 import { PrivacyPolicyComponent } from './routes/public/privacy-policy/privacy-policy.component';
 import { AdminUsersComponent } from './routes/admin-users/admin-users.component';
+import { AdminTeamsComponent } from './routes/admin-teams/admin-teams.component';
 import { PlayersComponent } from './routes/players/players.component';
 import { TransferablesComponent } from './routes/transferables/transferables.component';
 
@@ -50,6 +51,12 @@ export const routes: Routes = [
     component: TransferablesComponent,
     canActivate: [AuthGuard],
     data: { authGuardPipe: redirectUnauthorizedToLogin },
+  },
+  {
+    path: 'admin-teams',
+    component: AdminTeamsComponent,
+    canActivate: [AuthGuard],
+    data: { AuthGuardPipe: redirectUnauthorizedToLogin },
   },
   {
     path: 'pages/privacy-policy',

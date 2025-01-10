@@ -1,1 +1,72 @@
-<p>home works!</p>
+<table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)"
+       class="mat-elevation-z8">
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="position">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Position</th>
+    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+  </ng-container>
+  
+    <!-- Team Name Column -->
+    <ng-container matColumnDef="team">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Team</th>
+        <td mat-cell *matCellDef="let element">
+          <div class="team-name-container">
+            <img [src]="element.logo" alt="{{element.team}} logo" class="team-logo" />
+            <span>{{element.team}}</span>
+          </div>
+        </td>
+      </ng-container>
+  
+
+  <!-- Played Column -->
+  <ng-container matColumnDef="played">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Played</th>
+    <td mat-cell *matCellDef="let element" class="centered-cell"> {{element.played}} </td>
+  </ng-container>
+
+  <!-- Won Column -->
+  <ng-container matColumnDef="won">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Won</th>
+    <td mat-cell *matCellDef="let element"> {{element.won}} </td>
+  </ng-container>
+
+  <!-- Drawn Column -->
+  <ng-container matColumnDef="drawn">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Drawn</th>
+    <td mat-cell *matCellDef="let element"> {{element.drawn}} </td>
+  </ng-container>
+
+  <!-- Lost Column -->
+  <ng-container matColumnDef="lost">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Lost</th>
+    <td mat-cell *matCellDef="let element"> {{element.lost}} </td>
+  </ng-container>
+
+  <!-- Goals For Column -->
+  <ng-container matColumnDef="gf">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>GF</th>
+    <td mat-cell *matCellDef="let element"> {{element.gf}} </td>
+  </ng-container>
+
+  <!-- Goals Against Column -->
+  <ng-container matColumnDef="ga">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>GA</th>
+    <td mat-cell *matCellDef="let element"> {{element.ga}} </td>
+  </ng-container>
+
+  <!-- Goal Difference Column -->
+  <ng-container matColumnDef="gd">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>GD</th>
+    <td mat-cell *matCellDef="let element"> {{element.gd}} </td>
+  </ng-container>
+
+  <!-- Points Column -->
+  <ng-container matColumnDef="points">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Points</th>
+    <td mat-cell *matCellDef="let element"> {{element.points}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

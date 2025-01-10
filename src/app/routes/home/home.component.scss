@@ -1,0 +1,98 @@
+/* General Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 14px;
+    text-align: left;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    background-color: #1e1e1e; 
+    border-radius: 10px;
+    overflow: hidden;
+    color: #ffffff; 
+  }
+  
+  /* Header Styling */
+  th {
+    background-color: #2c2c2c; 
+    color: #f8f9fa;           
+    font-weight: 600;
+    padding: 20px 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    position: sticky;         /* Keeps header visible on scroll */
+    top: 0;
+    z-index: 2;
+    cursor: pointer;
+  }
+  
+  th.mat-sort-header-sorted {
+    color: #ffc107 !important; /* Highlight sorted header with gold */
+  }
+  
+  /* Row and Cell Styling */
+  td {
+    padding: 12px 10px;
+    border-bottom: 7px solid #3a3a3a; /* Subtle border for rows */
+    text-align: left;
+  }
+  
+  tr {
+    transition: background-color 0.3s ease;
+  }
+  
+  tr:nth-of-type(even) {
+    background-color: #242424; 
+  }
+  
+  tr:hover {
+    background-color: #333333; 
+  }
+
+  tr:nth-last-child(3) td {
+    border-bottom: 7px solid red; /* Change border color to red for the penultimate row */
+  }
+
+  tr:nth-child(1) td {
+    border-bottom: 7px solid #00bcd4; /* Change border color to red for the penultimate row */
+  }
+  
+  /* Points Column Highlight */
+  td:last-child {
+    font-weight: 700;         
+    color: #00bcd4;          
+  }
+  
+  /* Table Borders */
+  tr:last-of-type td {
+    border-bottom: 0; /* Remove border for last row */
+  }
+  
+  /* Responsive Styling */
+  @media (max-width: 768px) {
+    th, td {
+      font-size: 12px;
+      padding: 10px 8px;
+    }
+  }
+
+  //
+
+  .team-name-container {
+    display: flex;
+    align-items: center; /* Vertically align the logo and name */
+  }
+  
+  .team-logo {
+    width: 35px;
+    height: 35px;
+    object-fit: cover;
+    border-radius: 0%; /* Makes it circular */
+    margin-right: 10px; /* Space between the logo and the name */
+  }
+  
+  td {
+    padding: 10px; /* Optional: Adjust cell padding */
+  }
+  
+  

@@ -28,10 +28,12 @@ export interface IDisplayUser {
   team: string;
   created: Date;
   lastSignIn: Date;
+  logo: string;
 }
 
 @Component({
   selector: 'app-admin-users',
+  standalone: true,
   imports: [
     DatePipe,
     MatDialogModule,
