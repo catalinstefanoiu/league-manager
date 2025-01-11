@@ -4,3 +4,8 @@ export enum UserRole {
   TeamAdmin,
   AppAdmin
 }
+
+export interface ICustomClaims {
+  role: UserRole;
+  team: string;
+}

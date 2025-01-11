@@ -4,7 +4,8 @@ import {
   getDocs, query, QueryDocumentSnapshot, setDoc, where, WithFieldValue,
   writeBatch
 } from '@angular/fire/firestore';
-import { Player } from '../../models/player.model';
+import { Player, TransferRequest } from '../../models/player.model';
+import { ApiBaseService } from '../../services/api-base.service';
 
 
 export interface IPlayerDbModel {
@@ -16,6 +17,10 @@ export interface IPlayerDbModel {
   isCoach: boolean;
   dateStarted: number;
   transferable: boolean;
+  transferReqs?: Array<{
+    teamId: string;
+    timestamp: number;
+  }>;
 }
 
 const COL_NAME = 'players';
@@ -24,7 +29,7 @@ const COL_NAME = 'players';
 @Injectable({
   providedIn: 'root',
 })
-export class PlayerService {
+export class PlayerService extends ApiBaseService {
   private firestore = inject(Firestore);
 
   public async getPlayers(teamId: string): Promise<Player[]> {
@@ -45,21 +50,30 @@ export class PlayerService {
   }
 
   public async getTransferables(): Promise<Player[]> {
-    const players: Player[] = [];
-    const col = collection(this.firestore, COL_NAME);
-    let querySnapshot;
-    const q = query(col, where('transferable', '==', true));
-    querySnapshot = await getDocs(q.withConverter(new PlayerConverter()));
-    querySnapshot.forEach((doc) => {
-      const data = doc.data();
-      players.push(data as Player);
-    });
-    return players;
+    // const players: Player[] = [];
+    // const col = collection(this.firestore, COL_NAME);
+    // let querySnapshot;
+    // const q = query(col, where('transferable', '==', true));
+    // querySnapshot = await getDocs(q.withConverter(new PlayerConverter()));
+    // querySnapshot.forEach((doc) => {
+    //   const data = doc.data();
+    //   players.push(data as Player);
+    // });
+    // return players;
+    return this.getRequest<Player[]>('/transfers/players');
   }
 
   public async updatePlayer(player: Player): Promise<void> {
     const playerRef = doc(this.firestore, COL_NAME, player.pid).withConverter(new PlayerConverter());
     await setDoc(playerRef, player);
+  }
+
+  public async placeBid(playerId: string): Promise<void> {
+    await this.postRequest('/transfers/bid', { playerId });
+  }
+
+  public async cancelBid(playerId: string): Promise<void> {
+    await this.postRequest('/transfers/unbid', { playerId });
   }
 
   public async allocatePlayers(players: Player[]): Promise<void> {
@@ -89,13 +103,29 @@ export class PlayerConverter implements FirestoreDataConverter<Player, IPlayerDb
       position: player.position,
       teamId: player.teamId,
       isCoach: player.isCoach ?? false,
-      dateStarted: this._dateStartedToNumber(player.dateStarted),
-      transferable: player.transferable ?? false
+      dateStarted: this._dateToNumber(player.dateStarted),
+      transferable: player.transferable ?? false,
+      transferReqs: Array.isArray(player.transferReqs) && player.transferReqs?.map((r) => {
+        return {
+          teamId: (r as TransferRequest).teamId,
+          timestamp: this._dateToNumber((r as TransferRequest).timestamp)
+        };
+      }) || undefined
     };
   }
 
   fromFirestore(snapshot: QueryDocumentSnapshot): Player {
     const data = snapshot.data() as IPlayerDbModel;
+    let transferReqs;
+    if (data.transferReqs) {
+      transferReqs = data.transferReqs.map((r) => {
+        return {
+          teamId: r.teamId,
+          timestamp: new Date(r.timestamp)
+        };
+      });
+    }
+
     return new Player(
       snapshot.id,
       data.firstName,
@@ -106,15 +136,16 @@ export class PlayerConverter implements FirestoreDataConverter<Player, IPlayerDb
       data.teamId,
       data.isCoach,
       new Date(data.dateStarted),
-      data.transferable
+      data.transferable,
+      transferReqs
     );
   }
 
-  _dateStartedToNumber(dateStarted: FieldValue | WithFieldValue<Date>): number | FieldValue {
-    if (typeof (dateStarted as Date).getTime === 'function') {
-      return (dateStarted as Date).getTime();
+  _dateToNumber(date: FieldValue | WithFieldValue<Date>): number | FieldValue {
+    if (typeof (date as Date).getTime === 'function') {
+      return (date as Date).getTime();
     }
-    return dateStarted as FieldValue;
+    return date as FieldValue;
   }
 }
 

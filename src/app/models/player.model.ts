@@ -9,12 +9,20 @@ export class Player {
     public teamId: string,
     public isCoach: boolean,
     public dateStarted: Date,
-    public transferable: boolean
+    public transferable: boolean,
+    readonly transferReqs?: TransferRequest[]
   ) { }
 
   toString(): string {
     return `${this.firstName} ${this.lastName}`;
   }
+}
+
+export class TransferRequest {
+  constructor(
+    readonly teamId: string,
+    readonly timestamp: Date
+  ) { }
 }
 
 export function getPlayerPositions(): string[] {

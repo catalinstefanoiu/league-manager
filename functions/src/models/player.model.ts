@@ -5,16 +5,26 @@ export class Player {
     readonly pid: string,
     readonly firstName: string,
     readonly lastName: string,
+    readonly displayName: string,
     readonly age: number,
     readonly position: string,
     readonly teamId: string,
     readonly isCoach: boolean,
     readonly dateStarted: Date,
+    readonly transferable: boolean,
+    readonly transferReqs?: TransferRequest[]
   ) { }
 
   toString(): string {
     return `${this.firstName} ${this.lastName}`;
   }
+}
+
+export class TransferRequest {
+  constructor(
+    readonly teamId: string,
+    readonly timestamp: Date
+  ) { }
 }
 
 export interface IPlayerDbModel {
@@ -25,6 +35,11 @@ export interface IPlayerDbModel {
   teamId: string;
   isCoach: boolean;
   dateStarted: number;
+  transferable: boolean;
+  transferReqs?: Array<{
+    teamId: string;
+    timestamp: number;
+  }>;
 }
 
 export class PlayerConverter implements FirestoreDataConverter<Player, IPlayerDbModel> {
@@ -36,28 +51,47 @@ export class PlayerConverter implements FirestoreDataConverter<Player, IPlayerDb
       position: player.position,
       teamId: player.teamId,
       isCoach: player.isCoach,
-      dateStarted: this._dateStartedToNumber(player.dateStarted)
+      dateStarted: this._dateToNumber(player.dateStarted),
+      transferable: player.transferable,
+      transferReqs: Array.isArray(player.transferReqs) && player.transferReqs?.map((r) => {
+        return {
+          teamId: (r as TransferRequest).teamId,
+          timestamp: this._dateToNumber((r as TransferRequest).timestamp)
+        };
+      }) || undefined
     };
   }
 
   fromFirestore(snapshot: QueryDocumentSnapshot): Player {
     const data = snapshot.data() as IPlayerDbModel;
+    let transferReqs;
+    if (data.transferReqs) {
+      transferReqs = data.transferReqs.map((r) => {
+        return {
+          teamId: r.teamId,
+          timestamp: new Date(r.timestamp)
+        };
+      });
+    }
     return new Player(
       snapshot.id,
       data.firstName,
       data.lastName,
+      `${data.firstName} ${data.lastName}`,
       data.age,
       data.position,
       data.teamId,
       data.isCoach,
-      new Date(data.dateStarted)
+      new Date(data.dateStarted),
+      data.transferable,
+      transferReqs
     );
   }
 
-  _dateStartedToNumber(dateStarted: FieldValue | WithFieldValue<Date>): number | FieldValue {
-    if (typeof (dateStarted as Date).getTime === 'function') {
-      return (dateStarted as Date).getTime();
+  _dateToNumber(date: FieldValue | WithFieldValue<Date>): number | FieldValue {
+    if (typeof (date as Date).getTime === 'function') {
+      return (date as Date).getTime();
     }
-    return dateStarted as FieldValue;
+    return date as FieldValue;
   }
 }

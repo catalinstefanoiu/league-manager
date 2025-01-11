@@ -10,6 +10,15 @@
         <mat-header-cell *matHeaderCellDef> # </mat-header-cell>
         <mat-cell *matCellDef="let row; let idx = index">{{getRowIndex(idx)}}</mat-cell>
       </ng-container>
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let row;">
+          <button mat-icon-button aria-label="Player actions" [matMenuTriggerFor]="menuPlayer"
+            [matMenuTriggerData]="{ player: row }" (click)="openPlayerMenu(row)">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
       <ng-container matColumnDef="displayName">
         <mat-header-cell *matHeaderCellDef> Display Name </mat-header-cell>
         <mat-cell *matCellDef="let row"><a href (click)="editPlayer(row)">{{row.displayName}}</a></mat-cell>
@@ -30,11 +39,18 @@
         <mat-header-cell *matHeaderCellDef mat-sort-header> Started on </mat-header-cell>
         <mat-cell *matCellDef="let row">{{row.dateStarted | date}}</mat-cell>
       </ng-container>
-      
+
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
 
     <mat-paginator [pageSizeOptions]="pageSizeOptions" (page)="tablePageChanged($event)"></mat-paginator>
   </div>
+
+  <mat-menu #menuPlayer="matMenu">
+    <ng-template matMenuContent let-player="player">
+      <button mat-menu-item (click)="makeBid(player)" [disabled]="placeBidDisabled">Make a bid</button>
+      <button mat-menu-item (click)="cancelBid(player)" [disabled]="cancelBidDisabled">Cancel bid</button>
+    </ng-template>
+  </mat-menu>
 </div>

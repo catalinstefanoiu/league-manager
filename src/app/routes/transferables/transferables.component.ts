@@ -12,9 +12,12 @@ import { AuthService } from '../../services/auth.service';
 import { AdminService } from '../../services/admin.service';
 import { PlayerService } from '../players/player.service';
 import { UtilsService } from '../../services/utils.service';
-import { Player } from '../../models/player.model';
+import { Player, TransferRequest } from '../../models/player.model';
 import { Team } from '../../models/team.model';
 import { PlayersEditComponent } from '../players/players-edit/players-edit.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
 
 interface IDisplayPlayer {
   pid: string;
@@ -26,15 +29,19 @@ interface IDisplayPlayer {
   teamId: string;
   team: string;
   dateStarted: Date;
+  transferReqs?: TransferRequest[];
 }
 
 @Component({
   selector: 'app-transferables',
   imports: [
     DatePipe,
+    MatButtonModule,
     MatDialogModule,
     MatFormFieldModule,
+    MatIconModule,
     MatInputModule,
+    MatMenuModule,
     MatPaginator,
     MatSort,
     MatPaginatorModule,
@@ -60,7 +67,10 @@ export class TransferablesComponent {
   protected pageSizeOptions = [50, 100, 250];
   protected pageSize = this.pageSizeOptions[2];
   protected pageIndex = 0;
-  protected displayedColumns = ['idx', 'displayName', 'age', 'position', 'team', 'dateStarted'];
+  protected displayedColumns = ['idx', 'actions', 'displayName', 'age', 'position', 'team', 'dateStarted'];
+
+  protected placeBidDisabled = true;
+  protected cancelBidDisabled = true;
 
   private teams: Team[] | undefined;
 
@@ -105,7 +115,8 @@ export class TransferablesComponent {
             transferable: player.transferable,
             teamId: player.teamId ?? '',
             team: this.getTeam(player.teamId ?? ''),
-            dateStarted: player.dateStarted
+            dateStarted: player.dateStarted,
+            transferReqs: player.transferReqs
           } as IDisplayPlayer;
         })
         .sort((a, b) =>
@@ -126,57 +137,80 @@ export class TransferablesComponent {
     }
   }
 
+  protected async openPlayerMenu(player: IDisplayPlayer) {
+    this.placeBidDisabled = !!player.transferReqs?.length;
+    this.cancelBidDisabled = !player.transferReqs?.length;
+  }
+
+  protected async makeBid(player: IDisplayPlayer) {
+    try {
+      await this.playerSvc.placeBid(player.pid);
+      await this.getPlayers(); 
+    } catch (ex) {
+      this.logger.error(ex);
+    }
+  }
+
+  protected async cancelBid(player: IDisplayPlayer) {
+    try {
+      await this.playerSvc.cancelBid(player.pid);
+      await this.getPlayers(); 
+    } catch (ex) {
+      this.logger.error(ex);
+    }
+  }
+  
   protected async editPlayer(player: IDisplayPlayer) {
-      // try {
-      //   if (!this.teams) {
-      //     this.teams = await this.adminSvc.getTeams();
-      //   }
-      //   const dialogRef = this.dialog.open(PlayersEditComponent, {
-      //     minWidth: '300px',
-      //     minHeight: '300px',
-      //     disableClose: true,
-      //     hasBackdrop: true,
-      //     data: {
-      //       player,
-      //       teams: this.teams
-      //     }
-      //   });
-  
-      //   dialogRef.afterClosed().subscribe(async (result) => {
-      //     if (result) {
-      //       await this.getPlayers();
-      //     }
-      //   });
-      // } catch (ex) {
-      //   this.logger.error(ex);
-      // }
+    // try {
+    //   if (!this.teams) {
+    //     this.teams = await this.adminSvc.getTeams();
+    //   }
+    //   const dialogRef = this.dialog.open(PlayersEditComponent, {
+    //     minWidth: '300px',
+    //     minHeight: '300px',
+    //     disableClose: true,
+    //     hasBackdrop: true,
+    //     data: {
+    //       player,
+    //       teams: this.teams
+    //     }
+    //   });
+
+    //   dialogRef.afterClosed().subscribe(async (result) => {
+    //     if (result) {
+    //       await this.getPlayers();
+    //     }
+    //   });
+    // } catch (ex) {
+    //   this.logger.error(ex);
+    // }
+  }
+
+  tablePageChanged(event: PageEvent) {
+    this.pageIndex = event.pageIndex;
+    this.pageSize = event.pageSize;
+  }
+
+  getRowIndex(rowIdx: number): number {
+    return this.pageIndex * this.pageSize + rowIdx + 1;
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  private filterPredicate = (data: IDisplayPlayer, filterValue: string): boolean => {
+    let started = '';
+    if (data.dateStarted) {
+      started = this.utilsSvc.formatDateTimeLocale(data.dateStarted);
     }
-  
-    tablePageChanged(event: PageEvent) {
-      this.pageIndex = event.pageIndex;
-      this.pageSize = event.pageSize;
-    }
-  
-    getRowIndex(rowIdx: number): number {
-      return this.pageIndex * this.pageSize + rowIdx + 1;
-    }
-  
-    applyFilter(event: Event) {
-      const filterValue = (event.target as HTMLInputElement).value;
-      this.dataSource.filter = filterValue.trim().toLowerCase();
-    }
-  
-    private filterPredicate = (data: IDisplayPlayer, filterValue: string): boolean => {
-      let started = '';
-      if (data.dateStarted) {
-        started = this.utilsSvc.formatDateTimeLocale(data.dateStarted);
-      }
-      const dataValue = data.displayName + data.team + data.position + started;
-      return dataValue.toLowerCase().includes(filterValue);
-    }
-  
-    private getTeam(teamId: string): string {
-      const team = this.teams?.find((t) => t.tid === teamId);
-      return team?.name ?? '';
-    }
+    const dataValue = data.displayName + data.team + data.position + started;
+    return dataValue.toLowerCase().includes(filterValue);
+  }
+
+  private getTeam(teamId: string): string {
+    const team = this.teams?.find((t) => t.tid === teamId);
+    return team?.name ?? '';
+  }
 }

@@ -43,6 +43,12 @@ export class ApiBaseService {
     return lastValueFrom(this.http.get<T>(url, httpOptions));
   }
 
+  protected async postRequest<T>(path: string, body: unknown): Promise<T> {
+    const url = `${API_URL}${path}`;
+    const httpOptions = await this.getHttpOptions();
+    return lastValueFrom(this.http.post<T>(url, body, httpOptions));
+  }
+
   protected async putRequest<T>(path: string, body: unknown): Promise<T> {
     const url = `${API_URL}${path}`;
     const httpOptions = await this.getHttpOptions();
