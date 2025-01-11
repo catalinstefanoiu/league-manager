@@ -146,7 +146,10 @@ export class AuthService {
         this.logger.log('got FCM device token:', currentToken);
         // Saving the Device Token to Cloud Firestore.
         const tokenRef = doc(this.firestore, 'fcmTokens', currentToken);
-        await setDoc(tokenRef, { uid: this.auth.currentUser?.uid });
+        await setDoc(tokenRef, {
+          uid: this.auth.currentUser?.uid,
+          timestamp: new Date().toISOString()
+        });
         this.logger.log('FCM device token saved');
         this.setNotificationFlag(this.auth.currentUser?.uid ?? '<unknown>');
 
