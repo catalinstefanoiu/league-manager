@@ -8,6 +8,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatButtonModule } from '@angular/material/button';
 import { Team } from '../../models/team.model';
 import { AdminService } from '../../services/admin.service';
+import { LoggerService } from '../../services/logger.service';
+import { LoadingService } from '../../services/loading.service';
 
 
 type DisplayedTeam = Team & {
@@ -30,41 +32,49 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   constructor(
     private adminSvc: AdminService,
+    private logger: LoggerService,
+    private loadingSvc: LoadingService,
     private _liveAnnouncer: LiveAnnouncer
   ) { }
 
   async ngOnInit() {
-    const teams = await this.adminSvc.getStandings();
-    // Sort teams by points, then by goal difference, then by goals for
-    teams.sort((a, b) => {
-      const gda = +a.gf - +a.ga;
-      const gdb = +b.gf - +b.ga;
-      if (+b.points !== +a.points) {
-        return +b.points - +a.points;
-      } else if (gdb !== gda) {
-        return gdb - gda;
-      } else {
-        return +b.gf - +a.gf;
-      }
-    });
+    try {
+      this.loadingSvc.loadingOn();
+      const teams = await this.adminSvc.getStandings();
+      // Sort teams by points, then by goal difference, then by goals for
+      teams.sort((a, b) => {
+        const gda = +a.gf - +a.ga;
+        const gdb = +b.gf - +b.ga;
+        if (+b.points !== +a.points) {
+          return +b.points - +a.points;
+        } else if (gdb !== gda) {
+          return gdb - gda;
+        } else {
+          return +b.gf - +a.gf;
+        }
+      });
 
-    this.dataSource.data = teams.map((team, index) => ({
-      position: index + 1,
-      tid: team.tid,
-      name: team.name,
-      logo: team.logo,
-      played: team.played ?? 0,
-      won: team.won ?? 0,
-      drawn: team.drawn ?? 0,
-      lost: team.lost ?? 0,
-      gf: team.gf ?? 0,
-      ga: team.ga ?? 0,
-      gd: (team.gf ?? 0) - (team.ga ?? 0),
-      points: team.points ?? 0,
-      coachId: team.coachId,
-      managerId: team.managerId
-    }));
-    console.log(this.dataSource.data);
+      this.dataSource.data = teams.map((team, index) => ({
+        position: index + 1,
+        tid: team.tid,
+        name: team.name,
+        logo: team.logo,
+        played: team.played ?? 0,
+        won: team.won ?? 0,
+        drawn: team.drawn ?? 0,
+        lost: team.lost ?? 0,
+        gf: team.gf ?? 0,
+        ga: team.ga ?? 0,
+        gd: (team.gf ?? 0) - (team.ga ?? 0),
+        points: team.points ?? 0,
+        coachId: team.coachId,
+        managerId: team.managerId
+      }));
+    } catch (error) {
+      this.logger.error(error);
+    } finally {
+      this.loadingSvc.loadingOff();
+    }
   }
 
   ngAfterViewInit() {
