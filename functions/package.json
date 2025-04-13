@@ -1,17 +1,17 @@
 {
   "name": "functions",
-  "version": "0.31.0",
+  "version": "0.35.0",
   "scripts": {
     "lint": "npx eslint src/**/*.ts --fix",
     "build": "rm -rf lib && echo '{\"version\"': '\"'$(npm --no-git-tag-version version minor)'\"}' > src/version.json && tsc",
     "buildw": "rm -rf lib && (for /f \"delims=\" %A in ('npm --no-git-tag-version version minor') do @echo {\"version\":\"%A\"}) > src/version.json && tsc",
     "build:watch": "tsc --watch",
-    "serve": "npm run build && firebase emulators:start --only functions",
-    "serve1": "firebase emulators:start --only functions",
+    "serve": "npm run build && npx firebase emulators:start --only functions",
+    "serve1": "npx firebase emulators:start --only functions",
     "shell": "npm run build && firebase functions:shell",
     "start": "npm run shell",
     "deploy": "npx firebase deploy --only functions",
-    "logs": "firebase functions:log"
+    "logs": "npx firebase functions:log"
   },
   "engines": {
     "node": "20"
@@ -20,17 +20,17 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.21.2",
-    "firebase-admin": "^13.0.2",
-    "firebase-functions": "^6.2.0"
+    "firebase-admin": "^13.2.0",
+    "firebase-functions": "^6.3.2"
   },
   "devDependencies": {
-    "@stylistic/eslint-plugin": "^2.12.1",
-    "@typescript-eslint/eslint-plugin": "^8.18.2",
-    "@typescript-eslint/parser": "^8.18.2",
-    "eslint": "^9.17.0",
-    "eslint-plugin-n": "^17.15.1",
-    "firebase-functions-test": "^3.4.0",
-    "typescript": "^5.7.2"
+    "@stylistic/eslint-plugin": "^4.2.0",
+    "@typescript-eslint/eslint-plugin": "^8.29.1",
+    "@typescript-eslint/parser": "^8.29.1",
+    "eslint": "^9.24.0",
+    "eslint-plugin-n": "^17.17.0",
+    "firebase-functions-test": "^3.4.1",
+    "typescript": "^5.8.3"
   },
   "private": true
 }
