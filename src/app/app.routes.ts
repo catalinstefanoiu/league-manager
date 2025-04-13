@@ -11,6 +11,7 @@ import { AdminUsersComponent } from './routes/admin-users/admin-users.component'
 import { AdminTeamsComponent } from './routes/admin-teams/admin-teams.component';
 import { PlayersComponent } from './routes/players/players.component';
 import { TransferablesComponent } from './routes/transferables/transferables.component';
+import { ChampionshipComponent } from './routes/championship/championship.component';
 
 const redirectLoggedInToHome = () => redirectLoggedInTo(['home']);
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
@@ -49,6 +50,12 @@ export const routes: Routes = [
   {
     path: 'transferables',
     component: TransferablesComponent,
+    canActivate: [AuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedToLogin },
+  },
+  {
+    path: 'championship',
+    component: ChampionshipComponent,
     canActivate: [AuthGuard],
     data: { authGuardPipe: redirectUnauthorizedToLogin },
   },

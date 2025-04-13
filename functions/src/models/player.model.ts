@@ -27,7 +27,7 @@ export class TransferRequest {
   ) { }
 }
 
-export interface IPlayerDbModel {
+export type PlayerDbModel = {
   firstName: string;
   lastName: string;
   age: number;
@@ -40,10 +40,10 @@ export interface IPlayerDbModel {
     teamId: string;
     timestamp: number;
   }>;
-}
+};
 
-export class PlayerConverter implements FirestoreDataConverter<Player, IPlayerDbModel> {
-  toFirestore(player: WithFieldValue<Player>): WithFieldValue<IPlayerDbModel> {
+export class PlayerConverter implements FirestoreDataConverter<Player, PlayerDbModel> {
+  toFirestore(player: WithFieldValue<Player>): WithFieldValue<PlayerDbModel> {
     return {
       firstName: player.firstName,
       lastName: player.lastName,
@@ -63,7 +63,7 @@ export class PlayerConverter implements FirestoreDataConverter<Player, IPlayerDb
   }
 
   fromFirestore(snapshot: QueryDocumentSnapshot): Player {
-    const data = snapshot.data() as IPlayerDbModel;
+    const data = snapshot.data() as PlayerDbModel;
     let transferReqs;
     if (data.transferReqs) {
       transferReqs = data.transferReqs.map((r) => {

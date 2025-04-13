@@ -40,7 +40,8 @@ export class AdminTeamsController {
         const data = doc.data();
         teams.push({
           tid: data.tid,
-          name: data.name
+          name: data.name,
+          logo: data.logo
         });
       });
 

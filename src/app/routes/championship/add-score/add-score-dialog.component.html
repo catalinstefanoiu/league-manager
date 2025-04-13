@@ -1,0 +1,28 @@
+<h2 mat-dialog-title>Add fixture score</h2>
+<mat-dialog-content>
+  <div class="container">
+    <div class="fixture">
+      <img [src]="data.home.logo" alt="{{ data.home.name }} logo" class="team-logo" />
+      <div class="home">
+        <mat-form-field>
+          <mat-label>{{ data.home.name }}</mat-label>
+          <input matInput [(ngModel)]="score().home.gf" />
+        </mat-form-field>
+      </div>
+
+      <span class="teams-sep">vs</span>
+
+      <div class="away">
+        <mat-form-field>
+          <mat-label>{{ data.away.name }}</mat-label>
+          <input matInput [(ngModel)]="score().away.gf" />
+        </mat-form-field>
+      </div>
+      <img [src]="data.away.logo" alt="{{ data.away.name }} logo" class="team-logo" />
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions class="actions">
+  <button mat-button (click)="onCancelClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="score()" cdkFocusInitial>Save</button>
+</mat-dialog-actions>

@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="actions">
+    <div class="start-championship">
+      <mat-form-field>
+        <mat-label>Select starting date for the championship</mat-label>
+        <input matInput [matDatepicker]="picker" [formControl]="date">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="onChampionshipStart()">
+        <mat-icon>play_arrow</mat-icon>
+        <span>Start Championship</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="fixtures-container">
+    @for (round of rounds; track round.round) {
+    <div class="round">
+      <h2>Round {{ round.round }} - {{ round.date | date: 'dd/MM/yyyy' }}</h2>
+      <div class="round-fixtures">
+        @for (fixture of round.fixtures; track $index) {
+        <div class="fixture">
+          <img [src]="fixture.homeTeam.logo" alt="{{ fixture.homeTeam.name }} logo" class="team-logo" />
+          <div class="home">
+            <span class="name">{{ fixture.homeTeam.name }}</span>
+            <span class="score">{{ fixture.homeTeam.gf }}</span>
+          </div>
+          <span class="teams-sep">vs</span>
+          <div class="away">
+            <span class="name">{{ fixture.awayTeam.name }}</span>
+            <span class="score">{{ fixture.awayTeam.gf }}</span>
+          </div>
+          <img [src]="fixture.awayTeam.logo" alt="{{ fixture.awayTeam.name }} logo" class="team-logo" />
+
+          <button mat-raised-button color="primary" (click)="onFixtureScoreClick(fixture)">
+            <mat-icon>
+              scoreboard
+            </mat-icon>
+            <span>Add score</span>
+          </button>
+        </div>
+        }
+      </div>
+    </div>
+    }
+  </div>
+</div>

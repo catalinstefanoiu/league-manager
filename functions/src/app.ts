@@ -4,7 +4,8 @@ import versionInfo from './version.json';
 import adminUsersRouter from './routes/admin-users.router';
 import adminTeamsRouter from './routes/admin-teams.router';
 import adminToolsRouter from './routes/admin-tools.router';
-import transfers from './routes/transfers.router';
+import championshipRouter from './routes/championship.router';
+import transfersRouter from './routes/transfers.router';
 
 
 const app = express();
@@ -25,6 +26,7 @@ app.get('/version', async (_, res) => {
 app.use('/admin-users', adminUsersRouter);
 app.use('/admin-teams', adminTeamsRouter);
 app.use('/admin-tools', adminToolsRouter);
-app.use('/transfers', transfers);
+app.use('/transfers', transfersRouter);
+app.use('/championship', championshipRouter);
 
 export const expressApp = app;

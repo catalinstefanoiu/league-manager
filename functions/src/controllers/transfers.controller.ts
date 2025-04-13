@@ -4,13 +4,13 @@ import { getFirestore } from 'firebase-admin/firestore';
 import { Player, PlayerConverter, TransferRequest } from '../models/player.model';
 import { COL_PLAYERS } from '../models/constants';
 import { ICustomRequest } from '../auth-helper';
-import { ICustomClaims, UserRole } from '../models/user.model';
+import { CustomClaims, UserRole } from '../models/user.model';
 
 
 export class TransfersController {
   public async getTransferables(req: Request, res: Response): Promise<void> {
     const creq = req as ICustomRequest;
-    const customClaims: ICustomClaims = (creq.user.customClaims as ICustomClaims) ?? { role: UserRole.User, team: '' };
+    const customClaims: CustomClaims = (creq.user.customClaims as CustomClaims) ?? { role: UserRole.User, team: '' };
 
     try {
       const firestore = getFirestore();
@@ -45,7 +45,7 @@ export class TransfersController {
 
   public async addTransferBid(req: Request, res: Response): Promise<void> {
     const creq = req as ICustomRequest;
-    const customClaims: ICustomClaims = (creq.user.customClaims as ICustomClaims) ?? { role: UserRole.User, team: '' };
+    const customClaims: CustomClaims = (creq.user.customClaims as CustomClaims) ?? { role: UserRole.User, team: '' };
 
     try {
       const playerId = creq.body.playerId;
@@ -93,7 +93,7 @@ export class TransfersController {
 
   public async removeTransferBid(req: Request, res: Response): Promise<void> {
     const creq = req as ICustomRequest;
-    const customClaims: ICustomClaims = (creq.user.customClaims as ICustomClaims) ?? { role: UserRole.User, team: '' };
+    const customClaims: CustomClaims = (creq.user.customClaims as CustomClaims) ?? { role: UserRole.User, team: '' };
 
     try {
       const playerId = creq.body.playerId;

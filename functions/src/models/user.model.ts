@@ -5,7 +5,7 @@ export enum UserRole {
   AppAdmin
 }
 
-export interface ICustomClaims {
+export type CustomClaims = {
   role: UserRole;
   team: string;
-}
+};

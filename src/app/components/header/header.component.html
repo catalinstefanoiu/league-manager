@@ -13,7 +13,7 @@
   ) {
   <button mat-button [matMenuTriggerFor]="adminMenu" class="menu-admin">Admin</button>
   <mat-menu #adminMenu="matMenu">
-  
+
     @if (user.userRole === UserRole.AppAdmin) {
     <button mat-menu-item [routerLink]="['/', 'admin-users']">
       <mat-icon>group</mat-icon>
@@ -24,7 +24,7 @@
       <span>Teams</span>
     </button>
     }
-  
+
     <button mat-menu-item [routerLink]="['/', 'players']">
       <mat-icon>groups</mat-icon>
       <span>Players</span>
@@ -33,6 +33,13 @@
     <button mat-menu-item [routerLink]="['/', 'transferables']">
       <mat-icon>sync_alt</mat-icon>
       <span>Transferables</span>
+    </button>
+
+    <button mat-menu-item [routerLink]="['/', 'championship']">
+      <mat-icon><span class="material-symbols-outlined">
+          trophy
+        </span></mat-icon>
+      <span>Championship</span>
     </button>
   </mat-menu>
   }

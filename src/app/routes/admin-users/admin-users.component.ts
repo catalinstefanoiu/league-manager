@@ -88,8 +88,16 @@ export class AdminUsersComponent implements OnInit, AfterViewInit {
       this.teams.unshift({
         tid: '',
         name: '<no team>',
+        logo: '',
         coachId: '',
-        managerId: ''
+        managerId: '',
+        played: 0,
+        won: 0,
+        drawn: 0,
+        lost: 0,
+        gf: 0,
+        ga: 0,
+        points: 0
       });
 
       this.logger.debug(this.users, this.teams);
