@@ -1,12 +1,13 @@
 {
   "name": "functions",
-  "version": "0.73.0",
+  "version": "0.75.0",
   "scripts": {
     "lint": "npx eslint src/**/*.ts --fix",
     "build": "rm -rf lib && echo '{\"version\"': '\"'$(npm --no-git-tag-version version minor)'\"}' > src/version.json && tsc",
     "buildw": "rm -rf lib && (for /f \"delims=\" %A in ('npm --no-git-tag-version version minor') do @echo {\"version\":\"%A\"}) > src/version.json && tsc",
     "build:watch": "tsc --watch",
     "serve": "npm run build && npx firebase emulators:start --only functions",
+    "servew": "npm run buildw && npx firebase emulators:start --only functions",
     "serve1": "npx firebase emulators:start --only functions",
     "shell": "npm run build && firebase functions:shell",
     "start": "npm run shell",
