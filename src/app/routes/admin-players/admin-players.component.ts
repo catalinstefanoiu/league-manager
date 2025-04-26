@@ -44,7 +44,7 @@ interface IDisplayPlayer {
   templateUrl: './admin-players.component.html',
   styleUrl: './admin-players.component.scss'
 })
-export class PlayersComponent implements OnInit, AfterViewInit {
+export class AdminPlayersComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator?: MatPaginator;
   @ViewChild(MatSort) sort?: MatSort;
 

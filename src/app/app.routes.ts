@@ -9,10 +9,11 @@ import { LoginPageComponent } from './routes/public/login-page/login-page.compon
 import { PrivacyPolicyComponent } from './routes/public/privacy-policy/privacy-policy.component';
 import { AdminUsersComponent } from './routes/admin-users/admin-users.component';
 import { AdminTeamsComponent } from './routes/admin-teams/admin-teams.component';
-import { PlayersComponent } from './routes/admin-players/admin-players.component';
+import { AdminPlayersComponent } from './routes/admin-players/admin-players.component';
 import { TransferablesComponent } from './routes/transferables/transferables.component';
 import { ChampionshipComponent } from './routes/championship/championship.component';
 import { FixturesComponent } from './routes/fixtures/fixtures.component';
+import { PlayersComponent } from './routes/players/players.component';
 
 const redirectLoggedInToHome = () => redirectLoggedInTo(['home']);
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
@@ -43,14 +44,20 @@ export const routes: Routes = [
     data: { authGuardPipe: redirectUnauthorizedToLogin },
   },
   {
+    path: 'players/:teamId',
+    component: PlayersComponent,
+    canActivate: [AuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedToLogin },
+  },
+  {
     path: 'admin-users',
     component: AdminUsersComponent,
     canActivate: [AuthGuard],
     data: { authGuardPipe: redirectUnauthorizedToLogin },
   },
   {
-    path: 'players',
-    component: PlayersComponent,
+    path: 'admin-players',
+    component: AdminPlayersComponent,
     canActivate: [AuthGuard],
     data: { authGuardPipe: redirectUnauthorizedToLogin },
   },

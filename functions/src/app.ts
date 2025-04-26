@@ -6,6 +6,7 @@ import adminTeamsRouter from './routes/admin-teams.router';
 import adminToolsRouter from './routes/admin-tools.router';
 import championshipRouter from './routes/championship.router';
 import transfersRouter from './routes/transfers.router';
+import playersRouter from './routes/players.router';
 
 
 const app = express();
@@ -26,7 +27,8 @@ app.get('/version', async (_, res) => {
 app.use('/admin-users', adminUsersRouter);
 app.use('/admin-teams', adminTeamsRouter);
 app.use('/admin-tools', adminToolsRouter);
-app.use('/transfers', transfersRouter);
 app.use('/championship', championshipRouter);
+app.use('/players', playersRouter);
+app.use('/transfers', transfersRouter);
 
 export const expressApp = app;
