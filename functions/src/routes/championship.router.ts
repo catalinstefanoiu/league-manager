@@ -16,6 +16,8 @@ router.route('/fixtures')
   .post(ctrl.insertFixtures.bind(ctrl));
 router.route('/fixtures')
   .get(authenticate, ctrl.getFixtures.bind(ctrl));
+router.route('/fixtures/current-round')
+  .get(authenticate, ctrl.getCurrentRound.bind(ctrl));
 router.route('/fixtures/:fixtureId/score')
   .all(authorizeRoles([UserRole.AppAdmin]))
   .patch(ctrl.updateFixtureScore.bind(ctrl));

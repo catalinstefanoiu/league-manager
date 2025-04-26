@@ -1,0 +1,42 @@
+<div class="page-container">
+  <div class="round">
+    @if (round) {
+    <div class="round-header">
+      <h2>Round {{ round.round }} - {{ round.date | date: 'dd/MM/yyyy' }}</h2>
+      <div class="round-actions">
+        <button mat-mini-fab color="primary" (click)="onPreviousRoundClick()">
+          <mat-icon>navigate_before</mat-icon>
+        </button>
+        <button mat-mini-fab color="primary" [disabled]="nextDisabled" (click)="onNextRoundClick()">
+          <mat-icon>navigate_next</mat-icon>
+        </button>
+      </div>
+    </div>
+
+    <div class="round-fixtures">
+      @for (fixture of round.fixtures; track $index) {
+      <div class="fixture">
+        <img [src]="fixture.homeTeam.logo" alt="{{ fixture.homeTeam.name }} logo" class="team-logo" />
+        <div class="home">
+          <span class="name">{{ fixture.homeTeam.name }}</span>
+          <span class="score">{{ fixture.homeTeam.gf }}</span>
+        </div>
+        <span class="teams-sep">vs</span>
+        <div class="away">
+          <span class="name">{{ fixture.awayTeam.name }}</span>
+          <span class="score">{{ fixture.awayTeam.gf }}</span>
+        </div>
+        <img [src]="fixture.awayTeam.logo" alt="{{ fixture.awayTeam.name }} logo" class="team-logo" />
+
+        <button mat-raised-button color="primary" (click)="onViewClick(fixture)">
+          <mat-icon>
+            visibility
+          </mat-icon>
+          <span>Quick View</span>
+        </button>
+      </div>
+      }
+    </div>
+    }
+  </div>
+</div>

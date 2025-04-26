@@ -35,6 +35,7 @@ export type UIFixtureMatch = {
   };
   date: Date;
   round: number;
+  played: boolean;
 };
 
 @Injectable({
@@ -67,6 +68,10 @@ export class AdminService extends ApiBaseService {
 
   public saveFixtureToDB(fixtures: DBFixtureMatch[]): Promise<void> {
     return this.postRequest<any>('/championship/fixtures', { fixtures });
+  }
+
+  public getCurrentRound(): Promise<UIFixtureMatch[]> {
+    return this.getRequest<any>('/championship/fixtures/current-round');
   }
 
   public async getFixtures(round: number = 0): Promise<UIFixtureMatch[]> {

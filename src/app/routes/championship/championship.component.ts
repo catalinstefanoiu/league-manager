@@ -49,7 +49,7 @@ export class ChampionshipComponent implements OnInit {
   private adminSvc: AdminService = inject(AdminService);
   private fixtureSvc: FixtureService = inject(FixtureService);
   private loadingSvc: LoadingService = inject(LoadingService);
-  readonly date = new FormControl(new Date(2024, 7, 24));
+  readonly date = new FormControl(new Date(2025, 1, 1));
 
   protected fixtures: UIFixtureMatch[] = [];
   protected rounds: ChampionshipRound[] = [];
@@ -93,15 +93,18 @@ export class ChampionshipComponent implements OnInit {
       const fixtures = this.fixtureSvc.generateFixtures(teams, startDate);
       this.logger.log('Generated fixtures:', fixtures);
 
+      const now = new Date();
+      now.setHours(0, 0, 0, 0);
       await this.adminSvc.saveFixtureToDB(fixtures.map((fixture) => ({
         homeTeam: {
           id: fixture.homeTeam.tid,
-          gf: 0
+          gf: fixture.date < now ? this.getRandomInt(5) : 0
         },
         awayTeam: {
           id: fixture.awayTeam.tid,
-          gf: 0
+          gf: fixture.date < now ? this.getRandomInt(3) : 0
         },
+        played: fixture.date < now,
         date: fixture.date,
         round: fixture.round
       })));
@@ -157,5 +160,9 @@ export class ChampionshipComponent implements OnInit {
           .catch((error) => this.logger.error(error));
       }
     });
+  }
+
+  private getRandomInt(max: number): number {
+    return Math.floor(Math.random() * Math.floor(max));
   }
 }

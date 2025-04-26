@@ -192,6 +192,85 @@ export class ChampionshipController {
     }
   }
 
+  public async getCurrentRound(req: Request, res: Response): Promise<void> {
+    try {
+      logger.debug('getCurrentRound', req.query);
+      const firestore = getFirestore();
+      const fixturesCol = firestore.collection(COL_FIXTURES);
+      const query = await fixturesCol
+        .where('played', '==', true)
+        .orderBy('round', 'desc');
+      const snapshot = await query.get();
+
+      const fixtures: FixtureMatch[] = [];
+      const teams = new Map<string, Team>();
+
+      logger.debug('Fixtures:', snapshot.size);
+      let round = 0;
+      for (const doc of snapshot.docs) {
+        const data = doc.data() as DBFixtureMatch;
+        if (round === 0) {
+          round = data.round;
+        }
+        if (data.round !== round) {
+          break;
+        }
+
+        let homeTeam: Team | undefined;
+        let awayTeam: Team | undefined;
+        if (teams.has(data.homeTeam.id)) {
+          homeTeam = teams.get(data.homeTeam.id);
+        } else {
+          const homeTeamRef = firestore
+            .collection(COL_TEAMS)
+            .withConverter(new TeamConverter())
+            .doc(data.homeTeam.id);
+          homeTeam = (await homeTeamRef.get()).data();
+          if (homeTeam) {
+            teams.set(data.homeTeam.id, homeTeam);
+          }
+        }
+        if (teams.has(data.awayTeam.id)) {
+          awayTeam = teams.get(data.awayTeam.id);
+        } else {
+          const awayTeamRef = firestore
+            .collection(COL_TEAMS)
+            .withConverter(new TeamConverter())
+            .doc(data.awayTeam.id);
+          awayTeam = (await awayTeamRef.get()).data();
+          if (awayTeam) {
+            teams.set(data.awayTeam.id, awayTeam);
+          }
+        }
+
+        const fixtureMatch: FixtureMatch = {
+          fid: doc.id,
+          homeTeam: {
+            id: data.homeTeam.id,
+            name: homeTeam?.name || '',
+            logo: homeTeam?.logo || '',
+            gf: data.homeTeam.gf
+          },
+          awayTeam: {
+            id: data.awayTeam.id,
+            name: awayTeam?.name || '',
+            logo: awayTeam?.logo || '',
+            gf: data.awayTeam.gf
+          },
+          date: data.date,
+          round: data.round,
+          played: data.played
+        };
+        fixtures.push(fixtureMatch);
+      }
+
+      res.status(200).json(fixtures);
+    } catch (ex) {
+      logger.error(ex);
+      res.status(500).send('Unknown server error');
+    }
+  }
+
   public async insertFixtures(req: Request, res: Response): Promise<void> {
     const creq = req as ICustomRequest;
 
@@ -212,7 +291,7 @@ export class ChampionshipController {
         const fixtureRef = firestore.collection(COL_FIXTURES).doc();
         await fixtureRef.set({
           ...fixture,
-          played: false,
+          // played: false,
           createdBy: creq.user.uid,
           createdAt: new Date(),
           updatedBy: creq.user.uid,

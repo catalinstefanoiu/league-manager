@@ -3,6 +3,16 @@
     <mat-icon class="material-symbols-outlined">trophy</mat-icon>
     <span>League Manager</span>
   </a>
+  <div class="menu-container">
+    <button mat-button class="menu-item" [routerLink]="['/']">
+      <mat-icon>view_list</mat-icon>
+      Tables
+    </button>
+    <button mat-button class="menu-item" [routerLink]="['/fixtures']">
+      <mat-icon>scoreboard</mat-icon>
+      Fixtures & Results
+    </button>
+  </div>
   <div class="filler"></div>
   @if(user(); as user) {
 
