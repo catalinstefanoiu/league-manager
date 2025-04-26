@@ -10,11 +10,11 @@ import { MatTableModule } from '@angular/material/table';
 import { LoggerService } from '../../services/logger.service';
 import { AuthService } from '../../services/auth.service';
 import { AdminService } from '../../services/admin.service';
-import { PlayerService } from '../players/player.service';
+import { AdminPlayerService } from '../admin-players/admin-player.service';
 import { UtilsService } from '../../services/utils.service';
 import { Player, TransferRequest } from '../../models/player.model';
 import { Team } from '../../models/team.model';
-import { PlayersEditComponent } from '../players/players-edit/players-edit.component';
+import { PlayersEditComponent } from '../admin-players/players-edit/players-edit.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
@@ -59,7 +59,7 @@ export class TransferablesComponent {
   private logger = inject(LoggerService);
   private authSvc = inject(AuthService);
   private adminSvc = inject(AdminService);
-  private playerSvc = inject(PlayerService);
+  private playerSvc = inject(AdminPlayerService);
   protected utilsSvc = inject(UtilsService);
 
   private players: Player[] = [];

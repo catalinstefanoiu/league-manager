@@ -9,7 +9,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { Team } from '../../../models/team.model';
 import { getPlayerPositions, Player } from '../../../models/player.model';
 import { AuthService, UserRole } from '../../../services/auth.service';
-import { PlayerService } from '../player.service';
+import { AdminPlayerService } from '../admin-player.service';
 import { LoggerService } from '../../../services/logger.service';
 
 @Component({
@@ -28,7 +28,7 @@ import { LoggerService } from '../../../services/logger.service';
 })
 export class PlayersEditComponent {
   protected UserRole = UserRole;
-  private playerSvc = inject(PlayerService);
+  private playerSvc = inject(AdminPlayerService);
   private logger = inject(LoggerService);
   protected authSvc = inject(AuthService);
   protected user = this.authSvc.currentUser;

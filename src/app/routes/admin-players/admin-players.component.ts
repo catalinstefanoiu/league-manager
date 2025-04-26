@@ -11,7 +11,7 @@ import { LoggerService } from '../../services/logger.service';
 import { AdminService } from '../../services/admin.service';
 import { UtilsService } from '../../services/utils.service';
 import { Team } from '../../models/team.model';
-import { PlayerService } from './player.service';
+import { AdminPlayerService } from './admin-player.service';
 import { Player } from '../../models/player.model';
 import { AuthService } from '../../services/auth.service';
 import { PlayersEditComponent } from './players-edit/players-edit.component';
@@ -41,8 +41,8 @@ interface IDisplayPlayer {
     MatSortModule,
     MatTableModule
   ],
-  templateUrl: './players.component.html',
-  styleUrl: './players.component.scss'
+  templateUrl: './admin-players.component.html',
+  styleUrl: './admin-players.component.scss'
 })
 export class PlayersComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator?: MatPaginator;
@@ -52,7 +52,7 @@ export class PlayersComponent implements OnInit, AfterViewInit {
   private logger = inject(LoggerService);
   private authSvc = inject(AuthService);
   private adminSvc = inject(AdminService);
-  private playerSvc = inject(PlayerService);
+  private playerSvc = inject(AdminPlayerService);
   protected utilsSvc = inject(UtilsService);
 
   private players: Player[] = [];

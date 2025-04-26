@@ -29,7 +29,7 @@ const COL_NAME = 'players';
 @Injectable({
   providedIn: 'root',
 })
-export class PlayerService extends ApiBaseService {
+export class AdminPlayerService extends ApiBaseService {
   private firestore = inject(Firestore);
 
   public async getPlayers(teamId: string): Promise<Player[]> {

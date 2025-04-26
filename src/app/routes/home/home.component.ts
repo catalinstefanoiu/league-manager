@@ -5,11 +5,12 @@ import { MatTableDataSource } from '@angular/material/table';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
-import { MatButtonModule } from '@angular/material/button';
+import { MatButton } from '@angular/material/button';
 import { Team } from '../../models/team.model';
 import { AdminService } from '../../services/admin.service';
 import { LoggerService } from '../../services/logger.service';
 import { LoadingService } from '../../services/loading.service';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 
 type DisplayedTeam = Team & {
@@ -20,7 +21,13 @@ type DisplayedTeam = Team & {
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [MatTableModule, MatSortModule, CommonModule, MatButtonModule],
+  imports: [
+    MatTableModule,
+    MatSortModule,
+    CommonModule,
+    RouterLink,
+    RouterLinkActive
+  ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
@@ -29,6 +36,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
   dataSource = new MatTableDataSource<DisplayedTeam>();
 
   @ViewChild(MatSort) sort!: MatSort;
+
+  protected teams: Team[] = [];
 
   constructor(
     private adminSvc: AdminService,
@@ -70,6 +79,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
         coachId: team.coachId,
         managerId: team.managerId
       }));
+
+      this.teams = teams;
     } catch (error) {
       this.logger.error(error);
     } finally {

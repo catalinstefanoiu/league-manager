@@ -9,7 +9,7 @@ import { LoginPageComponent } from './routes/public/login-page/login-page.compon
 import { PrivacyPolicyComponent } from './routes/public/privacy-policy/privacy-policy.component';
 import { AdminUsersComponent } from './routes/admin-users/admin-users.component';
 import { AdminTeamsComponent } from './routes/admin-teams/admin-teams.component';
-import { PlayersComponent } from './routes/players/players.component';
+import { PlayersComponent } from './routes/admin-players/admin-players.component';
 import { TransferablesComponent } from './routes/transferables/transferables.component';
 import { ChampionshipComponent } from './routes/championship/championship.component';
 import { FixturesComponent } from './routes/fixtures/fixtures.component';
