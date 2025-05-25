@@ -1,1 +1,85 @@
-<p>players works!</p>
+<h2 class="team-title">Squad Players</h2>
+
+<section>
+    <h3 class="sub-title"> Goalkeepers </h3>
+<div class="players-grid">
+  @for (player of goalkeepers; track player.pid) {
+    <mat-card class="player-card">
+      <img class="player-image">
+      <div class="player-info">
+        <h3 class="player-name">{{ player.displayName }}</h3>
+        <div class="player-details">
+          <span class="player-position">{{ player.position }}</span>
+          <span class="player-age">Age {{ player.age }}</span>
+        </div>
+      </div>
+    </mat-card>
+}
+  @empty {
+    <p class="no-players">No players in the squad currently.</p>
+  }
+</div>
+</section>
+
+<section>
+    <h3 class="sub-title"> Defenders </h3>
+    <div class="players-grid">
+      @for (player of defenders; track player.pid) {
+        <mat-card class="player-card" [routerLink]="[player.pid]" style="cursor: pointer;">
+          <img class="player-image">
+          <div class="player-info">
+            <h3 class="player-name">{{ player.displayName }}</h3>
+            <div class="player-details">
+              <span class="player-position">{{ player.position }}</span>
+              <span class="player-age">Age {{ player.age }}</span>
+            </div>
+          </div>
+        </mat-card>
+    }
+      @empty {
+        <p class="no-players">No players in the squad currently.</p>
+      }
+    </div>
+</section>
+
+<section>
+    <h3 class="sub-title"> Midfielders </h3>
+    <div class="players-grid">
+      @for (player of midfielders; track player.pid) {
+        <mat-card class="player-card">
+          <img class="player-image">
+          <div class="player-info">
+            <h3 class="player-name">{{ player.displayName }}</h3>
+            <div class="player-details">
+              <span class="player-position">{{ player.position }}</span>
+              <span class="player-age">Age {{ player.age }}</span>
+            </div>
+          </div>
+        </mat-card>
+    }
+      @empty {
+        <p class="no-players">No players in the squad currently.</p>
+      }
+    </div>
+</section>
+
+<section>
+    <h3 class="sub-title"> Forwards </h3>
+    <div class="players-grid">
+      @for (player of forwards; track player.pid) {
+        <mat-card class="player-card">
+          <img class="player-image">
+          <div class="player-info">
+            <h3 class="player-name">{{ player.displayName }}</h3>
+            <div class="player-details">
+              <span class="player-position">{{ player.position }}</span>
+              <span class="player-age">Age {{ player.age }}</span>
+            </div>
+          </div>
+        </mat-card>
+    }
+      @empty {
+        <p class="no-players">No players in the squad currently.</p>
+      }
+    </div>
+</section>

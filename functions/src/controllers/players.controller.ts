@@ -32,4 +32,28 @@ export class PlayersController {
       res.status(500).send('Unknown server error');
     }
   }
+
+  public async getPlayerById(req: Request, res: Response): Promise<void> {
+    try {
+      const pid = req.params.id;
+      const firestore = getFirestore();
+      const playerDoc = await firestore
+      .collection(COL_PLAYERS)
+      .doc(pid)
+      .withConverter(new PlayerConverter())
+      .get();
+
+      if(!playerDoc.exists) {
+        res.status(404).send('Player not found');
+        return;
+      }
+
+      const player = playerDoc.data();
+      res.status(200).json(player);
+
+    } catch (error) {
+      logger.error('Error fetching player:', error);
+      res.status(500).send('Unknown server error');
+    }
+  }
 }

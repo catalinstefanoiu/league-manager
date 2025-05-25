@@ -1,0 +1,100 @@
+.team-title {
+    text-align: center;
+    font-size: 2rem;
+    margin: 1.5rem 0;
+    color: #2c3e50;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  
+  .sub-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color:  #2c3e50;
+    text-align: center;
+    padding-bottom: 0.5rem;
+    letter-spacing: 0.5px;
+  }
+
+  .players-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .player-card {
+    border-radius: 12px !important;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: none;
+    position: relative;
+    height: 280px;
+    display: flex;
+    flex-direction: column;
+    
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 50px 45px rgba(0, 0, 0, 0.15);
+    }
+  }
+  
+  .player-image {
+    height: 200px;
+    background-image: url('/assets/images/unknownplayer.png');
+    background-size: cover;
+    background-position: center;
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .player-info {
+    padding: 1rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: white;
+  }
+  
+  .player-name {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #1e1e1e;
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+  
+  .player-details {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  .player-position {
+    background: #3498db;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+  
+  .player-age {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+  }
+  
+  .no-players {
+    text-align: center;
+    grid-column: 1 / -1;
+    color: #7f8c8d;
+    font-size: 1.1rem;
+    padding: 2rem;
+  }

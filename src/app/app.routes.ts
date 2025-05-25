@@ -14,6 +14,7 @@ import { TransferablesComponent } from './routes/transferables/transferables.com
 import { ChampionshipComponent } from './routes/championship/championship.component';
 import { FixturesComponent } from './routes/fixtures/fixtures.component';
 import { PlayersComponent } from './routes/players/players.component';
+import { PlayerDetailComponent } from './routes/player-detail/player-detail.component';
 
 const redirectLoggedInToHome = () => redirectLoggedInTo(['home']);
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
@@ -48,6 +49,14 @@ export const routes: Routes = [
     component: PlayersComponent,
     canActivate: [AuthGuard],
     data: { authGuardPipe: redirectUnauthorizedToLogin },
+    children: [
+      {
+    path: ':playerId',
+    component: PlayerDetailComponent,
+    canActivate: [AuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedToLogin },
+    },
+    ]
   },
   {
     path: 'admin-users',
@@ -83,4 +92,5 @@ export const routes: Routes = [
     path: 'pages/privacy-policy',
     component: PrivacyPolicyComponent
   }
+  
 ];
