@@ -1,10 +1,12 @@
 import { Request, Response } from 'express';
 import { logger } from 'firebase-functions';
 import { getFirestore } from 'firebase-admin/firestore';
+import { getMessaging, MulticastMessage } from 'firebase-admin/messaging';
 import { Player, PlayerConverter, TransferRequest } from '../models/player.model';
-import { COL_PLAYERS } from '../models/constants';
+import { COL_FCMTOKENS, COL_PLAYERS } from '../models/constants';
 import { ICustomRequest } from '../auth-helper';
 import { CustomClaims, UserRole } from '../models/user.model';
+import { getUsers } from '../utils';
 
 
 export class TransfersController {
@@ -89,6 +91,38 @@ export class TransfersController {
         ...player,
         transferReqs
       });
+
+      // Send notification to player owner
+      const users = await getUsers();
+      // logger.debug(users, { structuredData: true });
+      const usersToSend: string[] = [];
+      users.forEach((u) => {
+        if (u.customClaims?.team === player.teamId) {
+          usersToSend.push(u.uid);
+        }
+      });
+      logger.debug(usersToSend, { structuredData: true });
+      const notificationBody = `${creq.user.displayName} just made a bid for ${player.displayName} of €${value}`;
+      logger.debug(notificationBody);
+      const tokensCol = firestore.collection(COL_FCMTOKENS);
+      const snapshot = await tokensCol
+        .where('uid', 'in', usersToSend)
+        .get();
+      const tokens: string[] = [];
+      snapshot.forEach((doc) => {
+        tokens.push(doc.id);
+      });
+      logger.debug(tokens);
+
+      const message: MulticastMessage = {
+        notification: {
+          title: 'Player bid',
+          body: notificationBody
+        },
+        tokens
+      };
+      const response = await getMessaging().sendEachForMulticast(message);
+      logger.debug(response);
 
       res.status(200).send();
     } catch (ex) {
