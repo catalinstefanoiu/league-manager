@@ -11,6 +11,7 @@ export class Player {
     readonly teamId: string,
     readonly isCoach: boolean,
     readonly dateStarted: Date,
+    readonly marketValue: number,
     readonly transferable: boolean,
     readonly transferReqs?: TransferRequest[]
   ) { }
@@ -23,6 +24,7 @@ export class Player {
 export class TransferRequest {
   constructor(
     readonly teamId: string,
+    readonly value: number,
     readonly timestamp: Date
   ) { }
 }
@@ -35,9 +37,11 @@ export type PlayerDbModel = {
   teamId: string;
   isCoach: boolean;
   dateStarted: number;
+  marketValue: number;
   transferable: boolean;
   transferReqs?: Array<{
     teamId: string;
+    value: number;
     timestamp: number;
   }>;
 };
@@ -52,10 +56,12 @@ export class PlayerConverter implements FirestoreDataConverter<Player, PlayerDbM
       teamId: player.teamId,
       isCoach: player.isCoach,
       dateStarted: this._dateToNumber(player.dateStarted),
+      marketValue: player.marketValue,
       transferable: player.transferable,
       transferReqs: Array.isArray(player.transferReqs) && player.transferReqs?.map((r) => {
         return {
           teamId: (r as TransferRequest).teamId,
+          value: (r as TransferRequest).value,
           timestamp: this._dateToNumber((r as TransferRequest).timestamp)
         };
       }) || undefined
@@ -69,6 +75,7 @@ export class PlayerConverter implements FirestoreDataConverter<Player, PlayerDbM
       transferReqs = data.transferReqs.map((r) => {
         return {
           teamId: r.teamId,
+          value: r.value,
           timestamp: new Date(r.timestamp)
         };
       });
@@ -83,6 +90,7 @@ export class PlayerConverter implements FirestoreDataConverter<Player, PlayerDbM
       data.teamId,
       data.isCoach,
       new Date(data.dateStarted),
+      data.marketValue,
       data.transferable,
       transferReqs
     );

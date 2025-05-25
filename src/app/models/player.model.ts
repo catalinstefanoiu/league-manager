@@ -9,6 +9,7 @@ export class Player {
     public teamId: string,
     public isCoach: boolean,
     public dateStarted: Date,
+    public marketValue: number,
     public transferable: boolean,
     readonly transferReqs?: TransferRequest[]
   ) { }

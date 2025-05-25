@@ -16,6 +16,7 @@ export interface IPlayerDbModel {
   teamId: string;
   isCoach: boolean;
   dateStarted: number;
+  marketValue: number;
   transferable: boolean;
   transferReqs?: Array<{
     teamId: string;
@@ -68,8 +69,8 @@ export class AdminPlayerService extends ApiBaseService {
     await setDoc(playerRef, player);
   }
 
-  public async placeBid(playerId: string): Promise<void> {
-    await this.postRequest('/transfers/bid', { playerId });
+  public async placeBid(playerId: string, value: number): Promise<void> {
+    await this.postRequest('/transfers/bid', { playerId, value });
   }
 
   public async cancelBid(playerId: string): Promise<void> {
@@ -104,6 +105,7 @@ export class PlayerConverter implements FirestoreDataConverter<Player, IPlayerDb
       teamId: player.teamId,
       isCoach: player.isCoach ?? false,
       dateStarted: this._dateToNumber(player.dateStarted),
+      marketValue: player.marketValue,
       transferable: player.transferable ?? false,
       transferReqs: Array.isArray(player.transferReqs) && player.transferReqs?.map((r) => {
         return {
@@ -136,6 +138,7 @@ export class PlayerConverter implements FirestoreDataConverter<Player, IPlayerDb
       data.teamId,
       data.isCoach,
       new Date(data.dateStarted),
+      data.marketValue,
       data.transferable,
       transferReqs
     );

@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, inject, OnInit, ViewChild } from '@angular/core';
-import { DatePipe } from '@angular/common';
+import { DatePipe, DecimalPipe } from '@angular/common';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -14,10 +14,10 @@ import { AdminPlayerService } from '../admin-players/admin-player.service';
 import { UtilsService } from '../../services/utils.service';
 import { Player, TransferRequest } from '../../models/player.model';
 import { Team } from '../../models/team.model';
-import { PlayersEditComponent } from '../admin-players/players-edit/players-edit.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
+import { PlaceBidDialogComponent } from './place-bid-dialog/place-bid-dialog.component';
 
 interface IDisplayPlayer {
   pid: string;
@@ -36,6 +36,7 @@ interface IDisplayPlayer {
   selector: 'app-transferables',
   imports: [
     DatePipe,
+    DecimalPipe,
     MatButtonModule,
     MatDialogModule,
     MatFormFieldModule,
@@ -67,7 +68,7 @@ export class TransferablesComponent {
   protected pageSizeOptions = [50, 100, 250];
   protected pageSize = this.pageSizeOptions[2];
   protected pageIndex = 0;
-  protected displayedColumns = ['idx', 'actions', 'displayName', 'age', 'position', 'team', 'dateStarted'];
+  protected displayedColumns = ['idx', 'actions', 'displayName', 'age', 'position', 'team', 'marketValue', 'dateStarted'];
 
   protected placeBidDisabled = true;
   protected cancelBidDisabled = true;
@@ -91,7 +92,7 @@ export class TransferablesComponent {
 
   private async getPlayers() {
     try {
-      this.teams = await this.adminSvc.getTeams();
+      this.teams = await this.adminSvc.getTeamsSlims();
       this.teams.unshift({
         tid: '',
         name: '<no team>',
@@ -120,6 +121,7 @@ export class TransferablesComponent {
             age: player.age,
             position: player.position,
             isCoach: player.isCoach,
+            marketValue: player.marketValue,
             transferable: player.transferable,
             teamId: player.teamId ?? '',
             team: this.getTeam(player.teamId ?? ''),
@@ -148,12 +150,29 @@ export class TransferablesComponent {
   protected async openPlayerMenu(player: IDisplayPlayer) {
     this.placeBidDisabled = !!player.transferReqs?.length;
     this.cancelBidDisabled = !player.transferReqs?.length;
+
+    if (this.authSvc.userTeam === player.teamId) {
+      this.placeBidDisabled = true;
+    }
   }
 
   protected async makeBid(player: IDisplayPlayer) {
     try {
-      await this.playerSvc.placeBid(player.pid);
-      await this.getPlayers(); 
+      const dialogRef = this.dialog.open(PlaceBidDialogComponent, {
+        minWidth: '300px',
+        minHeight: '200px',
+        disableClose: true,
+        hasBackdrop: true,
+        data: {
+          player
+        }
+      });
+
+      dialogRef.afterClosed().subscribe(async (result) => {
+        if (result) {
+          await this.getPlayers();
+        }
+      });
     } catch (ex) {
       this.logger.error(ex);
     }

@@ -1,0 +1,16 @@
+<div class="container">
+  <h2 mat-dialog-title>Place bid for {{player.displayName}}</h2>
+  <mat-dialog-content>
+    <div class="player-form">
+      <mat-label>Value</mat-label>
+      <mat-slider [min]="valueMin" [max]="valueMax" step="1000" showTickMarks discrete [displayWith]="formatLabel"
+        class="value-slider">
+        <input matInput matSliderThumb [(ngModel)]="valueBid">
+      </mat-slider>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions style="justify-content: center">
+    <button mat-button tabindex="1" (click)="onOkClick()">Ok</button>
+    <button mat-button tabindex="0" [mat-dialog-close]="false">Cancel</button>
+  </mat-dialog-actions>
+</div>

@@ -81,7 +81,7 @@ export class AdminPlayersComponent implements OnInit, AfterViewInit {
 
   private async getPlayers() {
     try {
-      this.teams = await this.adminSvc.getTeams();
+      this.teams = await this.adminSvc.getTeamsSlims();
       this.teams.unshift({
         tid: '',
         name: '<no team>',

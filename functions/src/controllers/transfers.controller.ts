@@ -53,6 +53,11 @@ export class TransfersController {
         res.status(406).send('playerId is mandatory');
         return;
       }
+      const value = creq.body.value;
+      if (!value) {
+        res.status(406).send('value is mandatory');
+        return;
+      }
       const firestore = getFirestore();
       const playerRef = firestore.doc(`${COL_PLAYERS}/${playerId}`).withConverter(new PlayerConverter());
       const player = (await playerRef.get()).data();
@@ -76,6 +81,7 @@ export class TransfersController {
       const transferReqs: TransferRequest[] = player.transferReqs ?? [];
       transferReqs.push({
         teamId: customClaims.team,
+        value,
         timestamp: new Date()
       });
 
