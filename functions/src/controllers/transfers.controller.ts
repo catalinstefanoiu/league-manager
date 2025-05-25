@@ -119,6 +119,11 @@ export class TransfersController {
           title: 'Player bid',
           body: notificationBody
         },
+        data: {
+          type: 'bid',
+          playerId: player.pid,
+          value: `${value}`
+        },
         tokens
       };
       const response = await getMessaging().sendEachForMulticast(message);

@@ -1,8 +1,6 @@
-// Importă SDK-ul Firebase (folosește versiunea 8.x.x pentru compatibilitate)
-importScripts('https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js');
-importScripts('https://www.gstatic.com/firebasejs/8.10.0/firebase-messaging.js');
+importScripts('https://www.gstatic.com/firebasejs/11.6.0/firebase-app-compat.js');
+importScripts('https://www.gstatic.com/firebasejs/11.6.0/firebase-messaging-compat.js');
 
-// Inițializează Firebase
 const firebaseConfig = {
     projectId: 'leaguemanager-39205',
     appId: '1:75265332276:web:cf19f01826a491d42aa661',
@@ -13,7 +11,4 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
-
-// Configurează Firebase Messaging
 const messaging = firebase.messaging();
-``

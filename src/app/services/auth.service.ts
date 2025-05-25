@@ -33,11 +33,11 @@ export interface IAppUser extends User {
   providedIn: 'root',
 })
 export class AuthService {
-  private logger: LoggerService = inject(LoggerService);
-  private auth: Auth = inject(Auth);
-  private firestore: Firestore = inject(Firestore);
-  private messaging: Messaging = inject(Messaging);
-  private router: Router = inject(Router);
+  private logger = inject(LoggerService);
+  private auth = inject(Auth);
+  private firestore = inject(Firestore);
+  private messaging = inject(Messaging);
+  private router = inject(Router);
   private provider = new GoogleAuthProvider();
 
   #user$ = user(this.auth);
@@ -152,15 +152,6 @@ export class AuthService {
         });
         this.logger.log('FCM device token saved');
         this.setNotificationFlag(this.auth.currentUser?.uid ?? '<unknown>');
-
-        // This will fire when a message is received while the app is in the foreground.
-        // When the app is in the background, firebase-messaging-sw.js will receive the message instead.
-        onMessage(this.messaging, (message) => {
-          this.logger.log(
-            'New foreground notification from Firebase Messaging!',
-            message.notification
-          );
-        });
       } else {
         // Need to request permissions to show notifications.
         this.requestNotificationsPermissions();
