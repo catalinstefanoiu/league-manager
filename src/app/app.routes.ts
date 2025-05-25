@@ -14,7 +14,7 @@ import { TransferablesComponent } from './routes/transferables/transferables.com
 import { ChampionshipComponent } from './routes/championship/championship.component';
 import { FixturesComponent } from './routes/fixtures/fixtures.component';
 import { PlayersComponent } from './routes/players/players.component';
-import { PlayerDetailComponent } from './routes/player-detail/player-detail.component';
+import { PlayerDetailsComponent } from './routes/player-details/player-details.component';
 
 const redirectLoggedInToHome = () => redirectLoggedInTo(['home']);
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
@@ -22,41 +22,43 @@ const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 export const routes: Routes = [
   {
     path: '',
+    title: 'Login',
     component: LoginPageComponent,
     canActivate: [AuthGuard],
     data: { authGuardPipe: redirectLoggedInToHome },
   },
   {
     path: 'login',
+    title: 'Login',
     component: LoginPageComponent,
     canActivate: [AuthGuard],
     data: { authGuardPipe: redirectLoggedInToHome },
   },
   {
     path: 'home',
+    title: 'Home',
     component: HomeComponent,
     canActivate: [AuthGuard],
     data: { authGuardPipe: redirectUnauthorizedToLogin },
   },
   {
     path: 'fixtures',
+    title: 'Fixtures',
     component: FixturesComponent,
     canActivate: [AuthGuard],
     data: { authGuardPipe: redirectUnauthorizedToLogin },
   },
   {
+    path: 'players/details/:playerId',
+    component: PlayerDetailsComponent,
+    canActivate: [AuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedToLogin }
+  },
+  {
     path: 'players/:teamId',
     component: PlayersComponent,
     canActivate: [AuthGuard],
-    data: { authGuardPipe: redirectUnauthorizedToLogin },
-    children: [
-      {
-    path: ':playerId',
-    component: PlayerDetailComponent,
-    canActivate: [AuthGuard],
-    data: { authGuardPipe: redirectUnauthorizedToLogin },
-    },
-    ]
+    data: { authGuardPipe: redirectUnauthorizedToLogin }
   },
   {
     path: 'admin-users',
@@ -92,5 +94,5 @@ export const routes: Routes = [
     path: 'pages/privacy-policy',
     component: PrivacyPolicyComponent
   }
-  
+
 ];

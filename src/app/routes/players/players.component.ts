@@ -7,6 +7,8 @@ import { Player } from '../../models/player.model';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { RouterModule } from '@angular/router';
+import { Team } from '../../models/team.model';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-players',
@@ -16,10 +18,12 @@ import { RouterModule } from '@angular/router';
 })
 export class PlayersComponent implements OnInit {
   private route = inject(ActivatedRoute);
+  private titleSvc = inject(Title);
   private playersSvc = inject(PlayersService);
   private loaddingSvc = inject(LoadingService);
   private logger = inject(LoggerService);
   public teamId: string = '';
+  protected team: Team | null = null;
 
   public players: Player[] = [];
   goalkeepers: Player[] = [];
@@ -35,15 +39,28 @@ export class PlayersComponent implements OnInit {
       this.logger.debug('Team ID:', this.teamId);
       if (this.teamId) {
         this.loaddingSvc.loadingOn();
-        const players = await this.playersSvc.getTeamPlayers(this.teamId);
-        this.logger.debug('Players:', players);
-        this.players = players;
-
-        this.coach = players.find(p => p.isCoach) || null;
-        this.goalkeepers = players.filter(p => p.position === 'Portar');
-        this.defenders = players.filter(p => p.position === 'Fundaș stânga' || p.position === 'Fundaș dreapta' || p.position === 'Fundaș central');
-        this.midfielders = players.filter(p => p.position === 'Mijlocaș stânga' || p.position === 'Mijlocaș dreapta' || p.position === 'Mijlocaș central');
-        this.forwards = players.filter(p => p.position === 'Extremă stânga' || p.position === 'Extremă dreapta' || p.position === 'Atacant');
+        const data = await this.playersSvc.getTeamPlayers(this.teamId);
+        this.team = data.team;
+        this.titleSvc.setTitle(`Team players: ${this.team?.name}`);
+        this.players = data.players || [];
+        this.logger.debug('Players:', this.players);
+        
+        this.players.forEach((p) => {
+          if (p.isCoach) {
+            this.coach = p;
+          }
+          if (p.position === 'Portar') {
+            this.goalkeepers.push(p);
+          } else if (p.position === 'Fundaș stânga' || p.position === 'Fundaș dreapta' || p.position === 'Fundaș central') {
+            this.defenders.push(p);
+          }
+          else if (p.position === 'Mijlocaș stânga' || p.position === 'Mijlocaș dreapta' || p.position === 'Mijlocaș central') {
+            this.midfielders.push(p);
+          }
+          else if (p.position === 'Extremă stânga' || p.position === 'Extremă dreapta' || p.position === 'Atacant') {
+            this.forwards.push(p);
+          }
+        });
       }
     } catch (error) {
       this.logger.error('Error fetching players:', error);

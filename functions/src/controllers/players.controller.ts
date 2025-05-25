@@ -1,8 +1,9 @@
 import { Request, Response } from 'express';
 import { logger } from 'firebase-functions';
 import { getFirestore } from 'firebase-admin/firestore';
-import { COL_PLAYERS } from '../models/constants';
+import { COL_PLAYERS, COL_TEAMS } from '../models/constants';
 import { Player, PlayerConverter } from '../models/player.model';
+import { TeamConverter } from '../models/team.model';
 
 
 export class PlayersController {
@@ -11,6 +12,11 @@ export class PlayersController {
       const teamId = req.params.teamId;
       logger.debug(`players for teamId: ${teamId}`);
       const firestore = getFirestore();
+      const teamDoc = await firestore
+        .collection(COL_TEAMS)
+        .doc(teamId)
+        .withConverter(new TeamConverter())
+        .get();
       const playersCol = firestore.collection(COL_PLAYERS).withConverter(new PlayerConverter());
       const snapshot = await playersCol
         .where('teamId', '==', teamId)
@@ -26,7 +32,10 @@ export class PlayersController {
       });
 
       logger.debug(`players: ${players.length}`);
-      res.status(200).json(players);
+      res.status(200).json({
+        team: teamDoc.exists ? teamDoc.data() : null,
+        players
+      });
     } catch (ex) {
       logger.error(ex);
       res.status(500).send('Unknown server error');
