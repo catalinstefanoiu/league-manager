@@ -3,10 +3,17 @@
   <mat-dialog-content>
     <div class="player-form">
       <mat-label>Value</mat-label>
-      <mat-slider [min]="valueMin" [max]="valueMax" step="1000" showTickMarks discrete [displayWith]="formatLabel"
+      <!--mat-slider [min]="valueMin" [max]="valueMax" step="1000" showTickMarks discrete [displayWith]="formatLabel"
         class="value-slider">
         <input matInput matSliderThumb [(ngModel)]="valueBid">
-      </mat-slider>
+      </mat-slider-->
+      <mat-form-field class="value-input">
+        <input matInput type="number" [(ngModel)]="valueBid" [min]="valueMin" [max]="valueMax" step="1000"
+          placeholder="Enter bid value" required>
+        @if (valueBid < valueMin || valueBid > valueMax) {
+          <mat-error>Value must be between {{valueMin | number:'1.0-0'}} and {{valueMax | number:'1.0-0'}}</mat-error>
+        }
+      </mat-form-field>
     </div>
   </mat-dialog-content>
   <mat-dialog-actions style="justify-content: center">

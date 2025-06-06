@@ -2,12 +2,13 @@ import { Component, Inject, inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, NgModel, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
-import { MatLabel } from '@angular/material/form-field';
+import { MatFormField, MatFormFieldModule, MatLabel } from '@angular/material/form-field';
 import { MatSlider, MatSliderThumb } from '@angular/material/slider';
 import { AdminPlayerService } from '../../admin-players/admin-player.service';
 import { Player } from '../../../models/player.model';
 import { LoggerService } from '../../../services/logger.service';
 import { MatInput } from '@angular/material/input';
+import { DecimalPipe } from '@angular/common';
 
 @Component({
   selector: 'app-place-bid-dialog',
@@ -19,7 +20,9 @@ import { MatInput } from '@angular/material/input';
     MatLabel,
     MatSlider,
     MatSliderThumb,
-    FormsModule
+    FormsModule,
+    MatFormFieldModule,
+    DecimalPipe
   ],
   templateUrl: './place-bid-dialog.component.html',
   styleUrl: './place-bid-dialog.component.scss'
@@ -45,6 +48,7 @@ export class PlaceBidDialogComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.logger.debug('PlaceBidDialogComponent initialized with player:', this.player);
   }
 
   formatLabel(value: number): string {

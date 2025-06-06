@@ -21,6 +21,7 @@ export interface IPlayerDbModel {
   transferReqs?: Array<{
     teamId: string;
     timestamp: number;
+    value: number;
   }>;
 }
 
@@ -49,6 +50,14 @@ export class AdminPlayerService extends ApiBaseService {
     });
     return players;
   }
+
+  public async acceptTransfer(playerId: string, teamId: string): Promise<void> {
+  return this.postRequest('/transfers/accept', { playerId, teamId });
+}
+
+public async rejectTransfer(playerId: string, teamId: string): Promise<void> {
+  return this.postRequest('/transfers/reject', { playerId, teamId });
+}
 
   public async getTransferables(): Promise<Player[]> {
     // const players: Player[] = [];
@@ -97,24 +106,25 @@ export class AdminPlayerService extends ApiBaseService {
 
 export class PlayerConverter implements FirestoreDataConverter<Player, IPlayerDbModel> {
   toFirestore(player: WithFieldValue<Player>): WithFieldValue<IPlayerDbModel> {
-    return {
-      firstName: player.firstName,
-      lastName: player.lastName,
-      age: player.age,
-      position: player.position,
-      teamId: player.teamId,
-      isCoach: player.isCoach ?? false,
-      dateStarted: this._dateToNumber(player.dateStarted),
-      marketValue: player.marketValue,
-      transferable: player.transferable ?? false,
-      transferReqs: Array.isArray(player.transferReqs) && player.transferReqs?.map((r) => {
-        return {
-          teamId: (r as TransferRequest).teamId,
-          timestamp: this._dateToNumber((r as TransferRequest).timestamp)
-        };
-      }) || undefined
-    };
-  }
+     return {
+    firstName: player.firstName,
+    lastName: player.lastName,
+    age: player.age,
+    position: player.position,
+    teamId: player.teamId,
+    isCoach: player.isCoach ?? false,
+    dateStarted: this._dateToNumber(player.dateStarted),
+    marketValue: player.marketValue ?? 0,
+    transferable: player.transferable ?? false,
+    transferReqs: Array.isArray(player.transferReqs)
+      ? (player.transferReqs as TransferRequest[]).map((r) => ({
+          teamId: r.teamId,
+          timestamp: this._dateToNumber(r.timestamp),
+          value: r.value
+        }))
+      : []
+  };
+}
 
   fromFirestore(snapshot: QueryDocumentSnapshot): Player {
     const data = snapshot.data() as IPlayerDbModel;
@@ -123,7 +133,8 @@ export class PlayerConverter implements FirestoreDataConverter<Player, IPlayerDb
       transferReqs = data.transferReqs.map((r) => {
         return {
           teamId: r.teamId,
-          timestamp: new Date(r.timestamp)
+          timestamp: new Date(r.timestamp),
+          value: r.value
         };
       });
     }
@@ -150,5 +161,7 @@ export class PlayerConverter implements FirestoreDataConverter<Player, IPlayerDb
     }
     return date as FieldValue;
   }
+
+  
 }
 

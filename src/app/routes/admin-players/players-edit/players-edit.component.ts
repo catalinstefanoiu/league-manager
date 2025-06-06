@@ -83,7 +83,7 @@ export class PlayersEditComponent {
         teamId: this.formPlayer.value.team!,
         dateStarted: this.player.dateStarted,
         isCoach: this.formPlayer.value.isCoach!,
-        marketValue: this.player.marketValue,
+        marketValue: this.player.marketValue ?? 0,
         transferable: this.formPlayer.value.transferable!,
         pid: this.player.pid
       };

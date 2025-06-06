@@ -1,34 +1,60 @@
+@if (!loading && player) {
+  <div class="player-profile">
+    <div class="player-header">
+      <div class="player-avatar"></div>
+      <div class="player-meta">
+        <h1 class="player-name">{{ player.displayName }}</h1>
+        <div class="player-tags">
+          <span class="player-position">{{ player.position }}</span>
+          <span class="player-age">Age {{ player.age }}</span>
+          <span class="player-role">{{ player.isCoach ? 'Coach' : 'Player' }}</span>
+        </div>
+      </div>
+    </div>
 
- @if (!loading && player) {
-      <mat-card class="player-detail-card">
-        <mat-card-header>
-          <mat-card-title>{{ player.displayName }}</mat-card-title>
-          <mat-card-subtitle>{{ player.position }} • Age {{ player.age }}</mat-card-subtitle>
-        </mat-card-header>
-  
-        <mat-card-content>
-          <p><strong>Full Name:</strong> {{ player.firstName }} {{ player.lastName }}</p>
-          <p><strong>Team ID:</strong> {{ player.teamId }}</p>
-          <p><strong>Joined:</strong> {{ player.dateStarted | date: 'mediumDate' }}</p>
-          <p><strong>Role:</strong> {{ player.isCoach ? 'Coach' : 'Player' }}</p>
-          <p><strong>Transferable:</strong> {{ player.transferable ? 'Yes' : 'No' }}</p>
-  
-          @if (player.transferReqs && player.transferReqs.length > 0) {
-            <ng-template>
-              <h4>Transfer Requests</h4>
-              <ul>
-                @for (req of player.transferReqs; track req.teamId) {
-                  <ng-template>
-                    <li>
-                      ➤ Requested by team {{ req.teamId }} on {{ req.timestamp | date:'short' }}
-                    </li>
-                  </ng-template>
-                }
-              </ul>
-            </ng-template>
-          }
-        </mat-card-content>
-      </mat-card>
-  }
-  
-  
+    <div class="player-details">
+      <div class="detail-section">
+        <h3 class="section-title">Personal Info</h3>
+        <div class="detail-row">
+          <span class="detail-label">Full Name</span>
+          <span class="detail-value">{{ player.firstName }} {{ player.lastName }}</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">Team ID</span>
+          <span class="detail-value">{{ player.teamId }}</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">Joined</span>
+          <span class="detail-value">{{ player.dateStarted | date: 'mediumDate' }}</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">Market Value</span>
+          <span class="detail-value">{{ player.marketValue }}€</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">Transferable</span>
+          <span class="detail-value" [class.yes]="player.transferable" [class.no]="!player.transferable">
+            {{ player.transferable ? 'Yes' : 'No' }}
+          </span>
+        </div>
+      </div>
+
+      @if (player.transferReqs && player.transferReqs.length > 0) {
+        <div class="detail-section transfer-requests">
+          <h3 class="section-title">Transfer Requests</h3>
+          <div class="requests-list">
+            @for (req of player.transferReqs; track req.teamId) {
+              <div class="request-item">
+                <div class="request-icon">↗</div>
+                <div class="request-details">
+                  <div class="request-team">Team #{{ req.teamId }}</div>
+                  <div class="request-date">{{ req.timestamp | date:'mediumDate' }}</div>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+}

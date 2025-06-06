@@ -4,7 +4,7 @@
     <h3 class="sub-title"> Goalkeepers </h3>
 <div class="players-grid">
   @for (player of goalkeepers; track player.pid) {
-    <mat-card class="player-card">
+    <mat-card class="player-card" [routerLink]="['/players', 'details', player.pid]" style="cursor: pointer;">
       <img class="player-image">
       <div class="player-info">
         <h3 class="player-name">{{ player.displayName }}</h3>
@@ -46,7 +46,7 @@
     <h3 class="sub-title"> Midfielders </h3>
     <div class="players-grid">
       @for (player of midfielders; track player.pid) {
-        <mat-card class="player-card">
+        <mat-card class="player-card" [routerLink]="['/players', 'details', player.pid]" style="cursor: pointer;">
           <img class="player-image">
           <div class="player-info">
             <h3 class="player-name">{{ player.displayName }}</h3>
@@ -67,7 +67,7 @@
     <h3 class="sub-title"> Forwards </h3>
     <div class="players-grid">
       @for (player of forwards; track player.pid) {
-        <mat-card class="player-card">
+        <mat-card class="player-card" [routerLink]="['/players', 'details', player.pid]" style="cursor: pointer;">
           <img class="player-image">
           <div class="player-info">
             <h3 class="player-name">{{ player.displayName }}</h3>

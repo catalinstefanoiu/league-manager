@@ -18,6 +18,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { PlaceBidDialogComponent } from './place-bid-dialog/place-bid-dialog.component';
+import { TransferNotificationService } from '../../services/transfer-notification.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ManageBidsDialogComponent } from './manage-bids/manage-bids-dialog.component';
 
 interface IDisplayPlayer {
   pid: string;
@@ -62,21 +65,49 @@ export class TransferablesComponent {
   private adminSvc = inject(AdminService);
   private playerSvc = inject(AdminPlayerService);
   protected utilsSvc = inject(UtilsService);
+  private transferNotificationService = inject(TransferNotificationService);
+  private snackBar = inject(MatSnackBar);
+
 
   private players: Player[] = [];
   protected dataSource: MatTableDataSource<IDisplayPlayer> = new MatTableDataSource<IDisplayPlayer>([]);
   protected pageSizeOptions = [50, 100, 250];
   protected pageSize = this.pageSizeOptions[2];
   protected pageIndex = 0;
-  protected displayedColumns = ['idx', 'actions', 'displayName', 'age', 'position', 'team', 'marketValue', 'dateStarted'];
+  protected displayedColumns = ['idx', 'actions', 'displayName', 'age', 'position', 'team', 'marketValue', 'bidCount', 'dateStarted'];
+  transferNotifications: any[] = [];
 
   protected placeBidDisabled = true;
   protected cancelBidDisabled = true;
 
   private teams: Team[] | undefined;
+  protected get currentUserTeamId() {
+    return this.authSvc.userTeam;
+  }
 
   async ngOnInit(): Promise<void> {
     await this.getPlayers();
+    this.setupNotificationListener();
+    this.logger.debug(this.currentUserTeamId);
+  }
+
+  // Add this method to handle notifications
+  private setupNotificationListener(): void {
+    this.transferNotificationService.transfers$.subscribe(notifications => {
+      this.transferNotifications = notifications;
+      // Optionally show a snackbar for new notifications
+      if (notifications.length > 0) {
+        const latestNotification = notifications[0];
+        this.snackBar.open(latestNotification.message, 'Dismiss', { 
+          duration: 8000 
+        });
+      }
+    });
+  }
+  // Add this method to dismiss notifications
+  dismissNotification(index: number): void {
+    this.transferNotifications.splice(index, 1);
+    this.transferNotificationService.updateNotifications(this.transferNotifications);
   }
 
   /**
@@ -170,7 +201,10 @@ export class TransferablesComponent {
 
       dialogRef.afterClosed().subscribe(async (result) => {
         if (result) {
-          await this.getPlayers();
+          this.logger.debug('Bid placed', result);
+           await this.getPlayers();
+           this.logger.debug('Players reloaded after bid');
+          // setTimeout(() => this.getPlayers(), 1000);
         }
       });
     } catch (ex) {
@@ -239,5 +273,33 @@ export class TransferablesComponent {
   private getTeam(teamId: string): string {
     const team = this.teams?.find((t) => t.tid === teamId);
     return team?.name ?? '';
+  }
+
+  protected onBidCountClick(row: IDisplayPlayer) {
+    this.logger.debug('onBidCountClick', row);
+    if (row.teamId !== this.authSvc.userTeam) {
+      this.logger.debug('User team matches player team, showing transfer requests');
+      return;
+    }
+    if (row.transferReqs && row.transferReqs.length > 0) {
+      const transferReqs = row.transferReqs.map((req) => {
+        const team = this.getTeam(req.teamId);
+        return {
+          ...req,
+          teamName: team
+        };
+      });
+      this.dialog.open(ManageBidsDialogComponent, {
+        minWidth: '300px',
+        minHeight: '300px',
+        disableClose: true,
+        hasBackdrop: true,
+        data: {
+          player: row,
+          transferReqs,          
+        },
+        width: '400px'
+      });
+    }
   }
 }

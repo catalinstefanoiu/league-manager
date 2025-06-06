@@ -73,6 +73,12 @@
       }
     }
 
+    .mat-column-bidCount {
+      flex: 0 0 60px;
+      justify-content: flex-end;
+      cursor: pointer;
+    }
+
     .mat-column-position {
       flex: 1 0 80px;
     }

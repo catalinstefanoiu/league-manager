@@ -22,7 +22,8 @@ export class Player {
 export class TransferRequest {
   constructor(
     readonly teamId: string,
-    readonly timestamp: Date
+    readonly timestamp: Date,
+    readonly value: number
   ) { }
 }
 

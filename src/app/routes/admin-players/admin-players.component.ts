@@ -26,6 +26,7 @@ interface IDisplayPlayer {
   teamId: string;
   team: string;
   dateStarted: Date;
+  marketValue?: number;
 }
 
 @Component({
@@ -113,7 +114,8 @@ export class AdminPlayersComponent implements OnInit, AfterViewInit {
             transferable: player.transferable,
             teamId: player.teamId ?? '',
             team: this.getTeam(player.teamId ?? ''),
-            dateStarted: player.dateStarted
+            dateStarted: player.dateStarted,
+            marketValue: player.marketValue ?? 0,
           } as IDisplayPlayer;
         })
         .sort((a, b) =>
