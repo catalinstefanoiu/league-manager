@@ -1,0 +1,52 @@
+.dialog-title {
+  margin-bottom: 0;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.dialog-content {
+  padding-top: 8px;
+}
+
+.bids-table {
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: collapse;
+
+  th,
+  td {
+    text-align: center;
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  th {
+    background-color: var(--mdc-theme-primary, #009688);
+    font-weight: 500;
+  }
+
+  td {
+    border-bottom: 1px solid black;
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+
+  .mat-icon-button {
+    margin: 0 2px;
+  }
+
+  .actions-header {
+    width: 100px;
+  }
+
+  tr:hover {
+    background-color: black;
+  }
+}
+
+.dialog-actions {
+  padding-top: 12px;
+}

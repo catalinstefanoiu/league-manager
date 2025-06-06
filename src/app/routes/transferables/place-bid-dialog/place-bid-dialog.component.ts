@@ -18,8 +18,8 @@ import { DecimalPipe } from '@angular/common';
     MatDialogModule,
     MatInput,
     MatLabel,
-    MatSlider,
-    MatSliderThumb,
+    //MatSlider,
+    //MatSliderThumb,
     FormsModule,
     MatFormFieldModule,
     DecimalPipe

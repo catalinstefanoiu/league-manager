@@ -55,15 +55,17 @@ export class ManageBidsDialogComponent {
 
       const updatedPlayer = {
         ...this.data.player,
-        teamId: bid.teamId
+        teamId: bid.teamId,
+        transferable: false,
+        transferReqs: []
       };
       
       updatedPlayer.transferReqs = [];
       
       await this.playerSvc.updatePlayer(updatedPlayer);
-      // this.snackBar.open(`Player transferred to ${this.getTeamName(bid.teamId)}`, 'Close', {
-      //   duration: 8000
-      // });
+      this.snackBar.open('Player transferred successfully', 'Close', {
+        duration: 8000
+      });
       
       this.dialogRef.close(true); 
     } catch (ex) {

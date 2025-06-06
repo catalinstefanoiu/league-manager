@@ -1,0 +1,43 @@
+<h2 mat-dialog-title>Add Player to {{ data.team.name }}</h2>
+
+<mat-dialog-content class="container">
+  <form [formGroup]="formPlayer" class="player-form">
+    <mat-form-field appearance="outline">
+      <mat-label>First Name</mat-label>
+      <input matInput formControlName="firstName" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Last Name</mat-label>
+      <input matInput formControlName="lastName" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Age</mat-label>
+      <input matInput type="number" formControlName="age" min="10" max="50" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Position</mat-label>
+      <mat-select formControlName="position">
+        @for (position of positions; track position) {
+            <mat-option
+             [value]="position">{{ position }}
+            </mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Market Value</mat-label>
+      <input matInput type="number" formControlName="marketValue" min="1000" step="1000" />
+    </mat-form-field>
+
+    <mat-slide-toggle formControlName="isCoach">Is Coach</mat-slide-toggle>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancelClick()">Cancel</button>
+  <button mat-flat-button color="primary" (click)="onOkClick()" [disabled]="formPlayer.invalid">Add</button>
+</mat-dialog-actions>

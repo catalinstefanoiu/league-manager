@@ -1,1 +1,13 @@
-<p>admin-teams works!</p>
+<div class="admin-teams-container">
+  <h2 class="title">Add a New Player for a Team</h2>
+  <p class="subtitle">Select a team below to assign a new player</p>
+
+  <div class="team-grid">
+    @for (team of teams; track team) {
+      <div class="team-card" (click)="openAddPlayerDialog(team)" matRipple>
+        <img [src]="team.logo" [alt]="team.name" class="team-logo" />
+        <div class="team-name">{{ team.name }}</div>
+      </div>
+    }
+  </div>
+</div>

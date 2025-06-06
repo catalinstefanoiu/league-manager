@@ -1,0 +1,51 @@
+<h2 mat-dialog-title class="title">Last 3 Results for Each Team</h2>
+
+<mat-dialog-content class="dialog-content">
+  @if (!loading) {
+    <div class="team-section">
+      <h3 class="team-heading">Home Team</h3>
+      @for (match of homeMatches; track match) {
+        <div class="match-card">
+          <div class="match-details">
+            <div class="team-block">
+              <img [src]="match.homeTeam.logo" alt="{{ match.homeTeam.name }}" class="logo" />
+              <span class="team-name">{{ match.homeTeam.name }}</span>
+            </div>
+            <span class="score">{{ match.homeTeam.gf }} - {{ match.awayTeam.gf }}</span>
+            <div class="team-block">
+              <img [src]="match.awayTeam.logo" alt="{{ match.awayTeam.name }}" class="logo" />
+              <span class="team-name">{{ match.awayTeam.name }}</span>
+            </div>
+          </div>
+          <div class="match-date">{{ match.date | date:'mediumDate' }}</div>
+        </div>
+      }
+    </div>
+
+    <div class="team-section">
+      <h3 class="team-heading">Away Team</h3>
+      @for (match of awayMatches; track match) {
+        <div class="match-card">
+          <div class="match-details">
+            <div class="team-block">
+              <img [src]="match.homeTeam.logo" alt="{{ match.homeTeam.name }}" class="logo" />
+              <span class="team-name">{{ match.homeTeam.name }}</span>
+            </div>
+            <span class="score">{{ match.homeTeam.gf }} - {{ match.awayTeam.gf }}</span>
+            <div class="team-block">
+              <img [src]="match.awayTeam.logo" alt="{{ match.awayTeam.name }}" class="logo" />
+              <span class="team-name">{{ match.awayTeam.name }}</span>
+            </div>
+          </div>
+          <div class="match-date">{{ match.date | date:'mediumDate' }}</div>
+        </div>
+      }
+    </div>
+  } @else {
+    <p class="no-data">Loading match history...</p>
+  }
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="closeDialog()" color="primary">Close</button>
+</mat-dialog-actions>

@@ -65,17 +65,19 @@
     }
 
     .mat-column-marketValue {
-      flex: 1 0 60px;
-      justify-content: flex-end;
+      flex: 1 0 80px;
+      justify-content: center;
+      text-align: center;
 
-      &:before {
+      &::after {
         content: '€';
       }
     }
 
     .mat-column-bidCount {
-      flex: 0 0 60px;
-      justify-content: flex-end;
+      flex: 1 0 40px;
+      justify-content: center;
+      text-align: center;
       cursor: pointer;
     }
 

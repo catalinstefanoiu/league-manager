@@ -7,6 +7,8 @@ import { MatCardModule } from '@angular/material/card';
 import { RouterModule } from '@angular/router';
 import { LoggerService } from '../../services/logger.service';
 import { Title } from '@angular/platform-browser';
+import { AdminService } from '../../services/admin.service';
+import { Team } from '../../models/team.model';
 
 @Component({
   selector: 'app-player-detail',
@@ -19,11 +21,19 @@ export class PlayerDetailsComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private titleSvc = inject(Title);
   private playersService = inject(PlayersService);
-  private logger = inject(LoggerService)
+  private logger = inject(LoggerService);
+  private adminSvc = inject(AdminService);
+  teams: Team[] =[];
   player?: Player;
   loading = true;
 
+  protected getTeamName(teamId: string): string {
+    const team = this.teams?.find(t => t.tid === teamId)
+    return team?.name ?? '';
+  }
+
   async ngOnInit() {
+    this.teams = await this.adminSvc.getTeams();
     const pid = this.route.snapshot.paramMap.get('playerId');
     this.logger.debug('Player ID:', pid);
     if (pid) {

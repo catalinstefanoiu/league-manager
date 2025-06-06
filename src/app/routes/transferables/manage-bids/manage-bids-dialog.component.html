@@ -1,39 +1,37 @@
-<h2 mat-dialog-title>Manage Bids for {{data.player.displayName}}</h2>
-<mat-dialog-content>
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-    <!-- Team Column -->
+<h2 mat-dialog-title class="dialog-title">
+  Manage Bids for <strong>{{ data.player.displayName }}</strong>
+</h2>
+
+<mat-dialog-content class="dialog-content">
+  <table mat-table [dataSource]="dataSource" class="bids-table mat-elevation-z1">
+
+    <!-- Team -->
     <ng-container matColumnDef="team">
       <th mat-header-cell *matHeaderCellDef>Team</th>
-      <td mat-cell *matCellDef="let bid">{{bid.teamName}}</td>
+      <td mat-cell *matCellDef="let bid">{{ bid.teamName }}</td>
     </ng-container>
 
-    <!-- Value Column -->
+    <!-- Value -->
     <ng-container matColumnDef="value">
-      <th mat-header-cell *matHeaderCellDef>Bid Value</th>
-      <td mat-cell *matCellDef="let bid">{{bid.value | number:'1.0-0'}} €</td>
+      <th mat-header-cell *matHeaderCellDef>Bid (€)</th>
+      <td mat-cell *matCellDef="let bid">{{ bid.value | number:'1.0-0' }}</td>
     </ng-container>
 
-    <!-- Date Column -->
+    <!-- Date -->
     <ng-container matColumnDef="date">
-      <th mat-header-cell *matHeaderCellDef>Date Received</th>
-      <td mat-cell *matCellDef="let bid">{{bid.timestamp | date:'mediumDate'}}</td>
+      <th mat-header-cell *matHeaderCellDef>Date</th>
+      <td mat-cell *matCellDef="let bid">{{ bid.timestamp | date:'mediumDate' }}</td>
     </ng-container>
 
-    <!-- Actions Column -->
+    <!-- Actions -->
     <ng-container matColumnDef="actions">
-      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <th mat-header-cell *matHeaderCellDef class="actions-header">Actions</th>
       <td mat-cell *matCellDef="let bid">
-        <button mat-icon-button color="primary" 
-                (click)="acceptBid(bid)" 
-                matTooltip="Accept Bid"
-                [disabled]="processing">
-          <mat-icon>check_circle</mat-icon>
+        <button mat-icon-button color="primary" matTooltip="Accept Bid" (click)="acceptBid(bid)" [disabled]="processing">
+          <mat-icon>check</mat-icon>
         </button>
-        <button mat-icon-button color="warn" 
-                (click)="rejectBid(bid)" 
-                matTooltip="Reject Bid"
-                [disabled]="processing">
-          <mat-icon>cancel</mat-icon>
+        <button mat-icon-button color="warn" matTooltip="Reject Bid" (click)="rejectBid(bid)" [disabled]="processing">
+          <mat-icon>close</mat-icon>
         </button>
       </td>
     </ng-container>
@@ -42,6 +40,7 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 </mat-dialog-content>
-<mat-dialog-actions align="end">
-  <button mat-button (click)="closeDialog()" [disabled]="processing">Close</button>
+
+<mat-dialog-actions align="end" class="dialog-actions">
+  <button mat-flat-button color="primary" (click)="closeDialog()" [disabled]="processing">Close</button>
 </mat-dialog-actions>

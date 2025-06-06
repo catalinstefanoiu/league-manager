@@ -7,6 +7,9 @@ import { MatInput, MatLabel, MatSuffix } from '@angular/material/input';
 import { AdminService, UIFixtureMatch } from '../../services/admin.service';
 import { LoggerService } from '../../services/logger.service';
 import { LoadingService } from '../../services/loading.service';
+import { HeadToHeadComponent } from './head-to-head/head-to-head.component';
+import { min } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
 
 type ChampionshipRound = {
   round: number;
@@ -30,6 +33,7 @@ export class FixturesComponent implements OnInit {
   private logger: LoggerService = inject(LoggerService);
   private loadingSvc: LoadingService = inject(LoadingService);
   private adminSvc: AdminService = inject(AdminService);
+  private dialog = inject(MatDialog)
 
   protected round: ChampionshipRound | null = null;
   protected nextDisabled = false;
@@ -108,6 +112,13 @@ export class FixturesComponent implements OnInit {
   }
 
   public onViewClick(fixture: UIFixtureMatch) {
-
+    this.dialog.open(HeadToHeadComponent, {
+      minWidth: '500px',
+      data: {
+        homeTeamId: fixture.homeTeam.id,
+        awayTeamId: fixture.awayTeam.id
+      },
+      autoFocus: false
+    })
   }
 }
