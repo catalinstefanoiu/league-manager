@@ -60,6 +60,10 @@ export class TransfersController {
         res.status(406).send('value is mandatory');
         return;
       }
+      if (isNaN(value) || value <= 0) {
+        res.status(406).send('value should be a positive number');
+        return;
+      }
       const firestore = getFirestore();
       const playerRef = firestore.doc(`${COL_PLAYERS}/${playerId}`).withConverter(new PlayerConverter());
       const player = (await playerRef.get()).data();

@@ -50,7 +50,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
     try {
       this.loadingSvc.loadingOn();
       const teams = await this.adminSvc.getStandings();
-      // Sort teams by points, then by goal difference, then by goals for
       teams.sort((a, b) => {
         const gda = +a.gf - +a.ga;
         const gdb = +b.gf - +b.ga;

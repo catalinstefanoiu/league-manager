@@ -21,14 +21,14 @@ export class FixtureService {
 
     for (let round = 0; round < totalRounds; round++) {
       const matchDate = new Date(startDate);
-      matchDate.setDate(startDate.getDate() + round * 7); // Weekly intervals, adding variation for each match in the round
+      matchDate.setDate(startDate.getDate() + round * 7); 
       
       for (let i = 0; i < totalTeams / 2; i++) {
         const homeTeam = shuffledTeams[i];
         const awayTeam = shuffledTeams[totalTeams - 1 - i];
 
         fixtures.push({
-          homeTeam: round % 2 === 0 ? homeTeam : awayTeam, // Alternate home/away
+          homeTeam: round % 2 === 0 ? homeTeam : awayTeam, 
           awayTeam: round % 2 === 0 ? awayTeam : homeTeam,
           date: matchDate,
           round: round + 1
