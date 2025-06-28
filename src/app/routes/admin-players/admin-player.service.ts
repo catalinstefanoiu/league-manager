@@ -86,6 +86,14 @@ public async rejectTransfer(playerId: string, teamId: string): Promise<void> {
     await this.postRequest('/transfers/unbid', { playerId });
   }
 
+  public async acceptBid(playerId: string, newTeamId: string): Promise<void> {
+    await this.postRequest('/transfers/accept', { playerId, newTeamId });
+  }
+
+  public async rejectBid(playerId: string, teamId: string): Promise<void> {
+    await this.postRequest('/transfers/reject', { playerId, teamId });
+  }
+
   public async allocatePlayers(players: Player[]): Promise<void> {
     const batch = writeBatch(this.firestore);
     players.forEach((player) => {

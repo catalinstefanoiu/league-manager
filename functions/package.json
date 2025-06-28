@@ -1,6 +1,6 @@
 {
   "name": "functions",
-  "version": "0.122.0",
+  "version": "0.132.0",
   "scripts": {
     "lint": "npx eslint src/**/*.ts --fix",
     "build": "rm -rf lib && echo '{\"version\"': '\"'$(npm --no-git-tag-version version minor)'\"}' > src/version.json && tsc",

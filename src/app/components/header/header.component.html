@@ -33,6 +33,12 @@
       <mat-icon>diversity_3</mat-icon>
       <span>Teams</span>
     </button>
+    <button mat-menu-item [routerLink]="['/', 'championship']">
+      <mat-icon><span class="material-symbols-outlined">
+          trophy
+        </span></mat-icon>
+      <span>Championship</span>
+    </button>
     }
 
     <button mat-menu-item [routerLink]="['/', 'admin-players']">
@@ -43,13 +49,6 @@
     <button mat-menu-item [routerLink]="['/', 'transferables']">
       <mat-icon>sync_alt</mat-icon>
       <span>Transferables</span>
-    </button>
-
-    <button mat-menu-item [routerLink]="['/', 'championship']">
-      <mat-icon><span class="material-symbols-outlined">
-          trophy
-        </span></mat-icon>
-      <span>Championship</span>
     </button>
   </mat-menu>
   }
