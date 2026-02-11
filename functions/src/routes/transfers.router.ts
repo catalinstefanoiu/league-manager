@@ -16,5 +16,12 @@ router.route('/bid')
 router.route('/unbid')
   .all(authenticate)
   .post(ctrl.removeTransferBid.bind(ctrl));
+router.route('/accept')
+  .all(authenticate)
+  .post(ctrl.acceptBid.bind(ctrl));
+
+router.route('/reject')
+  .all(authenticate)
+  .post(ctrl.rejectBid.bind(ctrl));
 
 export default router;

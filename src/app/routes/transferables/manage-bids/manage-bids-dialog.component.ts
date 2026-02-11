@@ -53,21 +53,12 @@ export class ManageBidsDialogComponent {
     this.processing = true;
     try {
 
-      const updatedPlayer = {
-        ...this.data.player,
-        teamId: bid.teamId,
-        transferable: false,
-        transferReqs: []
-      };
-      
-      updatedPlayer.transferReqs = [];
-      
-      await this.playerSvc.updatePlayer(updatedPlayer);
+      await this.playerSvc.acceptBid(this.data.player.pid, bid.teamId);
       this.snackBar.open('Player transferred successfully', 'Close', {
         duration: 8000
       });
       
-      this.dialogRef.close(true); 
+      this.dialogRef.close(true);
     } catch (ex) {
       this.logger.error(ex);
       this.snackBar.open('Failed to transfer player', 'Close', {
@@ -82,22 +73,14 @@ export class ManageBidsDialogComponent {
     this.processing = true;
     try {
 
-      const updatedTransferReqs = this.data.player.transferReqs.filter(
-        (req: TransferRequest) => req.teamId !== bid.teamId
-      );
-      
-      const updatedPlayer = {
-        ...this.data.player,
-        transferReqs: updatedTransferReqs
-      };
-      
-      await this.playerSvc.updatePlayer(updatedPlayer);
+      await this.playerSvc.rejectBid(this.data.player.pid, bid.teamId);
       
       this.dataSource = this.dataSource.filter(b => b.teamId !== bid.teamId);
       
       this.snackBar.open('Bid rejected', 'Close', {
         duration: 3000
       });
+      this.dialogRef.close(true);
     } catch (ex) {
       this.logger.error(ex);
       this.snackBar.open('Failed to reject bid', 'Close', {

@@ -185,4 +185,114 @@ export class TransfersController {
       res.status(500).send('Unknown server error');
     }
   }
+
+  public async acceptBid(req: Request, res: Response): Promise<void> {
+    const creq = req as ICustomRequest;
+    const customClaims: CustomClaims = (creq.user.customClaims as CustomClaims) ?? { role: UserRole.User, team: '' };
+
+    try {
+      if (![UserRole.AppAdmin, UserRole.TeamAdmin, UserRole.TeamManager].includes(customClaims.role)) {
+        res.status(403).send('User is not authorized');
+        return;
+      }
+
+      const playerId = creq.body.playerId;
+      if (!playerId) {
+        res.status(406).send('playerId is mandatory');
+        return;
+      }
+      const newTeamId = creq.body.newTeamId;
+      if (!newTeamId) {
+        res.status(406).send('new teamId is mandatory');
+        return;
+      }
+      const firestore = getFirestore();
+      const playerRef = firestore.doc(`${COL_PLAYERS}/${playerId}`).withConverter(new PlayerConverter());
+      const player = (await playerRef.get()).data();
+      if (!player) {
+        res.status(404).send('player not found');
+        return;
+      }
+      if (player.teamId !== customClaims.team) {
+        res.status(403).send('User is not authorized');
+        return;
+      }
+
+      if (player.transferReqs) {
+        await playerRef.set({
+          ...player,
+          teamId: newTeamId,
+          transferable: false,
+          transferReqs: []
+        });
+      }
+
+      res.status(200).send();
+    } catch (ex) {
+      logger.error(ex);
+      res.status(500).send('Unknown server error');
+    }
+  }
+
+  public async rejectBid(req: Request, res: Response): Promise<void> {
+    const creq = req as ICustomRequest;
+    const customClaims: CustomClaims = (creq.user.customClaims as CustomClaims) ?? { role: UserRole.User, team: '' };
+
+    try {
+      if (![UserRole.AppAdmin, UserRole.TeamAdmin, UserRole.TeamManager].includes(customClaims.role)) {
+        res.status(403).send('User is not authorized');
+        return;
+      }
+
+      const playerId = creq.body.playerId;
+      if (!playerId) {
+        res.status(406).send('playerId is mandatory');
+        return;
+      }
+      const teamId = creq.body.teamId;
+      if (!teamId) {
+        res.status(406).send('teamId is mandatory');
+        return;
+      }
+
+      const firestore = getFirestore();
+      const playerRef = firestore.doc(`${COL_PLAYERS}/${playerId}`).withConverter(new PlayerConverter());
+      const player = (await playerRef.get()).data();
+      if (!player) {
+        res.status(404).send('player not found');
+        return;
+      }
+
+      if (player.teamId !== customClaims.team) {
+        res.status(403).send('User is not authorized');
+        return;
+      }
+
+      let exists = false;
+      player.transferReqs?.forEach((t) => {
+        if (t.teamId === teamId) {
+          exists = true;
+        }
+      });
+
+      if (!exists) {
+        res.status(406).send('bid does not exists');
+        return;
+      }
+
+      if (player.transferReqs) {
+        const transferReqs = player.transferReqs.filter((t) => t.teamId !== teamId);
+
+        await playerRef.set({
+          ...player,
+          transferReqs
+        });
+      }
+
+      res.status(200).send();
+    } catch (ex) {
+      logger.error(ex);
+      res.status(500).send('Unknown server error');
+    }
+  }
 }

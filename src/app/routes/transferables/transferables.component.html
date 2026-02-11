@@ -43,7 +43,7 @@
         <mat-header-cell *matHeaderCellDef mat-sort-header> Bid Count </mat-header-cell>
         <mat-cell *matCellDef="let row" (click)="onBidCountClick(row)">
           @if(row.teamId === currentUserTeamId) {
-            {{row.transferReqs.length | number:'1.0-0'}} 
+            {{row.transferReqs.length ? row.transferReqs.length : '' | number:'1.0-0'}} 
           }
           </mat-cell>  
       </ng-container>
@@ -66,23 +66,3 @@
     </ng-template>
   </mat-menu>
 </div>
-
-<!-- Notification container -->
-@if (transferNotifications.length > 0) {
-<div class="notifications-container">
-    @for (notification of transferNotifications; track notification.timestamp; let i = $index) {
-      <div class="notification-card">
-    <div class="notification-content">
-      <div class="notification-message">{{ notification.message }}</div>
-      <div class="notification-details">
-        <span>Player ID: {{ notification.playerId }}</span>
-        <span>Bid: €{{ notification.value | number }}</span>
-      </div>
-    </div>
-    <button mat-icon-button (click)="dismissNotification(i)" class="dismiss-button">
-      <mat-icon>close</mat-icon>
-    </button>
-      </div>
-    }
-  </div>
-}

@@ -98,8 +98,8 @@ export class TransferablesComponent {
       // Optionally show a snackbar for new notifications
       if (notifications.length > 0) {
         const latestNotification = notifications[0];
-        this.snackBar.open(latestNotification.message, 'Dismiss', { 
-          duration: 8000 
+        this.snackBar.open(latestNotification.message, 'Dismiss', {
+          duration: 8000
         });
       }
     });
@@ -202,8 +202,8 @@ export class TransferablesComponent {
       dialogRef.afterClosed().subscribe(async (result) => {
         if (result) {
           this.logger.debug('Bid placed', result);
-           await this.getPlayers();
-           this.logger.debug('Players reloaded after bid');
+          await this.getPlayers();
+          this.logger.debug('Players reloaded after bid');
           // setTimeout(() => this.getPlayers(), 1000);
         }
       });
@@ -215,12 +215,12 @@ export class TransferablesComponent {
   protected async cancelBid(player: IDisplayPlayer) {
     try {
       await this.playerSvc.cancelBid(player.pid);
-      await this.getPlayers(); 
+      await this.getPlayers();
     } catch (ex) {
       this.logger.error(ex);
     }
   }
-  
+
   protected async editPlayer(player: IDisplayPlayer) {
     // try {
     //   if (!this.teams) {
@@ -289,16 +289,22 @@ export class TransferablesComponent {
           teamName: team
         };
       });
-      this.dialog.open(ManageBidsDialogComponent, {
+      const dialogRef = this.dialog.open(ManageBidsDialogComponent, {
         minWidth: '300px',
         minHeight: '300px',
         disableClose: true,
         hasBackdrop: true,
         data: {
           player: row,
-          transferReqs,          
+          transferReqs,
         },
         width: '400px'
+      });
+
+      dialogRef.afterClosed().subscribe((result) => {
+        if (result) {
+          this.getPlayers();
+        }
       });
     }
   }
