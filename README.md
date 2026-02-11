@@ -1,6 +1,6 @@
 # LeagueManager
 
-For firebase to work correctly https://firebase.google.com/docs/cli#windows-npm
+For firebase to work correctly https://firebase.google.com/docs/cli#windows-npm.
 
 
 To generate SSL certificate for dev server: https://www.freecodecamp.org/news/how-to-get-https-working-on-your-local-development-environment-in-5-minutes-7af615770eec
